@@ -64,7 +64,7 @@ export default function Hero() {
           </div>
 
           <h1 className="mt-5 text-3xl font-extrabold tracking-tight text-gray-950 sm:text-5xl">
-            The people&apos;s guide to{' '}
+            Community-driven guide to{' '}
             <span className="text-blue-700">
               {siteName.replace(/^Better\s+/i, '')}
             </span>
