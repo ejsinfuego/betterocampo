@@ -1,78 +1,37 @@
-# Enroll Children in LGU Daycare or Preschool Programs — Lapu-Lapu City
+# Enroll Children in Daycare or Preschool — Ocampo, Camarines Sur
 
-The Lapu-Lapu City Government, through the **City Social Welfare and Development Office (CSWDO)** and barangays, operates **daycare centers** and supports **public preschool education**.
+Daycare in Ocampo is handled by the barangay and the Municipal Social Welfare and Development Office. Kindergarten is a Department of Education program in public elementary schools. Enrollment dates are announced by the barangay or the school. They are not listed here.
 
----
+## Daycare
 
-## 1) LGU Daycare Programs
+Daycare is for young children, commonly ages 3 to 4, before kindergarten. Ask your barangay hall which center serves your sitio and whether a slot is still open.
 
-**What’s offered**
+Typical papers:
 
-- Early childhood care and development for children aged **3–4 years old**.
-- Daily activities on socialization, basic learning skills, play-based lessons, and health/nutrition monitoring.
-- Free or minimal-cost supplementary feeding (depending on barangay program).
+- Birth certificate (PSA or local civil registrar)
+- Barangay certificate or proof that the child lives in the barangay
+- ID photo, if the center asks for one
+- The enrollment form from the center
 
-**Who can join**
+Ask the center whether the program is free or whether parents share the cost of materials. Do not rely on a fee published for another city.
 
-- Children aged **3–4 years old** who are residents of the barangay.
-- Priority is often given to **indigent families** or those referred by barangay officials.
+## Kindergarten
 
-**Requirements (typical)**
+DepEd kindergarten is for children who are five years old by the opening of the school year. Enroll at the public elementary school that covers your address during early registration or the regular enrollment period.
 
-- Child’s **birth certificate** (PSA copy or local civil registrar copy).
-- **Barangay clearance** or proof of residency.
-- 1×1 ID photo of the child (for records).
-- Filled-out **Daycare Enrollment Form** (available at the center).
+Typical papers:
 
-**How to enroll**
+- PSA birth certificate
+- Barangay certificate
+- ID photo
+- The school's registration form
 
-1. Visit your **Barangay Daycare Center** or **Barangay Hall** to ask for the enrollment schedule.
-2. Submit required documents and fill out the enrollment form.
-3. Attend the orientation session for parents/guardians (usually held before classes start).
+Public kindergarten does not charge tuition.
 
-**Cost:** Free (LGU-funded), though some barangays may request voluntary contributions for class materials.
+## Where to confirm
 
----
-
-## 2) Public Preschool (Kindergarten)
-
-**What’s offered**
-
-- Department of Education (DepEd) **Kindergarten Program** for **5-year-old children**, implemented in public elementary schools.
-- Focus on school readiness: literacy, numeracy, and social skills.
-
-**Who can join**
-
-- Children aged **5 years old** by the opening of the school year.
-- Priority for residents within the school’s catchment area.
-
-**Requirements (typical DepEd)**
-
-- Child’s **birth certificate** (PSA).
-- Proof of residency (Barangay Certificate).
-- 2×2 ID photo of the child.
-- Accomplished **DepEd Kindergarten Registration Form** (given at school).
-
-**How to enroll**
-
-1. Proceed to the **nearest public elementary school** during the announced **DepEd early registration** or regular enrollment period.
-2. Submit required documents to the school registrar.
-3. Attend orientation for parents and guardians.
-
-**Cost:** Free (government-funded).
-
----
-
-## Contact & Updates
-
-- **Barangay Daycare Centers** — Enrollment schedules and requirements are usually announced by barangay officials.
-- **City Social Welfare and Development Office (CSWDO)** — Oversees daycare programs.
-- **DepEd Lapu-Lapu City Division** — Manages public kindergarten enrollment.
-
----
-
-### Quick Tips
-
-- Enroll early — daycare and preschool slots may be limited per barangay/school.
-- Keep copies of your child’s **birth certificate** and **barangay certificate** ready.
-- Attend parent orientations to understand your role in supporting your child’s early education.
+- Your barangay hall and daycare worker
+- Municipal Social Welfare and Development Office, Municipal Hall, Ocampo, Camarines Sur 4419
+- The public elementary school for your address
+- Schools Division of Camarines Sur, through the school registrar
+- [LGU Facebook page](https://www.facebook.com/101706771551898)
