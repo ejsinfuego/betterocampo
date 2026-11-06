@@ -25,7 +25,7 @@ import { isMeilisearchEnabled } from '../../lib/meilisearch';
 import type { LanguageType } from '../../types/index';
 import { cn } from '../../lib/utils';
 
-const OFFICIAL_SITE = 'https://ocampo.camarinessur.gov.ph';
+const LGU_FACEBOOK = 'https://www.facebook.com/101706771551898';
 const OCAMPO_LAT = 13.5594;
 const OCAMPO_LNG = 123.3761;
 
@@ -164,15 +164,12 @@ const Navbar: React.FC = () => {
             </span>
           </div>
           <a
-            href={OFFICIAL_SITE}
+            href={LGU_FACEBOOK}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-6 shrink-0 items-center gap-1.5 rounded-full border border-blue-600/70 bg-blue-950/90 px-2.5 text-[11px] font-semibold text-blue-200 hover:bg-blue-900 hover:text-white"
           >
-            <span className="hidden text-slate-300 sm:inline">
-              Official Portal:
-            </span>
-            <span className="font-bold">ocampo.camarinessur.gov.ph</span>
+            <span className="font-bold">LGU Facebook</span>
             <ExternalLink className="size-3 text-blue-400" />
           </a>
         </div>
@@ -417,15 +414,15 @@ const Navbar: React.FC = () => {
                 of Ocampo, Camarines Sur.
               </p>
               <p>
-                This website is not the official LGU site. Official transactions
-                stay on{' '}
+                No municipal website was found when this was checked. Public
+                updates are on the{' '}
                 <a
-                  href={OFFICIAL_SITE}
+                  href={LGU_FACEBOOK}
                   className="font-medium text-blue-700 underline"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  ocampo.camarinessur.gov.ph
+                  LGU Facebook page
                 </a>
                 .
               </p>
