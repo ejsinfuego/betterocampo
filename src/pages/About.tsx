@@ -12,7 +12,6 @@ import SEO from '../components/SEO';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import { CivicPage, PageHeader } from '../components/ui/PageFrame';
 
-const OFFICIAL_SITE = 'https://ocampo.camarinessur.gov.ph';
 const GITHUB = 'https://github.com/ejsinfuego/betterocampo';
 const FACEBOOK = 'https://www.facebook.com/101706771551898';
 
@@ -42,9 +41,8 @@ const sources = [
     note: 'Used for the municipality’s founding order.',
   },
   {
-    name: 'Official municipal website',
-    href: OFFICIAL_SITE,
-    note: 'Official transactions stay on the LGU site. This portal does not replace it.',
+    name: 'Municipal website',
+    note: 'No municipal website was found when this was checked. Public updates are on the LGU Facebook page.',
   },
 ];
 
@@ -53,7 +51,7 @@ const About: React.FC = () => {
     <>
       <SEO
         title="About"
-        description="Better Ocampo is a community transparency portal for the Municipality of Ocampo, Camarines Sur. It is independent of the official LGU website."
+        description="Better Ocampo is a community transparency portal for the Municipality of Ocampo, Camarines Sur. No municipal website was found when this was checked."
         keywords="Ocampo, Camarines Sur, Better Ocampo, transparency, local government"
       />
       <CivicPage>
@@ -61,7 +59,7 @@ const About: React.FC = () => {
         <PageHeader
           eyebrow="Independent community guide"
           title="About Better Ocampo"
-          description="Better Ocampo is a community transparency portal for the Municipality of Ocampo, Camarines Sur. It is independent of the official LGU website."
+          description="Better Ocampo is a community transparency portal for the Municipality of Ocampo, Camarines Sur. No municipal website was found when this was checked."
         >
           <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-emerald-300/80 bg-emerald-50/80 p-4 text-xs text-emerald-950">
             <span className="inline-flex items-center gap-2 font-bold">
@@ -89,13 +87,13 @@ const About: React.FC = () => {
               Independent community guide
             </h2>
             <p className="mt-2 text-xs leading-relaxed text-gray-600">
-              This site is not the official municipal website. Official
-              transactions stay on{' '}
+              This site is an independent community guide. No municipal website
+              was found when this was checked. Public updates are on the{' '}
               <a
                 className="font-semibold text-blue-700 underline"
-                href={OFFICIAL_SITE}
+                href={FACEBOOK}
               >
-                ocampo.camarinessur.gov.ph
+                LGU Facebook page
               </a>
               .
             </p>
@@ -149,7 +147,7 @@ const About: React.FC = () => {
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-gray-600">
                 The people maintaining this portal do not answer municipal
-                transactions. Use the official website or the contact details
+                transactions. Use the LGU Facebook page or the contact details
                 that have already been checked and published here.
               </p>
             </div>
@@ -232,14 +230,7 @@ const About: React.FC = () => {
                   Contact details published on this portal
                 </Link>
               </li>
-              <li>
-                <a
-                  className="font-semibold text-blue-700 underline"
-                  href={OFFICIAL_SITE}
-                >
-                  ocampo.camarinessur.gov.ph
-                </a>
-              </li>
+              <li>No municipal website was found when this was checked.</li>
             </ul>
             <p className="text-xs text-gray-600">
               No municipal hotline or office email is listed until one is
