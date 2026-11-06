@@ -28,30 +28,7 @@ Mayor of **{GOVERNMENT_NAME}**, **{MAYOR}**
 
 ### Biography of the Mayor
 
-Mayor **{MAYOR}** has been serving the people of **{GOVERNMENT_NAME}** since **{YEAR_ELECTED}**.
-
-Mayor **{MAYOR}** is known for championing initiatives related to:
-
-- Local economic development
-- Public health and social services
-- Infrastructure and urban development
-- Community empowerment and participation
-
-Outside of official duties, Mayor **{MAYOR}** works closely with barangay leaders, civic organizations, and private sector partners to support programs that benefit the community.
-
----
-
-### Mayor's Community Assistance Program
-
-During the current term, Mayor **{MAYOR}** supports several initiatives aimed at improving the welfare of residents under the theme **"[PROGRAM THEME]"**.
-
-Programs supported include:
-
-- **[PROGRAM NAME 1]** – Supporting education and youth development
-- **[PROGRAM NAME 2]** – Providing livelihood assistance to families
-- **[PROGRAM NAME 3]** – Strengthening disaster preparedness and community resilience
-
-You can read more about these initiatives on the **Mayor's Community Programs page**.
+Mayor **{MAYOR}** was reported as the winner of the **{YEAR_ELECTED}** mayoral race in **{GOVERNMENT_NAME}**. This page lists the officeholders from public election reports. It does not describe programs, platforms, or personal history that have not been checked against an official source.
 
 ---
 
@@ -65,13 +42,7 @@ You can read more about these initiatives on the **Mayor's Community Programs pa
 
 The Vice Mayor presides over the **Sangguniang Panlungsod / Sangguniang Bayan**, ensuring legislative sessions run properly and that ordinances and resolutions support the development goals of the local government.
 
-Vice Mayor **{VICE_MAYOR}** was elected during the **{YEAR_ELECTED} National and Local Elections**.
-
-Vice Mayor **{VICE_MAYOR}** supports initiatives focused on:
-
-- community welfare
-- legislative development
-- economic and social progress
+Vice Mayor **{VICE_MAYOR}** was reported as the winner of the **{YEAR_ELECTED}** vice-mayoral race in **{GOVERNMENT_NAME}**.
 
 ---
 
@@ -152,14 +123,13 @@ These roles reflect the legacy of leadership and public service within the commu
 City/Municipal Hall of **{GOVERNMENT_NAME}**
 
 **Address:**
-[STREET ADDRESS]
-[CITY / PROVINCE / POSTAL CODE]
+Municipal Hall, Ocampo, Camarines Sur 4419
 
 **Telephone:**
-[PHONE NUMBER]
+Not yet verified
 
 **Email:**
-[EMAIL ADDRESS]
+Not yet verified
 
-**Website:**
-[OFFICIAL WEBSITE URL]
+**Official LGU website:**
+https://ocampo.camarinessur.gov.ph
