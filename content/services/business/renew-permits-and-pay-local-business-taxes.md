@@ -1,132 +1,58 @@
-# Renew Permits and Pay Local Business Taxes — Lapu-Lapu City
+# Renew Permits and Pay Local Business Taxes — Ocampo, Camarines Sur
 
-Use this guide to renew your **Mayor’s/Business Permit** and **Local Business Taxes (LBT)** with the City Government.
+Renew the mayor's business permit and pay local business taxes with the Municipality of Ocampo. Rates and extra fees come from the municipal revenue code. This page does not restate those amounts.
 
----
+## Who must renew
 
-## Who Must Renew
+Every business operating in Ocampo, including sole proprietors, partnerships, corporations, cooperatives, and professionals with a local office. Renew the main office and each branch.
 
-- All businesses operating in Lapu-Lapu City: **sole proprietors, partnerships, corporations, NGOs, cooperatives, online sellers with local presence**, and professionals with a business office.
-- Renewal applies to **main office and each branch**.
+## When to renew
 
----
+The Local Government Code sets the annual business-tax period in the first twenty days of January. Quarterly payers usually settle the next quarters on or before the twentieth of April, July, and October. Late payment can add a surcharge and interest, up to the ceilings in the Code, as applied by the municipal ordinance.
 
-## When to Renew
+Prepare documents in December so you can file in the first week of January.
 
-- **Annual renewal period:** **First 20 days of January** (as provided in the Local Government Code).
-- **Payments:** either **annually** or **quarterly** (1st qtr due during renewal; next quarters usually due on or before the **20th** day of April, July, and October).
-- Late filings incur **surcharges and interest**.
+## What to bring
 
-> Tip: Prepare your documents **by December** so you can file in the first week of January.
+- Last year's mayor's permit and official receipts
+- DTI, SEC, or CDA registration
+- BIR Certificate of Registration (Form 2303)
+- Lease, tax declaration, or occupancy permit
+- Sworn declaration of gross sales or receipts for the previous year
+- Barangay clearance, sanitary permit, and Fire Safety Inspection Certificate when the office routes you for them
+- Valid ID, and a special power of attorney or board resolution if you are not the owner
 
----
+Clearances depend on the business. Bring the previous permits so the evaluator can see what was required last year.
 
-## What You’ll Need (Typical Requirements)
+## Walk-in steps
 
-**Business Information**
+1. Go to the Business Permits and Licensing Office at the Municipal Hall during the renewal period.
+2. Fill out the renewal form and the sworn declaration of gross sales. Report changes in name, activity, area, machinery, employees, or address.
+3. Complete any routing to the barangay, sanitary office, zoning, environment office, or the Bureau of Fire Protection.
+4. The office assesses local business tax and regulatory fees. Ask whether annual or quarterly payment is allowed for your business.
+5. Pay at the municipal treasurer and keep the official receipt.
+6. Claim the new permit and post it at the place of business.
 
-- Prior year **Mayor’s/Business Permit** and **Official Receipts**.
-- **DTI/SEC/CDA** registration (whichever applies).
-- **BIR** Certificate of Registration (Form 2303) and **Authority to Print** (if any).
-- **Contract of Lease** / **Tax Declaration** / **Certificate of Occupancy** (as applicable).
-- **Valid IDs** of owner or authorized representative (+ **SPA** or Board Resolution if not the owner).
+Ocampo has not published an online renewal portal on this page. Ask the licensing office at the start of January whether pre-filing is open.
 
-**Revenue/Tax Basis**
+## How dues are computed
 
-- **Sworn Declaration of Gross Sales/Receipts** for the **preceding year** (or **Audited FS**/**Accountant-certified** FS if applicable).
-- **Inventory list** (selected industries) and **machine/equipment list** (if applicable).
+Local business tax is based on the previous year's gross sales or receipts and on the category in the local tax ordinance. Other charges can include sanitary, garbage, signage, and fire-related fees. This portal does not publish the brackets.
 
-**Regulatory Clearances** (city/BPLO may route you during assessment)
+## If something changed
 
-- **Barangay Clearance** (for business).
-- **Sanitary Permit** (Health).
-- **Fire Safety Inspection Certificate (FSIC)** (BFP).
-- **Environmental/Disposal Permits** (if required by the nature of business).
-- **Zoning/Occupancy** updates if there were renovations or transfers.
+Report a new address, name, owner, activity, floor area, or closure. File a retirement if the business stops, settle delinquencies, and surrender the old permit so taxes do not keep accruing.
 
-> Note: Actual required clearances vary by business **nature, size, and risk category**. Bring your **previous permits** to guide the checker.
+## Checklist
 
----
+- [ ] Last year's permit and receipts
+- [ ] DTI, SEC, or CDA papers and BIR Form 2303
+- [ ] Lease, occupancy, or tax declaration
+- [ ] Sworn gross sales or financial statements
+- [ ] Barangay clearance and other routed clearances
+- [ ] ID or authorization for the representative
+- [ ] Payment for the assessed tax and fees
 
-## Step-by-Step (Walk-In)
+## Where to confirm
 
-1. **Pre-screening / Queuing**
-   - Go to the **Business One-Stop Shop (BOSS)** during the renewal period.
-   - Get your queue number; submit last year’s permit and basic IDs for pre-check.
-
-2. **Application & Declaration**
-   - Fill out the **Business Renewal Form** and the **Sworn Declaration of Gross Sales/Receipts**.
-   - Declare any **changes** (business name, nature, capitalization, number of employees, floor area, machinery, location).
-
-3. **Regulatory Routing**
-   - The evaluator will route you (if needed) to: **Barangay**, **Sanitary/Health**, **Zoning**, **Environmental**, and **BFP** for assessment/inspection.
-
-4. **Assessment**
-   - **BPLO** computes **Local Business Tax**, **Regulatory Fees**, and **Other Charges** (signage, garbage, sanitary, etc.).
-   - Choose **Annual** or **Quarterly** payment.
-
-5. **Payment**
-   - Pay at the **City Treasurer’s** cashier or accredited payment options (if available).
-   - Receive **Official Receipt(s)**.
-
-6. **Releasing**
-   - Claim your **Mayor’s/Business Permit**, **FSIC/Sanitary**, **Stickers/Plates**, and **Occupational permits** (if issued with the pack).
-   - Post the permit and required notices **conspicuously** at your place of business.
-
----
-
-## (If Available) Online / Hybrid Filing
-
-- Some transactions may be done via the city’s **online business portal** or **pre-assessment** channels (if announced).
-- Prepare **scanned PDFs** of your documents (clear, legible; 1 file per requirement).
-- After online assessment, proceed to **payment** (e-payment or onsite) and **permit releasing** per instructions.
-
-> If unsure, confirm at the start of the renewal period if **online pre-filing** is open for your business type.
-
----
-
-## How Your Dues Are Computed
-
-- **Local Business Tax (LBT):** Based on **gross sales/receipts** of the prior year and your **business category** (rates and brackets per local tax ordinance).
-- **Regulatory/Service Fees:** e.g., **Sanitary**, **Zoning**, **Garbage**, **Signage**, **Occupational**, and **Fire** fees/clearances.
-- **Other Assessments:** May apply for **delivery vehicles**, **storage/stockrooms**, **machinery**, or **special permits**.
-
----
-
-## Penalties for Late Renewal
-
-- **Surcharge** (commonly up to **25%** of the tax due) **plus** **monthly interest** (commonly up to **2% per month**) until fully paid, subject to the city’s ordinance caps.
-- Possible **closure/tagging** and **inspection findings** if you continue operations without a valid permit.
-
----
-
-## Changes You Must Report
-
-- **Change of address**, **trade/brand name**, **ownership structure**, **business activity**, **floor area**, **machinery**, or **employee count**.
-- **Temporary closure** or **permanent cessation**:
-  - File a **Business Retirement** to stop tax accruals.
-  - Submit **inventory and last day of operation**, settle any **delinquencies**, and surrender old permits/plates.
-
----
-
-## Practical Tips
-
-- **Bring copies** of everything (and soft copies on a USB/phone).
-- If you had **renovations** or **new equipment**, bring **permits/invoices**—it speeds up Zoning/BFP review.
-- **Coordinate early** with your **lessor** for building-related documents (occupancy, fire compliance).
-- For **food/health businesses**, schedule **Sanitary inspections** early; ensure staff have updated **health cards** if required.
-- Keep a **renewal calendar**: Q2/Q3/Q4 due dates if you chose quarterly.
-
----
-
-## Quick Checklist (Print This)
-
-- [ ] Last year’s **Mayor’s/Business Permit** and **ORs**
-- [ ] **DTI/SEC/CDA** registration & **BIR 2303**
-- [ ] **Lease/Occupancy**/Tax Declaration (as applicable)
-- [ ] **Sworn Gross Sales/Receipts** (prev. year) / **FS**
-- [ ] **Barangay Clearance** (business)
-- [ ] **Sanitary** & **FSIC** (and other routed clearances)
-- [ ] **Valid ID** / **SPA or Board Resolution** for representative
-- [ ] Payment (cash/card) for **taxes & fees**
-- [ ] Collect **Permit**, **Stickers/Plates**, post on site
+Municipal Hall, Ocampo, Camarines Sur 4419. Updates are also posted on the [LGU Facebook page](https://www.facebook.com/101706771551898). No hotline is listed here.
