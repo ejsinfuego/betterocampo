@@ -1,8 +1,12 @@
 # Better Ocampo
 
-Community transparency portal for the Municipality of Ocampo, Camarines Sur. Started from the [Better Local Gov](https://github.com/iyanski/betterlocalgov) starter in the [Better LGU directory](https://github.com/jmacj/better-lgu-directory). This site is independent of the official LGU website at [ocampo.camarinessur.gov.ph](https://ocampo.camarinessur.gov.ph).
+Community transparency portal for the Municipality of Ocampo, Camarines Sur. Started from the [Better Local Gov](https://github.com/iyanski/betterlocalgov) starter in the [Better LGU directory](https://github.com/jmacj/better-lgu-directory).
 
-Ocampo is not listed in the directory yet. Register it with a pull request titled `Add Ocampo, Camarines Sur to directory` once this repo is public. Service articles in `content/` are still the starter's Lapu-Lapu samples and must be replaced before launch.
+No municipal website was found when this was checked. Public updates from the LGU are on the [LGU Facebook page](https://www.facebook.com/101706771551898). This portal is an independent community guide.
+
+Service guides in `content/services/` are written for Ocampo. They do not reuse another city's offices, fees, or schedules. Local fees, collection days, and hotlines stay off those pages until they are verified.
+
+Ocampo is not listed in the Better LGU directory yet. Register it with a pull request titled `Add Ocampo, Camarines Sur to directory` once this repo is public.
 
 The sections below are the starter kit's own setup notes.
 

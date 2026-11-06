@@ -1,65 +1,25 @@
-# Report Illegal Dumping & Waste Management Violations — Lapu-Lapu City
+# Report Illegal Dumping or Waste Violations — Ocampo, Camarines Sur
 
-Illegal dumping, open burning, and improper waste practices are violations of **Republic Act 9003 (Ecological Solid Waste Management Act)** and city ordinances. Residents are encouraged to report offenders to help keep Lapu-Lapu City clean and safe.
+Illegal dumping, open burning, and mixing hazardous waste with household trash violate Republic Act 9003. Report them to the barangay first, then to the municipal environment office if the problem continues.
 
----
+## What to report
 
-## 1) What to Report
+- Trash thrown in vacant lots, waterways, sidewalks, or open space
+- Burning of household waste, plastic, or tires
+- Businesses that mix waste or dump outside collection day
+- Batteries, chemicals, or medical waste left with regular garbage
+- A pile that has not been collected and is drawing pests
 
-| Violation                           | Examples                                                                                              |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| **Illegal dumping**                 | Throwing trash in vacant lots, rivers, canals, sidewalks, or open spaces                              |
-| **Open burning**                    | Burning household or yard waste, plastics, or tires                                                   |
-| **Improper disposal by businesses** | Mixing segregated waste, throwing garbage outside collection days, failing to hire accredited haulers |
-| **Hazardous waste violations**      | Disposing of batteries, chemicals, medical waste with household trash                                 |
-| **Uncollected garbage sites**       | Overflowing bins or uncollected waste attracting pests                                                |
+## How to report
 
----
+1. Go to the barangay hall or message the barangay's own page. Give the place, the date and time, the kind of waste, and a photo if you have one.
+2. If the barangay cannot address it, go to the municipal environment office at the Municipal Hall, Ocampo, Camarines Sur 4419.
+3. If the dumping is dangerous or involves a large truck, you can also tell the Philippine National Police station that covers Ocampo.
 
-## 2) How to Report
+The [LGU Facebook page](https://www.facebook.com/101706771551898) is for announcements. A public comment is not a substitute for a report to the barangay.
 
-1. **Barangay Level (First Step)**
-   - Go to your **Barangay Hall** or message the **Barangay Facebook Page**.
-   - Ask for the **Barangay Environment/Solid Waste Committee**.
-   - Provide: **exact location**, **type of violation**, **time/date**, and **photos/videos** if possible.
+## After a report
 
-2. **City Environment and Natural Resources Office (CENRO)**
-   - If the violation is large-scale, recurring, or unaddressed by the barangay, contact **CENRO** at City Hall.
-   - Phone: (032) 340-0004 (City Hall trunkline, ask for CENRO)
-   - Updates and announcements: [Lapu-Lapu City Government Facebook Page](https://www.facebook.com/lapulapucitygovernment)
+The barangay or the municipal inspector visits the site. Penalties depend on the ordinance and on RA 9003. This page does not list peso fines. Photos, the exact location, and the time make the report easier to act on. You may leave a name and number if you want a follow-up.
 
-3. **Other Hotlines**
-   - **City Information Office (CIO):** (032) 340-1615 (for reports and follow-up).
-   - **Philippine National Police (PNP):** for dumping that threatens public safety or involves large-scale transport.
-
----
-
-## 3) What Happens After Reporting
-
-- **Barangay/CENRO inspection team** will visit the site.
-- **Offenders may be fined or penalized** under city ordinances.
-- For businesses, repeated violations can lead to **closure or suspension of business permits**.
-- Collected evidence (photos, witness accounts) strengthens enforcement action.
-
----
-
-## 4) Tips for Effective Reporting
-
-- Take **clear photos or videos** (include street names/landmarks).
-- Note the **time and date** you saw the violation.
-- Submit your **name and contact info** if you want updates (anonymous tips are still accepted).
-- Encourage neighbors to also report — multiple reports prompt quicker action.
-
----
-
-## 5) Penalties (as a reminder)
-
-- **Illegal dumping & open burning**: Fines and/or community service.
-- **Businesses without accredited haulers**: Higher penalties, possible permit suspension.
-- **Repeat offenders**: May face higher fines, legal cases, or closure orders.
-
----
-
-### Key Reminder
-
-✅ Reporting waste violations is a **civic duty**. By promptly alerting your barangay or CENRO, you help protect your community’s health, prevent flooding, and keep Lapu-Lapu City sustainable.
+No environment hotline is published on this portal.

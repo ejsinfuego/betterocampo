@@ -1,65 +1,68 @@
-# How to Set Up a Business Partnership
+# Apply for Barangay Clearance and the Mayor's Business Permit — Ocampo, Camarines Sur
 
-## Step 1: Register with SEC
+Businesses in the Municipality of Ocampo, Camarines Sur need a barangay clearance and a mayor's business permit before they operate. National registration (DTI, SEC, or CDA, then BIR) is separate from the municipal permit.
 
-**Prepare documents:**
+The municipality has not published its permit checklist, fees, or an online portal on this page. Confirm the current list at the Business Permits and Licensing Office in the Municipal Hall, Ocampo, Camarines Sur 4419, or on the [LGU Facebook page](https://www.facebook.com/101706771551898).
 
-- Partnership name (check via [SEC eSPARC](https://espac.sec.gov.ph/))
-- Notarized Articles of Partnership
-- IDs/TINs of partners, office address, capital structure
+## 1. Register the business name
 
-**File online** through [SEC eSPARC](https://espac.sec.gov.ph/) and pay fees.
+Use the registry that matches the business:
 
-**Output:** SEC Certificate of Recording + Approved Business Name
+- Sole proprietor: [DTI Business Name Registration](https://bnrs.dti.gov.ph/)
+- Partnership or corporation: [SEC eSPARC](https://espac.sec.gov.ph/)
+- Cooperative: Cooperative Development Authority
 
-## Step 2: Apply for Business Permit
+## 2. Get a barangay clearance
 
-Go to **Lapu-Lapu City BPLO** (Business Permit and Licensing Office).
+Go to the barangay hall where the business is located.
 
-**Requirements:**
+Typical documents:
 
-- Unified Application Form
-- SEC Certificate of Registration + Articles of Partnership
-- Occupancy Permit (if owner) OR Lease Contract (if renting)
-- Community Tax Certificate (CTC)
+- Valid ID of the owner or authorized representative
+- Proof of address (lease or proof of ownership)
+- DTI, SEC, or CDA registration
 
-Apply in person or online via [Lapu-Lapu Online Business Permit Portal](https://businesspermit.lapulapucity.gov.ph/).
+The barangay sets its own form and fee. This page does not list them.
 
-> Note: Inspections may include zoning, sanitary, and fire safety checks.
+## 3. Apply for the mayor's business permit
 
-## Step 3: Register with BIR
+File at the municipal Business Permits and Licensing Office. Inspections can include zoning, sanitary, and Bureau of Fire Protection checks. There is no verified Ocampo online business-permit portal to link here.
 
-File at the **BIR Revenue District Office (RDO)** where your office is located.
+Bring:
 
-- Fill out [BIR Form 1903](https://www.bir.gov.ph/images/1903%20Jan%202024.pdf)
-- Submit SEC Certificate + Articles of Partnership + valid IDs
-- Pay registration fee + Documentary Stamp Tax (DST)
+- Barangay clearance for the business
+- DTI, SEC, or CDA certificate
+- Occupancy permit, or a lease if you rent
+- Community Tax Certificate, if the office asks for one
+- Valid ID
 
-**Within 30 days of receiving BIR Certificate:**
+## 4. Register with the BIR
 
-- Apply for Authority to Print Receipts (Form 1906) OR enroll in e-invoicing
-- Register your Books of Accounts
+File at the Revenue District Office that covers Ocampo.
 
-## Step 4: Register as Employer (if hiring)
+- New corporations and partnerships often use BIR Form 1903
+- Sole proprietors use the form the RDO assigns for their case
+- After registration, secure authority to print receipts or enroll in e-invoicing, and register the books of accounts
 
-Enroll with:
+Forms and deadlines are on [bir.gov.ph](https://www.bir.gov.ph/).
 
-- [SSS](https://www.sss.gov.ph/)
-- [PhilHealth](https://www.philhealth.gov.ph/)
-- [Pag-IBIG](https://www.pagibigfund.gov.ph/)
+## 5. Register as an employer, if you hire people
 
-## Process Flow
+Enroll with [SSS](https://www.sss.gov.ph/), [PhilHealth](https://www.philhealth.gov.ph/), and [Pag-IBIG](https://www.pagibigfund.gov.ph/).
 
-1. SEC name check + register via [SEC eSPARC](https://espac.sec.gov.ph/)
-2. Secure Barangay Certification + site/lease documents
-3. Apply for Business Permit at [Lapu-Lapu BPLO](https://businesspermit.lapulapucity.gov.ph/)
-4. File BIR Form 1903 → apply ATP → register books
+## Checklist
 
-## Document Checklist
+- [ ] DTI, SEC, or CDA registration
+- [ ] Barangay clearance
+- [ ] Lease or occupancy documents
+- [ ] Municipal business-permit form and Community Tax Certificate
+- [ ] BIR registration, receipts, and books
+- [ ] SSS, PhilHealth, and Pag-IBIG, if you have employees
 
-- [ ] SEC Articles of Partnership + SEC Certificate
-- [ ] Lease Contract OR Occupancy/Building docs
-- [ ] Lapu-Lapu BPLO Unified Application Form + CTC
-- [ ] BIR Form 1903, IDs, ATP/Books
+## Where to confirm
 
-With these steps, your partnership in Lapu-Lapu City will be fully compliant and ready to operate!
+- Municipal Hall, Ocampo, Camarines Sur 4419
+- [ocampo.camarinessur.gov.ph](https://ocampo.camarinessur.gov.ph)
+- [LGU Facebook page](https://www.facebook.com/101706771551898)
+
+No municipal hotline or office email is published on this portal.
