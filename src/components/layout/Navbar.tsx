@@ -1,259 +1,357 @@
-import React, { useState } from 'react';
-import { X, Menu, ChevronDown, Globe, Search } from 'lucide-react';
-import { mainNavigation } from '../../data/navigation';
-import type { LanguageType } from '../../types/index';
-import { Link } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import {
+  Briefcase,
+  Building2,
+  Calendar,
+  CheckCircle2,
+  ChevronDown,
+  Clock,
+  CloudSun,
+  ExternalLink,
+  Globe,
+  Info,
+  Landmark,
+  Menu,
+  PhoneCall,
+  Search,
+  ShieldAlert,
+  X,
+} from 'lucide-react';
+import { Link, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { mainNavigation } from '../../data/navigation';
 import { LANGUAGES } from '../../i18n/languages';
 import { isMeilisearchEnabled } from '../../lib/meilisearch';
+import type { LanguageType } from '../../types/index';
+import { cn } from '../../lib/utils';
+
+const OFFICIAL_SITE = 'https://ocampo.camarinessur.gov.ph';
+const OCAMPO_LAT = 13.5594;
+const OCAMPO_LNG = 123.3761;
+
+const serviceLinks =
+  mainNavigation.find(item => item.href === '/services')?.children ?? [];
+
+function LivePhtClock() {
+  const [label, setLabel] = useState('Ocampo, Camarines Sur');
+
+  useEffect(() => {
+    if (window.innerWidth < 768) return;
+
+    const dateFormatter = new Intl.DateTimeFormat('en-PH', {
+      timeZone: 'Asia/Manila',
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+    const timeFormatter = new Intl.DateTimeFormat('en-PH', {
+      timeZone: 'Asia/Manila',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    });
+
+    const update = () => {
+      const now = new Date();
+      setLabel(
+        `${dateFormatter.format(now)} • ${timeFormatter.format(now)} PHT`
+      );
+    };
+
+    update();
+    const interval = window.setInterval(update, 30000);
+    return () => window.clearInterval(interval);
+  }, []);
+
+  return (
+    <span className="hidden items-center gap-1 font-mono text-[11px] text-blue-900 md:inline-flex">
+      <Calendar className="size-3" />
+      <Clock className="size-3" />
+      {label}
+    </span>
+  );
+}
+
+function LiveWeather() {
+  const [summary, setSummary] = useState('Ocampo, Camarines Sur');
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      fetch(
+        `https://api.open-meteo.com/v1/forecast?latitude=${OCAMPO_LAT}&longitude=${OCAMPO_LNG}&current=temperature_2m&timezone=Asia%2FManila`
+      )
+        .then(res => (res.ok ? res.json() : null))
+        .then(data => {
+          const temp = Math.round(Number(data?.current?.temperature_2m));
+          if (!Number.isNaN(temp)) {
+            setSummary(`${temp}°C • Ocampo`);
+          }
+        })
+        .catch(() => {});
+    }, 1500);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  return (
+    <span className="inline-flex items-center gap-1 font-medium text-blue-900">
+      <CloudSun className="size-3.5 text-amber-600" />
+      {summary}
+    </span>
+  );
+}
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [guideOpen, setGuideOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const siteName = import.meta.env.VITE_GOVERNMENT_NAME || 'Better Ocampo';
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-    if (isOpen) {
-      setActiveMenu(null);
-    }
-  };
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  const closeMenu = () => {
+  useEffect(() => {
     setIsOpen(false);
-    setActiveMenu(null);
-  };
-
-  const toggleSubmenu = (label: string) => {
-    setActiveMenu(activeMenu === label ? null : label);
-  };
+    setServicesOpen(false);
+    setGuideOpen(false);
+  }, [location.pathname]);
 
   const changeLanguage = (newLanguage: LanguageType) => {
     i18n.changeLanguage(newLanguage);
   };
 
-  return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
-      {/* Top bar with language switcher and additional links */}
-      <div className="border-b border-gray-200">
-        <div className="container mx-auto px-4 flex justify-end items-center h-10">
-          <div className="flex items-center space-x-4">
-            <a
-              href="https://bettergov.ph/join-us"
-              className="text-xs text-primary-600 hover:text-primary-700 font-semibold transition-colors"
-              target="_blank"
-            >
-              🚀 Join Us
-            </a>
-            <a
-              href="https://bettergov.ph/about"
-              className="text-xs text-gray-800 hover:text-primary-600 transition-colors"
-              target="_blank"
-            >
-              About BetterGov
-            </a>
-            <a
-              href="https://www.gov.ph"
-              className="text-xs text-gray-800 hover:text-primary-600 transition-colors"
-              target="_blank"
-            >
-              Official Gov.ph
-            </a>
+  const isActive = (href: string) =>
+    href === '/'
+      ? location.pathname === '/'
+      : location.pathname === href || location.pathname.startsWith(`${href}/`);
 
+  const navItems = [
+    { label: 'Home', href: '/', icon: Building2 },
+    { label: t('navbar.services'), href: '/services', icon: Briefcase },
+    {
+      label: t('navbar.government'),
+      href: '/government',
+      icon: Landmark,
+    },
+    { label: 'About', href: '/about', icon: Info },
+  ];
+
+  return (
+    <>
+      <div className="w-full max-w-full overflow-hidden bg-slate-950 text-slate-100">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-1.5 text-xs sm:gap-4 sm:px-6 lg:px-8">
+          <div className="flex min-w-0 flex-1 items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 sm:gap-2">
+            <span className="inline-flex shrink-0 items-center gap-1.5 text-xs font-bold text-amber-400">
+              <PhoneCall className="size-3.5 animate-civic-pulse" />
+              <span className="hidden sm:inline">Emergency:</span>
+            </span>
             <a
-              href="https://bettergov.ph/philippines/hotlines"
-              className="text-xs text-gray-800 hover:text-primary-600 transition-colors"
-              target="_blank"
-              rel="noreferrer"
+              href="tel:911"
+              title="National emergency hotline. Local Ocampo numbers are listed only after they are verified."
+              className="inline-flex h-6 shrink-0 items-center gap-1 rounded-md border border-slate-800 bg-slate-900/90 px-2 font-mono text-[11px] font-semibold text-slate-100 hover:border-amber-500/50 hover:text-amber-300"
             >
-              Hotlines
+              911
             </a>
-            <div className="hidden md:block">
-              <select
-                value={i18n.language}
-                onChange={e => changeLanguage(e.target.value as LanguageType)}
-                className="text-xs border border-gray-300 rounded px-2 py-1 bg-white text-gray-700 hover:border-primary-600 focus:outline-none focus:ring-1 focus:ring-primary-600 focus:border-primary-600"
-              >
-                {Object.entries(LANGUAGES).map(([code, lang]) => (
-                  <option key={code} value={code}>
-                    {lang.nativeName}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <span className="hidden truncate text-[11px] text-slate-400 lg:inline">
+              Local hotlines appear here only after verification
+            </span>
           </div>
+          <a
+            href={OFFICIAL_SITE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-6 shrink-0 items-center gap-1.5 rounded-full border border-blue-600/70 bg-blue-950/90 px-2.5 text-[11px] font-semibold text-blue-200 hover:bg-blue-900 hover:text-white"
+          >
+            <span className="hidden text-slate-300 sm:inline">
+              Official Portal:
+            </span>
+            <span className="font-bold">ocampo.camarinessur.gov.ph</span>
+            <ExternalLink className="size-3 text-blue-400" />
+          </a>
         </div>
       </div>
 
-      {/* Main navigation */}
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center py-4">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center">
-              <img
-                src="/ocampo-flag.jpg"
-                alt="Flag of the Municipality of Ocampo, Camarines Sur"
-                className="h-12 w-auto mr-3 rounded-sm"
-              />
-              <div>
-                <div className="text-black font-bold">
-                  {import.meta.env.VITE_GOVERNMENT_NAME}
-                </div>
-                <div className="text-xs text-gray-800">
-                  {t('site_description')}
-                </div>
-              </div>
-            </Link>
-          </div>
+      <header
+        className={cn(
+          'sticky top-0 z-50 w-full border-b border-gray-200/80 bg-white/95 backdrop-blur-md transition-shadow',
+          isScrolled ? 'shadow-md' : 'shadow-sm'
+        )}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-2.5 sm:px-6 lg:px-8">
+          <Link
+            to="/"
+            className="group flex min-w-0 items-center gap-2.5"
+            aria-label={`${siteName} home`}
+          >
+            <img
+              src="/ocampo-seal.png"
+              alt=""
+              className="h-9 w-9 object-contain sm:h-10 sm:w-10"
+            />
+            <span className="min-w-0">
+              <span className="block truncate text-sm font-extrabold tracking-tight text-gray-950 sm:text-base">
+                {siteName}
+              </span>
+              <span className="hidden truncate text-[11px] text-gray-500 sm:block">
+                {t('site_description')}
+              </span>
+            </span>
+          </Link>
 
-          {/* Desktop navigation */}
-          <div className="hidden lg:flex items-center space-x-8 pr-24">
-            {mainNavigation.map(item => (
-              <div key={item.label} className="relative group">
-                <a
-                  href={item.href}
-                  className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
-                >
-                  {t(`navbar.${item.label.replace(' ', '').toLowerCase()}`)}
-                  {item.children && (
-                    <ChevronDown className="ml-1 h-4 w-4 text-gray-800 group-hover:text-primary-600 transition-colors" />
-                  )}
-                </a>
-                {item.children && (
-                  <div className="absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                    <div
-                      className="py-1"
-                      role="menu"
-                      aria-orientation="vertical"
+          <nav
+            aria-label="Main navigation"
+            className="hidden items-center gap-0.5 lg:flex"
+          >
+            {navItems.map(item => {
+              const active = isActive(item.href);
+              if (item.href === '/services' && serviceLinks.length > 0) {
+                return (
+                  <div key={item.href} className="relative">
+                    <button
+                      type="button"
+                      className={cn(
+                        'inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-xs font-semibold',
+                        active
+                          ? 'bg-blue-600 text-white'
+                          : 'text-gray-700 hover:bg-gray-100'
+                      )}
+                      aria-expanded={servicesOpen}
+                      onClick={() => setServicesOpen(open => !open)}
                     >
-                      {item.children.map(child => (
+                      {item.label}
+                      <ChevronDown className="size-3" />
+                    </button>
+                    {servicesOpen ? (
+                      <div className="animate-civic-fade-up absolute left-0 z-50 mt-2 w-72 rounded-xl border border-gray-200 bg-white p-1.5 shadow-xl">
                         <Link
-                          key={child.label}
-                          to={child.href}
-                          className="text-left block px-4 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600"
-                          role="menuitem"
+                          to="/services"
+                          className="block rounded-lg px-2.5 py-2 text-xs font-semibold text-gray-900 hover:bg-gray-50"
                         >
-                          {child.label}
+                          All services
                         </Link>
-                      ))}
-                    </div>
+                        {serviceLinks.map(child => (
+                          <Link
+                            key={child.href}
+                            to={child.href}
+                            className="block rounded-lg px-2.5 py-2 text-xs text-gray-700 hover:bg-gray-50"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    ) : null}
                   </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="hidden lg:flex items-center space-x-6">
-            <Link
-              to="/about"
-              className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              About
-            </Link>
-            {isMeilisearchEnabled && (
+                );
+              }
+
+              return (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={cn(
+                    'inline-flex h-8 items-center rounded-lg px-2.5 text-xs font-semibold',
+                    active
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-950'
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            {isMeilisearchEnabled ? (
               <Link
                 to="/search"
-                className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
+                className={cn(
+                  'inline-flex h-8 items-center gap-1 rounded-lg px-2.5 text-xs font-semibold',
+                  isActive('/search')
+                    ? 'bg-blue-600 text-white'
+                    : 'text-gray-700 hover:bg-gray-100'
+                )}
               >
-                <Search className="h-4 w-4 mr-1" />
+                <Search className="size-3.5" />
                 Search
               </Link>
-            )}
-            {/* <Link
-              to="/sitemap"
-              className="flex items-center text-gray-700 hover:text-primary-600 font-medium transition-colors"
-            >
-              Sitemap
-            </Link> */}
-          </div>
+            ) : null}
+          </nav>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
-            <button
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+          <div className="flex items-center gap-1.5">
+            <label className="sr-only" htmlFor="language-desktop">
+              Language
+            </label>
+            <select
+              id="language-desktop"
+              value={i18n.language}
+              onChange={e => changeLanguage(e.target.value as LanguageType)}
+              className="hidden h-8 rounded-lg border border-gray-200 bg-white px-2 text-xs text-gray-700 md:block"
             >
-              <span className="sr-only">Open main menu</span>
-              {isOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
+              {Object.entries(LANGUAGES).map(([code, lang]) => (
+                <option key={code} value={code}>
+                  {lang.nativeName}
+                </option>
+              ))}
+            </select>
+            <button
+              type="button"
+              className="inline-flex size-8 items-center justify-center rounded-lg border border-gray-200 text-gray-700 lg:hidden"
+              onClick={() => setIsOpen(open => !open)}
+              aria-label="Toggle navigation menu"
+            >
+              {isOpen ? <X className="size-4" /> : <Menu className="size-4" />}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile menu */}
-      <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'}`}>
-        <div className="container mx-auto px-2 pt-2 pb-4 space-y-1 border-t border-gray-200 bg-white">
-          {mainNavigation.map(item => (
-            <div key={item.label}>
-              <button
-                onClick={() => toggleSubmenu(item.label)}
-                className="w-full flex justify-between items-center px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
-              >
-                {t(`navbar.${item.label.toLowerCase()}`)}
-                {item.children && (
-                  <ChevronDown
-                    className={`h-5 w-5 transition-transform ${
-                      activeMenu === item.label ? 'transform rotate-180' : ''
-                    }`}
-                  />
-                )}
-              </button>
-              {item.children && activeMenu === item.label && (
-                <div className="pl-6 py-2 space-y-1 bg-gray-50">
-                  {item.children.map(child => (
-                    <Link
-                      key={child.label}
-                      to={child.href}
-                      onClick={closeMenu}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-primary-500"
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <Link
-            to="/join-us"
-            onClick={closeMenu}
-            className="block px-4 py-2 text-base font-semibold text-primary-600 hover:bg-primary-50 hover:text-primary-700"
-          >
-            🚀 Join Us
-          </Link>
-          <Link
-            to="/about"
-            onClick={closeMenu}
-            className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
-          >
-            About
-          </Link>
-          {isMeilisearchEnabled && (
-            <Link
-              to="/search"
-              onClick={closeMenu}
-              className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
-            >
-              Search
-            </Link>
-          )}
-          <Link
-            to="/sitemap"
-            onClick={closeMenu}
-            className="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-primary-500"
-          >
-            Sitemap
-          </Link>
-          <div className="px-4 py-3 border-t border-gray-200">
-            <div className="flex items-center">
-              <Globe className="h-5 w-5 text-gray-800 mr-2" />
+        {isOpen ? (
+          <div className="animate-civic-fade-up border-t border-gray-200 bg-white px-4 py-3 lg:hidden">
+            <nav className="grid grid-cols-2 gap-1.5" aria-label="Mobile">
+              {navItems.map(item => {
+                const Icon = item.icon;
+                const active = isActive(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className={cn(
+                      'inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold',
+                      active
+                        ? 'bg-blue-600 text-white'
+                        : 'border border-gray-200 bg-white text-gray-800'
+                    )}
+                  >
+                    <Icon className="size-4 shrink-0" />
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+            {serviceLinks.length > 0 ? (
+              <div className="mt-3 space-y-1 border-t border-gray-200 pt-3">
+                <p className="px-1 text-xs font-bold text-gray-900">Services</p>
+                {serviceLinks.map(child => (
+                  <Link
+                    key={child.href}
+                    to={child.href}
+                    className="block rounded-lg px-3 py-2 text-xs text-gray-700 hover:bg-gray-50"
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+            <div className="mt-3 flex items-center gap-2 border-t border-gray-200 pt-3">
+              <Globe className="size-4 text-gray-500" />
               <select
                 value={i18n.language}
                 onChange={e => changeLanguage(e.target.value as LanguageType)}
-                className="text-sm border border-gray-300 rounded px-2 py-1 bg-white text-gray-700 hover:border-primary-600 focus:outline-none focus:ring-1 focus:ring-primary-600 focus:border-primary-600"
+                className="h-8 rounded-lg border border-gray-200 bg-white px-2 text-xs"
               >
                 {Object.entries(LANGUAGES).map(([code, lang]) => (
                   <option key={code} value={code}>
@@ -263,9 +361,98 @@ const Navbar: React.FC = () => {
               </select>
             </div>
           </div>
+        ) : null}
+      </header>
+
+      <div className="w-full border-b border-blue-200/70 bg-blue-50/90 text-blue-950">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-1.5 text-xs sm:px-6 lg:px-8">
+          <button
+            type="button"
+            onClick={() => setGuideOpen(true)}
+            className="inline-flex items-center gap-1.5 rounded-md px-1 py-1 text-left text-xs font-semibold text-blue-950 hover:bg-blue-100/70"
+          >
+            <ShieldAlert className="size-3.5 text-amber-600" />
+            <span className="underline decoration-blue-400/60 underline-offset-2">
+              Community Guide
+            </span>
+            <span className="hidden font-normal text-blue-800/80 sm:inline">
+              • Independent public guide
+            </span>
+          </button>
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
+            <LiveWeather />
+            <LivePhtClock />
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-1 font-semibold text-emerald-800 underline underline-offset-2"
+            >
+              <CheckCircle2 className="size-3.5" />
+              How we publish
+            </Link>
+          </div>
         </div>
       </div>
-    </nav>
+
+      {guideOpen ? (
+        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-slate-950/50 p-4 sm:items-center">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="community-guide-title"
+            className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-5 shadow-xl"
+          >
+            <div className="flex items-start gap-2">
+              <ShieldAlert className="mt-0.5 size-5 shrink-0 text-amber-600" />
+              <h2
+                id="community-guide-title"
+                className="text-lg font-bold text-gray-950"
+              >
+                About this community guide
+              </h2>
+            </div>
+            <div className="mt-3 space-y-3 text-sm leading-relaxed text-gray-600">
+              <p>
+                <strong className="text-gray-900">{siteName}</strong> is an
+                independent community transparency portal for the Municipality
+                of Ocampo, Camarines Sur.
+              </p>
+              <p>
+                This website is not the official LGU site. Official transactions
+                stay on{' '}
+                <a
+                  href={OFFICIAL_SITE}
+                  className="font-medium text-blue-700 underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ocampo.camarinessur.gov.ph
+                </a>
+                .
+              </p>
+              <p>
+                Local fees, schedules, and hotlines stay off these pages until
+                they can be checked against a public source.
+              </p>
+            </div>
+            <div className="mt-5 flex flex-wrap justify-end gap-2 border-t border-gray-100 pt-4">
+              <button
+                type="button"
+                onClick={() => setGuideOpen(false)}
+                className="rounded-xl border border-gray-200 px-3 py-1.5 text-sm font-semibold text-gray-700"
+              >
+                Close
+              </button>
+              <Link
+                to="/about"
+                className="rounded-xl bg-blue-600 px-3 py-1.5 text-sm font-semibold text-white"
+              >
+                Read About
+              </Link>
+            </div>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 };
 
