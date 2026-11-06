@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { footerNavigation } from '../../data/navigation';
 
-const OFFICIAL_SITE = 'https://ocampo.camarinessur.gov.ph';
+const LGU_FACEBOOK = 'https://www.facebook.com/101706771551898';
 const GITHUB = 'https://github.com/ejsinfuego/betterocampo';
 
 const quickLinks = [
@@ -20,7 +20,7 @@ const quickLinks = [
 ];
 
 const sources = [
-  { label: 'Official LGU website', href: OFFICIAL_SITE },
+  { label: 'LGU Facebook page', href: LGU_FACEBOOK },
   { label: 'Open Data Philippines', href: 'https://data.gov.ph' },
   { label: 'Freedom of Information', href: 'https://www.foi.gov.ph' },
   { label: 'Official Gazette', href: 'https://www.officialgazette.gov.ph' },
@@ -61,14 +61,15 @@ const Footer: React.FC = () => {
                 Independent community guide
               </p>
               <p className="mt-1 leading-relaxed text-slate-400">
-                For official municipal transactions, visit{' '}
+                No municipal website was found when this was checked. Public
+                updates are on the{' '}
                 <a
-                  href={OFFICIAL_SITE}
+                  href={LGU_FACEBOOK}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white underline hover:text-blue-300"
                 >
-                  ocampo.camarinessur.gov.ph
+                  LGU Facebook page
                 </a>
                 .
               </p>
@@ -151,8 +152,8 @@ const Footer: React.FC = () => {
                 </span>
               </p>
               <p className="mt-1 text-[11px] leading-relaxed text-slate-400">
-                Volunteer-run public guide. It does not replace the municipal
-                website.
+                Volunteer-run public guide. Public updates stay on the LGU
+                Facebook page.
               </p>
             </div>
             <a
