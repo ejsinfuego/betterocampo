@@ -1,6 +1,10 @@
-# 🏛️ Local Government Website Starter Kit
+# Better Ocampo
 
-A modern, multilingual, and accessible website template designed specifically for local government units (LGUs) in the Philippines. Built with React, TypeScript, and Tailwind CSS.
+Community transparency portal for the Municipality of Ocampo, Camarines Sur. Started from the [Better Local Gov](https://github.com/iyanski/betterlocalgov) starter in the [Better LGU directory](https://github.com/jmacj/better-lgu-directory). This site is independent of the official LGU website at [ocampo.camarinessur.gov.ph](https://ocampo.camarinessur.gov.ph).
+
+Ocampo is not listed in the directory yet. Register it with a pull request titled `Add Ocampo, Camarines Sur to directory` once this repo is public. Service articles in `content/` are still the starter's Lapu-Lapu samples and must be replaced before launch.
+
+The sections below are the starter kit's own setup notes.
 
 ## ✨ Features
 
