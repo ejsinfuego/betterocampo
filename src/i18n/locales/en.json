@@ -15,13 +15,19 @@
     "login": "Login",
     "register": "Register"
   },
+  "site_name": "Better Ocampo",
+  "site_description": "Ocampo, Camarines Sur",
+  "navbar": {
+    "services": "Services",
+    "government": "Government"
+  },
   "hero": {
-    "title": "Better Local Government",
-    "subtitle": "Transforming communities through digital innovation",
+    "title": "Better Ocampo",
+    "subtitle": "A community transparency portal for the Municipality of Ocampo, Camarines Sur.",
     "cta": "Get Started"
   },
   "footer": {
-    "copyright": "© 2026 Better Local Government. All rights reserved.",
+    "copyright": "© 2026 Better Ocampo. A community project for the Municipality of Ocampo, Camarines Sur.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service"
   }
