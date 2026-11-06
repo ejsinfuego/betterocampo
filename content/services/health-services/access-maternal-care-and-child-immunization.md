@@ -1,49 +1,31 @@
-# Access Maternal Care & Child Immunization — Lapu-Lapu City
+# Access Maternal Care and Child Immunization — Ocampo, Camarines Sur
 
-The City Health Office (CHO) and barangay health centers provide **prenatal care**, **family planning**, and **free routine child immunization** for residents.
+Prenatal care and routine childhood immunization in Ocampo are delivered through barangay health stations and the Municipal Health Office. Clinic days are set locally and are not copied here.
 
----
+## Maternal care
 
-## Maternal Care (Prenatal & Related Services)
+Ask your barangay health station for:
 
-| Service                                                             | Where                       | Schedule                                                               | Requirements                                    | Cost                                                       |
-| ------------------------------------------------------------------- | --------------------------- | ---------------------------------------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------- |
-| Prenatal check-ups (by midwife/nurse; physician referral as needed) | **Barangay Health Centers** | Mon–Fri (typical clinic hours; varies by center)                       | Prenatal record (issued/updated at first visit) | **Free**                                                   |
-| Family Planning counseling & methods                                | **Barangay Health Centers** | Mon–Fri **8:00 AM–4:00 PM**; Sat **8:00 AM–1:00 PM** (except holidays) | Personal appearance for counseling              | **Free** counseling (methods per DOH program availability) |
+- Prenatal check-ups
+- Family planning counseling
+- Tetanus toxoid and prenatal supplements, when the program has supply
 
-**Tip:** Bring any previous prenatal card/records and a valid ID. If you’re new, staff will register you and issue the needed record at the health center.
+Bring any previous prenatal card and a valid ID. The staff will open a record if you are a new patient.
 
----
+## Child immunization
 
-## Child Immunization (EPI)
+Routine childhood vaccines are part of the Department of Health Expanded Program on Immunization. Doses follow the child's age, not a single weekday published for every town. Bring the ECCD card. The health worker can issue one on the first visit and will write the return date for the next dose.
 
-Routine childhood vaccines are provided **free** under the Expanded Program on Immunization (EPI).
+## How to avail
 
-| Age/Visit                          | Vaccines (examples)                                                        | Where                       | Regular Day/Time                                  | Requirements                          | Cost     |
-| ---------------------------------- | -------------------------------------------------------------------------- | --------------------------- | ------------------------------------------------- | ------------------------------------- | -------- |
-| Birth–12 months (per DOH schedule) | **BCG**, **Pentavalent**, **OPV/IPV**, **MMR**, **Hepatitis B**, **PCV13** | **Barangay Health Centers** | **Wednesdays, 8:00 AM–4:00 PM** (except holidays) | **ECCD card** (issued on first visit) | **Free** |
+1. Go to the barangay health station that covers your household.
+2. Register or update the prenatal record or the child's ECCD card.
+3. Receive the service that is scheduled that day.
+4. Keep the return date the midwife or nurse gives you.
 
-> First time? The health worker will **issue an ECCD card** and guide you on next-dose return dates.
+Facility-based delivery and mother's classes, if the municipality is running them, are announced by the health station or the [LGU Facebook page](https://www.facebook.com/101706771551898).
 
----
+## References
 
-## How to Avail (Quick Steps)
-
-1. **Go to your Barangay Health Center** during clinic hours (or the posted EPI day for vaccines).
-2. **Register/Update your record:** Prenatal record for mothers, **ECCD card** for children (issued if first time).
-3. **Receive service:** Prenatal assessment, counseling (and TT vaccine/supplements per program), or child vaccination per EPI schedule.
-4. **Book your return date** for follow-ups and next vaccine doses as advised by the health staff.
-
----
-
-## Notes & Extras
-
-- **Medical consultations** at health centers are **free** (Mon–Fri, 8:00 AM–5:00 PM; center schedules apply). Useful if you need a doctor’s assessment alongside prenatal care.
-- The CHO and health centers also run **mother’s classes** and promote **facility-based delivery**; ask your midwife for schedules.
-
----
-
-**References**
-
-- [Lapu-Lapu City Government – Services](https://lapulapucity.gov.ph)
-- [Department of Health – Expanded Program on Immunization](https://doh.gov.ph)
+- [Department of Health — Expanded Program on Immunization](https://doh.gov.ph/)
+- Municipal Hall, Ocampo, Camarines Sur 4419

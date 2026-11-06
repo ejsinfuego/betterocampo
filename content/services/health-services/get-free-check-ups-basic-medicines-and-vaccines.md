@@ -1,41 +1,28 @@
-# Lapu-Lapu City Government: Free Health Services
+# Get Free Check-ups, Basic Medicines, and Vaccines — Ocampo, Camarines Sur
 
-The Lapu-Lapu City Government offers free **check-ups, medicines, and vaccines** through the City Health Office (CHO), barangay health centers, and partner programs.
+The Municipal Health Office and barangay health stations are where Ocampo residents ask for check-ups, medicines, and vaccines. Which services are free, and on which day, is not published on this page. Ask the station that covers your barangay.
 
----
+## Check-ups
 
-## 1. Free Medical Check-ups
+Go to your barangay health station or the Municipal Health Office. First-time patients are usually given a treatment record. Bring a valid ID. Bring the child's ECCD card or the mother's prenatal record if you already have one.
 
-| Service              | Where                        | Schedule                                     | Requirements                                              |
-| -------------------- | ---------------------------- | -------------------------------------------- | --------------------------------------------------------- |
-| General consultation | City/Barangay Health Centers | Mon–Fri, 8 AM–5 PM (varies by health center) | Individual Treatment Record (ITR) — issued on first visit |
+## Medicines
 
----
+Bring the prescription or the referral slip. Ask the health station whether the medicine is in stock. This page does not name partner pharmacies or coverage caps for Ocampo.
 
-## 2. Free Basic Medicines
+## Vaccines
 
-| Service                                          | Where                                    | Schedule           | Requirements                                                                                     |
-| ------------------------------------------------ | ---------------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------ |
-| Free basic medicines                             | City Health Office (CHO) pharmacy        | Mon–Fri, 8 AM–5 PM | Doctor’s prescription and/or referral from hospital/clinic                                       |
-| Medicines for indigent seniors (MAIFIPP program) | Partner pharmacies (Basak, Carajay, Ibo) | Pharmacy hours     | Must be an indigent senior citizen, bona fide resident; coverage caps (e.g., ₱3,000 out-patient) |
+Childhood vaccines under the Department of Health Expanded Program on Immunization are provided through barangay health stations. The national schedule includes BCG, hepatitis B, pentavalent, polio, pneumococcal, and MMR. The station sets the immunization day. Bring the ECCD card, or ask the staff to issue one.
 
----
+Pregnant women can ask for tetanus toxoid and prenatal supplements during prenatal visits.
 
-## 3. Free Vaccines & Immunization
+For an animal bite, go to the health station the same day and ask where anti-rabies vaccine is given. Do not wait for a schedule posted on this portal.
 
-| Beneficiary       | Vaccine/Service                                          | Where                        | Schedule                        | Requirements                                             |
-| ----------------- | -------------------------------------------------------- | ---------------------------- | ------------------------------- | -------------------------------------------------------- |
-| Children          | BCG, Pentavalent, OPV/IPV, MMR, Hepatitis B, PCV13 (EPI) | Barangay Health Centers      | Typically Wednesdays, 8 AM–4 PM | ECCD card (first-timers can get one onsite)              |
-| Pregnant women    | Tetanus Toxoid vaccine + supplements                     | Barangay Health Centers      | During prenatal services        | Proof of pregnancy, ECCD/record                          |
-| Animal bite cases | Anti-rabies vaccine (first dose free)                    | Animal Bite Treatment Center | Clinic hours                    | Proof of Lapu-Lapu residency (e.g., voter’s certificate) |
+## Where to go
 
----
+- Your barangay health station
+- Municipal Health Office, Municipal Hall, Ocampo, Camarines Sur 4419
+- [LGU Facebook page](https://www.facebook.com/101706771551898) for announcements
+- [Department of Health](https://doh.gov.ph/) for the national immunization schedule
 
-## How to Avail
-
-1. **Check-ups** → Go to your Barangay Health Center or City Health Office; first-timers will be issued an ITR.
-2. **Medicines** → Bring a doctor’s prescription/referral; submit at CHO pharmacy window.
-3. **Child immunization** → Visit your barangay health center on immunization day with ECCD card.
-4. **Pregnancy services** → Attend prenatal visits at the barangay health center for free vaccine and supplements.
-5. **Anti-rabies** → Report to the Animal Bite Treatment Center; bring proof of residency.
-6. **Senior citizen medicines** → Visit participating partner pharmacies; follow MAIFIPP guidelines.
+No clinic phone number is listed here.
