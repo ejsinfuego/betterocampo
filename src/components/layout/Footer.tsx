@@ -11,7 +11,7 @@ import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation('common');
+  const { t } = useTranslation();
 
   const getSocialIcon = (label: string) => {
     switch (label) {
@@ -47,8 +47,8 @@ const Footer: React.FC = () => {
               </div>
             </div>
             <p className="text-gray-400 text-sm mb-4">
-              A community portal providing Philippine citizens, businesses, and
-              visitors with information and services.
+              A community transparency portal for the Municipality of Ocampo,
+              Camarines Sur. Independent of the official LGU website.
             </p>
             <div className="flex space-x-4">
               {footerNavigation.socialLinks.map(link => (
