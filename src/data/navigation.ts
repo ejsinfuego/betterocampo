@@ -36,7 +36,7 @@ export const footerNavigation = {
         // { label: 'Privacy Policy', href: '/privacy' },
         // { label: 'Terms of Use', href: '/terms' },
         { label: 'Accessibility', href: '/accessibility' },
-        { label: 'Contact Us', href: '/about' },
+        { label: 'Contact Us', href: '/about#contact' },
         { label: 'Community Discord', href: '/discord' },
       ],
     },
