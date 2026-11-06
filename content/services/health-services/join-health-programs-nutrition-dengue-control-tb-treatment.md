@@ -1,81 +1,25 @@
-# Join Health Programs — Lapu-Lapu City (Nutrition, Dengue Control, TB Treatment)
+# Join Health Programs — Ocampo, Camarines Sur
 
-Below are city-led and national programs you can join through your **Barangay Health Center** and the **City Health Office (CHO)**.
+Nutrition services, dengue control, and tuberculosis treatment reach residents through the barangay health station and the Municipal Health Office. These follow Department of Health programs. Local activity dates are announced by the station or the [LGU Facebook page](https://www.facebook.com/101706771551898), not fixed on this page.
 
----
+## Nutrition
 
-## 1) Nutrition Programs
+Barangay nutrition scholars and the health station can tell you whether supplementary feeding or growth monitoring is open for your child. Nutrition Month is July nationwide. Ask the Municipal Social Welfare and Development Office if a feeding list is being prepared in your barangay.
 
-**What’s offered**
+## Dengue
 
-- Supplementary feeding for day-care children.
-- Community nutrition activities such as breastfeeding promotion, growth monitoring, and health education.
-- Special events during Nutrition Month (July) and city-wide wellness programs.
+The Department of Health 4S strategy is Search and destroy breeding sites, Seek early consultation, Self-protection, and Support spraying only when health staff schedule it. Join barangay clean-ups when the barangay calls them. You do not need to register.
 
-**Who can join**
+## Tuberculosis
 
-- Day-care children and families identified by barangays or CSWD.
-- Residents may also take part in open city nutrition events.
+The National Tuberculosis Program provides screening and directly observed treatment through DOTS facilities. If a cough lasts two weeks or more, or there is weight loss or night sweats, go to the barangay health station and ask to be assessed. Medicines under the program are not something you buy from a list on this portal. The station will say where treatment is supervised.
 
-**How to join**
+## What to bring
 
-1. Visit your **Barangay Health Center** or ask the **Barangay Nutrition Scholar (BNS)** about ongoing feeding programs.
-2. Join community activities and city-wide nutrition events announced by the **City Health Office (CHO)** or City Information Office.
+A valid ID and any barangay health record you already have.
 
-**Cost:** Free for eligible beneficiaries.
+## Where to go
 
----
-
-## 2) Dengue Control Programs
-
-**What’s offered**
-
-- Community clean-up drives under the **ABKD (Aksyon Barangay Kontra Dengue)** program.
-- Daily “4 o’clock habit” — searching and destroying mosquito breeding sites.
-- Misting, fogging, and entomological surveys led by the CHO.
-- Information campaigns during Dengue Awareness Month and rainy season.
-
-**How to join**
-
-1. Take part in barangay clean-up drives and follow the **4S strategy** (Search & Destroy, Self-protection, Seek early consultation, Support fogging/misting).
-2. Cooperate when CHO teams conduct **misting** or **house-to-house larval checks**.
-
-**Cost:** Free; no registration needed.
-
----
-
-## 3) TB Treatment (NTP TB-DOTS)
-
-**What’s offered**
-
-- Free consultations, diagnostic tests, and full course of anti-TB medicines under the **National Tuberculosis Program (NTP)**.
-- Supervised treatment through the **Directly Observed Therapy Short-course (DOTS)** approach.
-
-**Where**
-
-- Lapu-Lapu City Health Office (DOTS facility) and affiliated barangay health centers.
-
-**How to join**
-
-1. Go to your **Barangay Health Center** or the **CHO DOTS Clinic** for TB screening.
-2. If diagnosed, you will be enrolled in DOTS — treatment and medicines are given for free.
-3. Regular follow-up visits will be scheduled to monitor your recovery.
-
-**Cost:** Free for all TB patients.
-
----
-
-## Contact & Updates
-
-- **Barangay Health Centers** — First point of contact for nutrition, dengue, and TB programs.
-- **Lapu-Lapu City Health Office (CHO)** — Main office for program schedules and services.
-- **City Information Office** — Posts updates on city-wide campaigns and health events.
-
----
-
-### Quick Tips
-
-- Bring a **valid ID** and your **barangay health record** (if you already have one).
-- For TB symptoms (cough for 2 weeks or more, weight loss, night sweats), seek screening immediately.
-- Join community clean-up drives and practice the 4 o’clock habit to prevent dengue.
-- Attend barangay nutrition events and feeding programs for your children’s growth and wellness.
+- Barangay health station
+- Municipal Health Office, Municipal Hall, Ocampo, Camarines Sur 4419
+- [Department of Health](https://doh.gov.ph/)
