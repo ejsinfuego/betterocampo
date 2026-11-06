@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useQueryState } from 'nuqs';
 import { Search as SearchIcon } from 'lucide-react';
+import { trackSearch } from '../lib/analytics';
 import { searchClient, SEARCH_INDEX } from '../lib/meilisearch';
 import type { SearchHit } from '../lib/meilisearch';
 import { CivicPage, PageHeader } from '../components/ui/PageFrame';
@@ -22,13 +23,15 @@ export default function Search() {
     }
 
     const timer = setTimeout(async () => {
+      const term = query.trim();
       setIsLoading(true);
       setError(null);
       try {
         const index = searchClient!.index(SEARCH_INDEX);
-        const res = await index.search<SearchHit>(query, { limit: 20 });
+        const res = await index.search<SearchHit>(term, { limit: 20 });
         setResults(res.hits);
         setHasSearched(true);
+        trackSearch(term);
       } catch {
         setError('Search is unavailable. Please try again later.');
         setResults([]);

@@ -3,6 +3,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import Home from './pages/Home';
+import Analytics from './components/Analytics';
 import ScrollToTop from './components/ui/ScrollToTop';
 import Services from './pages/Services';
 import Document from './pages/Document';
@@ -25,6 +26,7 @@ function App() {
               Skip to main content
             </a>
             <Navbar />
+            <Analytics />
             <ScrollToTop />
             <main
               id="main-content"
