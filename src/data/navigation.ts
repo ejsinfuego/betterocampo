@@ -70,5 +70,10 @@ export const footerNavigation = {
       ],
     },
   ],
-  socialLinks: [],
+  socialLinks: [
+    {
+      label: 'Facebook',
+      href: 'https://www.facebook.com/101706771551898',
+    },
+  ],
 };
