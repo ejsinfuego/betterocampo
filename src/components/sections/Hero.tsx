@@ -152,7 +152,7 @@ export default function Hero() {
           <Fact
             label="Portal status"
             value="Community"
-            note="Not the official LGU site"
+            note="Independent community guide"
           />
           <Fact
             label="Cost to residents"
