@@ -88,7 +88,7 @@ export default function SEO({
       <link rel="canonical" href={fullUrl} />
 
       {/* Favicon */}
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" href="/favicon-32x32.png" />
       <link
         rel="apple-touch-icon"
         sizes="180x180"
