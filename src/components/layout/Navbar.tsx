@@ -17,7 +17,7 @@ import { isMeilisearchEnabled } from '../../lib/meilisearch';
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const { t, i18n } = useTranslation('common');
+  const { t, i18n } = useTranslation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
