@@ -44,7 +44,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
 
   return (
     <nav
-      className={`flex items-center space-x-1 text-sm text-gray-600 ${className}`}
+      className={`flex flex-wrap items-center gap-1 text-xs text-gray-500 ${className}`}
       aria-label="Breadcrumb"
     >
       {breadcrumbItems.map((item, index) => (
@@ -54,7 +54,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
           {item.href ? (
             <Link
               to={item.href}
-              className="hover:text-primary-600 transition-colors duration-200"
+              className="font-medium transition-colors duration-200 hover:text-blue-700"
             >
               {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
             </Link>
