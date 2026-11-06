@@ -30,9 +30,12 @@ export default function SEO({
   const fullTitle = title ? `${title} | ${siteName}` : defaultTitle;
   const fullDescription = description || defaultDescription;
   const fullKeywords = keywords || defaultKeywords;
-  const fullUrl = url || import.meta.env.VITE_WEBSITE_URL || '';
+  const siteUrl = (
+    import.meta.env.VITE_WEBSITE_URL || 'https://betterocampo.org'
+  ).replace(/\/$/, '');
+  const fullUrl = url || siteUrl;
   const fullImage =
-    image || import.meta.env.VITE_OG_IMAGE_URL || `${fullUrl}/og-image.jpg`;
+    image || import.meta.env.VITE_OG_IMAGE_URL || `${siteUrl}/og-image.jpg`;
   const twitterHandle = import.meta.env.VITE_TWITTER_HANDLE || '';
 
   return (
@@ -52,6 +55,17 @@ export default function SEO({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={fullDescription} />
       <meta property="og:image" content={fullImage} />
+      {!image && (
+        <>
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="1024" />
+          <meta property="og:image:height" content="473" />
+          <meta
+            property="og:image:alt"
+            content="Better Ocampo home page with the municipal seal"
+          />
+        </>
+      )}
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="en_US" />
 
