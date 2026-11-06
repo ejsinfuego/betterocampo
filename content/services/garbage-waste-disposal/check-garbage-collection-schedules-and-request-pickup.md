@@ -1,74 +1,31 @@
-# Check Garbage Collection Schedules and Request Pickup — Lapu-Lapu City
+# Check Garbage Collection Schedules and Request Pickup — Ocampo, Camarines Sur
 
-The City Government of Lapu-Lapu manages **regular garbage collection** through the **City Environment and Natural Resources Office (CENRO)** and barangays. Residents and business owners are encouraged to follow the schedule and proper segregation rules.
+The Municipality of Ocampo collects household waste with the barangays. The collection day for each barangay is not published on this page. Ask the barangay hall, and follow announcements on the [LGU Facebook page](https://www.facebook.com/101706771551898).
 
----
+## Regular collection
 
-## 1) Regular Garbage Collection
+Segregate waste before it goes out: biodegradable, recyclable, residual, and special or hazardous waste. Put the bin out only on the barangay's collection day. Open burning is prohibited under Republic Act 9003 and the Clean Air Act.
 
-**How it works**
+If a truck is delayed because of weather or a holiday, the barangay or the municipal environment office should announce the change. This portal does not keep that calendar.
 
-- Collection schedules vary **by barangay** (usually **every other day** or **3 times per week**).
-- Trucks assigned to barangays cover **household waste**, **biodegradable**, and **residual/non-recyclable** garbage.
-- Segregation at source is **mandatory** — separate biodegradable, recyclable, residual, and special/hazardous waste.
+## Bulk or special pickup
 
-**Where to check schedules**
+Furniture, appliances, construction debris, and yard waste that does not fit the regular route need a separate request.
 
-1. **Barangay Hall** — each barangay posts its official collection schedule.
-2. **Barangay Facebook Pages** — most update residents when trucks are delayed or rescheduled.
-3. **City Information Office (CIO)** or **CENRO** announcements for citywide advisories (e.g., during holidays or typhoon disruptions).
+1. Go to the barangay hall and describe the waste, the volume, and the address.
+2. Ask whether the barangay or the municipal environment office will schedule a truck.
+3. Ask whether a fee applies. Do not assume a fee from another local government.
 
-> Tip: Post the collection calendar on your fridge or gate to remind the household which days to take bins out.
+Hazardous waste and electronics should not go on the regular truck. Use the special-waste guide.
 
----
+## Businesses
 
-## 2) Special Garbage Pickup (Bulk or Non-Routine Waste)
+Establishments must segregate waste. Industrial or bulky waste may need an accredited hauler. Keep receipts for inspections. The municipal environment office can say what Ocampo requires.
 
-For **bulk waste** (e.g., furniture, appliances, construction debris, yard trimmings), collection is not part of the regular schedule.
+## Where to ask
 
-**How to request**
+- Your barangay hall
+- Municipal environment office, Municipal Hall, Ocampo, Camarines Sur 4419
+- [LGU Facebook page](https://www.facebook.com/101706771551898)
 
-1. Visit your **Barangay Hall** or contact the **Barangay Environment Committee**.
-2. Provide details: type of waste, estimated volume, and address.
-3. Barangay coordinates with **CENRO** for scheduling a **special truck pickup**.
-4. Some barangays may require a **minimal fee** for bulk or special disposal.
-
-**Items usually needing special pickup**
-
-- Large furniture, mattresses, appliances, e-waste
-- Construction/demolition debris
-- Hazardous household waste (paints, chemicals, batteries)
-
----
-
-## 3) Contact Information
-
-- **City Environment and Natural Resources Office (CENRO)**  
-  Lapu-Lapu City Hall, Government Complex, Brgy. Pajo  
-  Phone: (032) 340-0004 (City Hall trunkline, ask for CENRO)  
-  Updates: via **City Information Office** FB page
-
-- **Barangay Halls** — each barangay has an Environment/ Solid Waste desk for local schedules and pickup requests.
-
----
-
-## 4) Quick Tips for Residents
-
-- Put garbage out **only on collection day**, early morning or night before.
-- Use durable, closed containers to prevent animal scattering.
-- For recyclables, check if your barangay has a **Materials Recovery Facility (MRF)** or partner junkshop.
-- During **rainy season/typhoons**, expect **schedule adjustments** — follow CIO or barangay announcements.
-- Avoid burning waste (strictly prohibited under RA 9003 / Clean Air Act).
-
----
-
-## 5) Businesses & Establishments
-
-- Businesses must comply with **segregation** and may need to contract **accredited private haulers** for bulk/industrial waste.
-- Keep proof of disposal (receipts/hauling contracts) for compliance inspections by CENRO.
-
----
-
-### Key Reminder
-
-Following your barangay’s **garbage collection schedule** and properly requesting **special pickups** keeps the city clean and prevents flooding, pests, and health risks.
+No environment-office phone number is listed here.
