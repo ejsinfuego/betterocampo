@@ -1,8 +1,5 @@
-import Section from '../components/ui/Section';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
-import { Heading } from '../components/ui/Heading';
-import { Text } from '../components/ui/Text';
-import { Banner } from '@bettergov/kapwa/banner';
+import { CivicPage, Notice, PageHeader } from '../components/ui/PageFrame';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -12,7 +9,6 @@ import {
   type MarkdownContent,
 } from '../lib/markdownLoader';
 import { createMarkdownComponents } from '../lib/markdownComponents';
-import { Card, CardContent, CardHeader } from '@bettergov/kapwa/card';
 import { getTypographyTheme } from '../lib/typographyThemes';
 import {
   serviceCategories,
@@ -120,23 +116,22 @@ export default function Document({
 
   if (loading) {
     return (
-      <Section className="p-3 mb-12">
-        <Banner type="info" description="Loading document..." />
-      </Section>
+      <CivicPage>
+        <Notice tone="info" title="Loading document">
+          The page is opening.
+        </Notice>
+      </CivicPage>
     );
   }
 
   if (error) {
     return (
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" items={breadcrumbs} />
-        <Banner
-          type="error"
-          title="Document Not Found"
-          description={error}
-          icon
-        />
-      </Section>
+      <CivicPage>
+        <Breadcrumbs items={breadcrumbs} />
+        <Notice tone="error" title="Document not found">
+          {error}
+        </Notice>
+      </CivicPage>
     );
   }
 
@@ -148,52 +143,37 @@ export default function Document({
           title={documentSlug}
           keywords={`${documentSlug}, government services, local government`}
         />
-        <Section className="p-3 mb-12">
-          <Breadcrumbs className="mb-8" items={breadcrumbs} />
-          {nestedIndex.title && (
-            <Heading level={2}>{nestedIndex.title}</Heading>
-          )}
-          {nestedIndex.description && (
-            <Text className="text-gray-600 mb-4">
-              {nestedIndex.description}
-            </Text>
-          )}
-          {nestedIndex.layout === 'grid' ? (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {nestedPages.map((page, i) => (
-                <Card hoverable key={page.slug ?? i} className="h-full">
-                  <CardContent>
-                    <h4 className="text-lg font-medium text-gray-900">
-                      {page.name}
-                    </h4>
-                    {page.description && (
-                      <p className="mt-2 text-sm text-gray-600">
-                        {page.description}
-                      </p>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {nestedPages.map((page, i) => (
-                <Card key={page.slug ?? i} className="mb-4">
-                  <CardContent>
-                    <h4 className="text-lg font-medium text-gray-900">
-                      {page.name}
-                    </h4>
-                    {page.description && (
-                      <p className="mt-2 text-sm text-gray-600">
-                        {page.description}
-                      </p>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
-        </Section>
+        <CivicPage>
+          <Breadcrumbs items={breadcrumbs} />
+          <PageHeader
+            eyebrow="Directory"
+            title={nestedIndex.title || documentSlug || 'Pages'}
+            description={nestedIndex.description}
+          />
+          <div
+            className={
+              nestedIndex.layout === 'grid'
+                ? 'grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'
+                : 'grid grid-cols-1 gap-4'
+            }
+          >
+            {nestedPages.map((page, i) => (
+              <article
+                key={page.slug ?? i}
+                className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
+              >
+                <h2 className="text-base font-bold text-gray-950">
+                  {page.name}
+                </h2>
+                {page.description ? (
+                  <p className="mt-1.5 text-xs leading-relaxed text-gray-500">
+                    {page.description}
+                  </p>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </CivicPage>
       </>
     );
   }
@@ -212,22 +192,24 @@ export default function Document({
         }
         keywords={`${documentSlug}, government services, public services, local government`}
       />
-      <Section className="p-3 mb-12">
-        <Breadcrumbs className="mb-8" items={breadcrumbs} />
-        <Card className="mb-8 markdown-content">
-          <CardHeader>
-            {markdownContent.description && (
-              <CardContent>{markdownContent.description}</CardContent>
-            )}
+      <CivicPage>
+        <Breadcrumbs items={breadcrumbs} />
+        <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8">
+          {markdownContent.description ? (
+            <p className="mb-4 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm text-gray-700">
+              {markdownContent.description}
+            </p>
+          ) : null}
+          <div className="markdown-content">
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={markdownComponents}
             >
               {markdownContent.content}
             </ReactMarkdown>
-          </CardHeader>
-        </Card>
-      </Section>
+          </div>
+        </article>
+      </CivicPage>
     </>
   );
 }

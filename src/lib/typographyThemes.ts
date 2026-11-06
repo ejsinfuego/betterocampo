@@ -37,9 +37,9 @@ export interface TypographyTheme {
 export const defaultTheme: TypographyTheme = {
   name: 'default',
   components: {
-    h1: 'text-3xl font-bold mb-6 mt-2',
-    h2: 'text-2xl font-semibold mb-4 mt-10',
-    h3: 'text-2xl font-medium text-gray-800 mb-4 mt-6 ',
+    h1: 'text-3xl font-extrabold tracking-tight text-gray-950 mb-4 mt-0',
+    h2: 'text-xl font-bold tracking-tight text-gray-950 mb-3 mt-8',
+    h3: 'text-lg font-bold text-gray-900 mb-3 mt-6',
     h4: 'text-xl text-gray-800 mb-3 mt-5 ',
     h5: 'text-lg text-gray-800 mb-3 mt-4 ',
     h6: 'text-base text-gray-800 mb-3 mt-4 ',

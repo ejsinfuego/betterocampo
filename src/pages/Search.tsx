@@ -4,6 +4,7 @@ import { useQueryState } from 'nuqs';
 import { Search as SearchIcon } from 'lucide-react';
 import { searchClient, SEARCH_INDEX } from '../lib/meilisearch';
 import type { SearchHit } from '../lib/meilisearch';
+import { CivicPage, PageHeader } from '../components/ui/PageFrame';
 
 export default function Search() {
   const [query, setQuery] = useQueryState('q', { defaultValue: '' });
@@ -40,8 +41,12 @@ export default function Search() {
   }, [query]);
 
   return (
-    <main className="container mx-auto px-4 py-8 max-w-3xl">
-      <h1 className="text-2xl font-bold text-gray-900 mb-6">Search</h1>
+    <CivicPage className="max-w-3xl">
+      <PageHeader
+        eyebrow="Find a page"
+        title="Search"
+        description="Look through service guides and government pages published on this portal."
+      />
 
       <div className="relative mb-8">
         <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -50,7 +55,7 @@ export default function Search() {
           value={query}
           onChange={e => setQuery(e.target.value || null)}
           placeholder="Search services, departments, guides..."
-          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+          className="h-12 w-full rounded-xl border border-gray-200 bg-white pr-4 pl-10 text-sm shadow-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20"
           autoFocus
         />
       </div>
@@ -80,7 +85,7 @@ export default function Search() {
           </p>
           {results.map(hit => (
             <Link key={hit.id} to={hit.url} className="block group">
-              <div className="border border-gray-200 rounded-lg p-4 hover:border-primary-300 hover:bg-primary-50 transition-colors">
+              <div className="civic-card-hover rounded-2xl border border-gray-200 bg-white p-4 shadow-sm hover:border-blue-600">
                 <div className="flex items-center gap-2 mb-2">
                   <span
                     className={`text-xs font-medium px-2 py-0.5 rounded-full ${
@@ -92,7 +97,7 @@ export default function Search() {
                     {hit.category}
                   </span>
                 </div>
-                <h2 className="text-base font-semibold text-gray-900 group-hover:text-primary-700">
+                <h2 className="text-base font-bold text-gray-950 group-hover:text-blue-700">
                   {hit.title}
                 </h2>
                 {hit.description && (
@@ -111,6 +116,6 @@ export default function Search() {
           Start typing to search across services and government information
         </div>
       )}
-    </main>
+    </CivicPage>
   );
 }

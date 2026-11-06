@@ -1,119 +1,199 @@
-import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
-import { footerNavigation } from '../../data/navigation';
+import {
+  ExternalLink,
+  FileText,
+  Globe,
+  HeartHandshake,
+  ShieldCheck,
+} from 'lucide-react';
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import { footerNavigation } from '../../data/navigation';
+
+const LGU_FACEBOOK = 'https://www.facebook.com/101706771551898';
+const GITHUB = 'https://github.com/ejsinfuego/betterocampo';
+
+const quickLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Services', href: '/services' },
+  { label: 'Government', href: '/government' },
+  { label: 'About', href: '/about' },
+];
+
+const sources = [
+  { label: 'LGU Facebook page', href: LGU_FACEBOOK },
+  { label: 'Open Data Philippines', href: 'https://data.gov.ph' },
+  { label: 'Freedom of Information', href: 'https://www.foi.gov.ph' },
+  { label: 'Official Gazette', href: 'https://www.officialgazette.gov.ph' },
+  { label: 'BetterGov.ph', href: 'https://bettergov.ph' },
+];
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
-
-  const getSocialIcon = (label: string) => {
-    switch (label) {
-      case 'Facebook':
-        return <Facebook className="h-5 w-5" />;
-      case 'Twitter':
-        return <Twitter className="h-5 w-5" />;
-      case 'Instagram':
-        return <Instagram className="h-5 w-5" />;
-      case 'YouTube':
-        return <Youtube className="h-5 w-5" />;
-      default:
-        return null;
-    }
-  };
+  const siteName = import.meta.env.VITE_GOVERNMENT_NAME || 'Better Ocampo';
+  const facebook = footerNavigation.socialLinks[0];
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 pt-12 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center mb-4">
+    <footer className="mt-16 border-t border-gray-200 bg-slate-950 text-slate-300">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-3">
+            <Link to="/" className="inline-flex items-center gap-2">
               <img
-                src="/ocampo-flag.jpg"
-                alt="Flag of the Municipality of Ocampo, Camarines Sur"
-                className="h-12 w-auto mr-3 rounded-sm"
+                src="/ocampo-seal.png"
+                alt=""
+                className="h-12 w-12 object-contain"
               />
-
-              <div>
-                <div className="font-bold">{t('site_name')}</div>
-                <div className="text-xs text-gray-400">BetterGov.ph Portal</div>
-              </div>
-            </div>
-            <p className="text-gray-400 text-sm mb-4">
-              A community transparency portal for the Municipality of Ocampo,
-              Camarines Sur. Independent of the official LGU website.
+              <span>
+                <span className="block text-sm font-bold text-white">
+                  {siteName}
+                </span>
+                <span className="text-[11px] text-slate-400">
+                  Bicol Region V
+                </span>
+              </span>
+            </Link>
+            <p className="text-xs leading-relaxed text-slate-400">
+              {t('hero.subtitle')} Facts stay linked to a public source. Missing
+              local details are left blank instead of guessed.
             </p>
-            <div className="flex space-x-4">
-              {footerNavigation.socialLinks.map(link => (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="text-gray-400 hover:text-white transition-colors"
+            <div className="rounded-xl border border-slate-800 bg-slate-900/90 p-3 text-xs">
+              <p className="font-semibold text-amber-400">
+                Independent community guide
+              </p>
+              <p className="mt-1 leading-relaxed text-slate-400">
+                No municipal website was found when this was checked. Public
+                updates are on the{' '}
+                <a
+                  href={LGU_FACEBOOK}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="text-white underline hover:text-blue-300"
                 >
-                  {getSocialIcon(link.label)}
-                </Link>
-              ))}
+                  LGU Facebook page
+                </a>
+                .
+              </p>
             </div>
+            {facebook ? (
+              <a
+                href={facebook.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl border border-blue-900/60 bg-blue-950/40 px-3 py-2 text-xs font-semibold text-blue-200 hover:bg-blue-900/60 hover:text-white"
+              >
+                <span className="truncate">LGU Facebook page</span>
+                <ExternalLink className="ml-auto size-3 shrink-0 text-blue-400" />
+              </a>
+            ) : null}
           </div>
 
-          {footerNavigation.mainSections.map(section => (
-            <div key={section.title}>
-              <h3 className="text-lg font-semibold mb-4">{section.title}</h3>
-              <ul className="space-y-2">
-                {section.links.map(link => (
-                  <li key={link.label}>
-                    <Link
-                      to={link.href}
-                      className="text-gray-400 hover:text-white text-sm transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+          <div className="flex flex-col gap-3">
+            <h2 className="text-xs font-semibold tracking-wider text-white uppercase">
+              Quick links
+            </h2>
+            <ul className="grid grid-cols-2 gap-2 text-xs">
+              {quickLinks.map(link => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="hover:text-white hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              {footerNavigation.mainSections[1]?.links.slice(0, 4).map(link => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="hover:text-white hover:underline"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <h2 className="flex items-center gap-1.5 text-xs font-semibold tracking-wider text-white uppercase">
+              <Globe className="size-3.5 text-blue-400" />
+              Public sources
+            </h2>
+            <ul className="flex flex-col gap-1.5 text-xs">
+              {sources.map(source => (
+                <li key={source.href}>
+                  <a
+                    href={source.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-slate-300 hover:text-white"
+                  >
+                    {source.label}
+                    <ExternalLink className="size-3 shrink-0 text-slate-500" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <div
+              role="status"
+              className="rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-emerald-950/90 via-slate-900 to-blue-950/80 p-4 text-xs text-white"
+            >
+              <p className="font-semibold tracking-wide text-slate-300 uppercase">
+                Community transparency pledge
+              </p>
+              <p className="mt-1.5 text-sm font-bold">
+                Cost to the people of Ocampo ={' '}
+                <span className="rounded-md border border-emerald-400/40 bg-emerald-500/20 px-2 py-0.5 font-mono text-emerald-300">
+                  ₱0
+                </span>
+              </p>
+              <p className="mt-1 text-[11px] leading-relaxed text-slate-400">
+                Volunteer-run public guide. Public updates stay on the LGU
+                Facebook page.
+              </p>
             </div>
-          ))}
+            <a
+              href={GITHUB}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-3 py-2 text-xs font-bold text-white hover:bg-blue-500"
+            >
+              <HeartHandshake className="size-4" />
+              Contribute on GitHub
+            </a>
+            <Link
+              to="/about#contact"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-200 hover:text-white"
+            >
+              <FileText className="size-4" />
+              Share a public record
+            </Link>
+            <Link
+              to="/about"
+              className="inline-flex items-center justify-center gap-2 rounded-lg border border-emerald-500/40 bg-emerald-950/60 px-3 py-2 text-[11px] font-medium text-emerald-300 hover:bg-emerald-900/60"
+            >
+              <ShieldCheck className="size-3.5" />
+              Read how records are chosen
+            </Link>
+          </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              {t('footer.copyright')}
-            </p>
-            <div className="flex space-x-6">
-              {/* <a
-                href="/privacy"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="/terms"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Terms of Use
-              </a> */}
-              <Link
-                to="https://github.com/bettergovph/bettergov"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Contribute at GitHub
-              </Link>
-              <Link
-                to="/sitemap"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Sitemap
-              </Link>
-              <a
-                href="/accessibility"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
-              >
-                Accessibility
-              </a>
-            </div>
+        <div className="mt-10 border-t border-slate-800 pt-6 text-xs text-slate-400">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-semibold text-white">{t('footer.copyright')}</p>
+            <a
+              href={GITHUB}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-slate-300 hover:text-white"
+            >
+              GitHub repository
+              <ExternalLink className="size-3" />
+            </a>
           </div>
         </div>
       </div>
