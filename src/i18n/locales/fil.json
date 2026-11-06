@@ -15,13 +15,19 @@
     "login": "Mag-login",
     "register": "Magparehistro"
   },
+  "site_name": "Better Ocampo",
+  "site_description": "Ocampo, Camarines Sur",
+  "navbar": {
+    "services": "Mga Serbisyo",
+    "government": "Pamahalaan"
+  },
   "hero": {
-    "title": "Mas Mabuting Pamahalaang Lokal",
-    "subtitle": "Binabago ang mga komunidad sa pamamagitan ng digital na inobasyon",
+    "title": "Better Ocampo",
+    "subtitle": "Portal ng komunidad para sa Bayan ng Ocampo, Camarines Sur.",
     "cta": "Magsimula"
   },
   "footer": {
-    "copyright": "© 2024 Mas Mabuting Pamahalaang Lokal. Lahat ng karapatan ay nakalaan.",
+    "copyright": "© 2026 Better Ocampo. Proyekto ng komunidad para sa Bayan ng Ocampo, Camarines Sur.",
     "privacy": "Patakaran sa Privacy",
     "terms": "Mga Tuntunin ng Serbisyo"
   }
