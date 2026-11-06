@@ -1,116 +1,34 @@
-# Access Educational Support Programs from the LGU — Lapu-Lapu City
+# Access Educational Support from the LGU — Ocampo, Camarines Sur
 
-Below are **city-led** or **LGU-facilitated** programs you can use for study support: free school supplies, e-library access, student employment (SPES) via PESO, scholarships, and cash/education assistance. Links point to official pages or recent announcements.
+Ocampo has not published a current list of school-supply distributions, a municipal e-library, or an open student-employment call on this portal. Use the offices below to ask what is open this school year.
 
----
+## School supplies and the Special Education Fund
 
-## 1) Free School Supplies (SEF-funded)
+The Special Education Fund is a local fund for public basic education. Whether the municipality is distributing supplies this year is decided by the local school board and the schools. Ask your public school for the schedule. This page does not link to another city's memo.
 
-**What it is**
+## Student employment (SPES)
 
-- The City provides **free school supplies** to public school learners using the **Special Education Fund (SEF)**, announced each school year with distribution schedules.
+The Special Program for the Employment of Students is a Department of Labor and Employment program for low-income students and out-of-school youth, usually ages 15 to 30. A municipality implements it through its Public Employment Service Office when a slot is opened. Follow DOLE Region V and the [LGU Facebook page](https://www.facebook.com/101706771551898) for a call. Do not send documents to a page that is not the municipality or DOLE.
 
-**How to access**
+## Scholarships
 
-1. Watch your school’s advisory and the **DepEd Lapu-Lapu** Division memos for **distribution schedules**.
-2. Learners (with parent/guardian) claim supplies at the school on the announced date.
+See the scholarships guide for national programs. A municipal scholarship exists only when the municipality posts a call.
 
-**Links**
+## Cash or education assistance
 
-- DepEd Lapu-Lapu memo: **Distribution of School Supplies (SEF)** (2025 schedule) — depedlapulapu.net.ph
-- News: **City to distribute free school supplies** — SunStar Cebu (June 7, 2025)
-- City info posts often echo the distribution dates via DepEd/City channels.
+The Assistance to Individuals in Crisis Situation program is run by the Department of Social Welfare and Development, often with the local social welfare office for the venue and the list. Announcements for Camarines Sur come from DSWD Field Office V and the municipality. Bring the ID and enrollment proof named in that announcement.
 
----
+## Papers to keep ready
 
-## 2) City e-Library (Free Study Space, Wi-Fi, Computers & Printing)
+- PSA birth certificate
+- Barangay certificate
+- School ID and grades or a certificate of enrollment
+- ID photos
 
-**What it is**
+## Where to ask
 
-- A **government-run e-Library** offering **free internet, computer use, and printing** for students; open **daily 8:00 a.m.–12:00 midnight** at **Hoops Dome, Brgy. Gun-ob**.
-
-**How to access**
-
-1. Go to the **Lapu-Lapu City e-Library (Hoops Dome)** during operating hours.
-2. Sign the logbook; follow usage limits (to give everyone a turn).
-
-**Links**
-
-- SunStar: **E-Library reopens; open daily 8 a.m.–12 midnight** (July 26, 2025)
-- The POST: **City library reopens, free digital access & printing** (July 28, 2025)
-- Background: **City launched first gov’t e-Library** (2019) — Cebu Daily News
-
----
-
-## 3) Student Employment (SPES) via PESO Lapu-Lapu
-
-**What it is**
-
-- The **Special Program for the Employment of Students (SPES)** lets poor but deserving **students/OSYs (15–30)** work during breaks to earn and gain experience.
-- Implemented locally through the **Public Employment Service Office (PESO)** with DOLE.
-
-**How to access**
-
-1. Follow **PESO Lapu-Lapu City** on Facebook for **SPES application windows** and job fair advisories.
-2. Prepare IDs, school docs, and income/indigency proofs per announcement.
-3. Submit online or at the PESO office; attend orientation when shortlisted.
-
-**Links**
-
-- **PESO Lapu-Lapu City** Facebook page (official announcements)
-- DepEd/BLSS-YFD: **SPES 2025 guidelines & timelines**
-- City press: **PESO career fair / youth employment events** — City Information Office
-
----
-
-## 4) LGU-linked Scholarships & Incentives
-
-**What it is**
-
-- The City (and Congressional office) **periodically opens scholarship calls** or **educational incentives** for local students, separate from school-based grants.
-
-**How to access**
-
-1. Monitor the **Lapu-Lapu City Government / City Information Office** and the **Office of the Mayor / Congresswoman** for official **calls**.
-2. Prepare residency and academic documents; submit by deadline; attend screening/orientation.
-
-**Links (examples & history)**
-
-- News: **Lapu-Lapu City offers college scholarship to poor residents** — The Freeman/Philstar (program history)
-- Sample: **Cindi “Skwela” Scholarship** highlights via official pages (video updates)
-- Also check school-based options in-city (e.g., **LCIC scholarships**, **UC scholarships**) which can complement LGU aid.
-
----
-
-## 5) Educational / Cash Assistance (LGU-facilitated with DSWD)
-
-**What it is**
-
-- **Educational assistance pay-outs** (e.g., AICS) are nationally run by DSWD but are often **coordinated locally** with the **City** for venue and beneficiary management.
-
-**How to access**
-
-1. Watch announcements from **DSWD-7** and the **City Information Office** for **Lapu-Lapu payout schedules**.
-2. Bring student ID, enrollment proof, and required forms on your assigned date.
-
-**Links (context)**
-
-- SunStar Cebu: **Education assistance payout in Lapu-Lapu** (local coverage)
-- Cebu Daily News: **DSWD-7 educational assistance** (program overview & amounts)
-
----
-
-## Quick Directory
-
-- **City Information Office (Lapu-Lapu City)** — city-wide program announcements
-- **PESO Lapu-Lapu City** — SPES, job fairs, recruitment & youth work programs
-- **DepEd Lapu-Lapu Division** — school memos (SEF supplies, schedules)
-- **Lapu-Lapu City e-Library (Hoops Dome, Gun-ob)** — free study space & digital access
-
----
-
-## Tips to Maximize Support
-
-- **Stack benefits** where allowed: e.g., SEF school supplies **+** SPES stipend **+** school-based scholarship.
-- Keep a folder with **PSA Birth Cert**, **Barangay Residency**, **School ID**, **Report Cards/COE**, and **2x2 photos** ready.
-- Turn on notifications for **PESO** and **City Information** pages so you don’t miss application windows.
+- Your public school
+- Municipal Social Welfare and Development Office and the mayor's office, Municipal Hall, Ocampo, Camarines Sur 4419
+- [LGU Facebook page](https://www.facebook.com/101706771551898)
+- [DOLE](https://www.dole.gov.ph/) for SPES rules
+- [DSWD](https://www.dswd.gov.ph/) for assistance programs
