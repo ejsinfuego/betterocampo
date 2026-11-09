@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import VolunteerModal from './components/layout/VolunteerModal';
 import Home from './pages/Home';
+import Analytics from './components/Analytics';
 import ScrollToTop from './components/ui/ScrollToTop';
 import Services from './pages/Services';
 import Document from './pages/Document';
@@ -27,6 +28,7 @@ function App() {
             </a>
             <Navbar />
             <VolunteerModal />
+            <Analytics />
             <ScrollToTop />
             <main
               id="main-content"
