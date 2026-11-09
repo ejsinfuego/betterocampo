@@ -82,7 +82,7 @@ export default function SEO({
       {/* Additional Meta Tags */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-      <meta name="theme-color" content="#0066eb" />
+      <meta name="theme-color" content="#005df5" />
 
       {/* Canonical URL */}
       <link rel="canonical" href={fullUrl} />
@@ -105,14 +105,6 @@ export default function SEO({
         type="image/png"
         sizes="16x16"
         href="/favicon-16x16.png"
-      />
-
-      {/* Preconnect to external domains */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="anonymous"
       />
     </Helmet>
   );
