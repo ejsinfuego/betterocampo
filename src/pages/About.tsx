@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
-import { CivicPage, PageHeader } from '../components/ui/PageFrame';
+import { CivicPage, PageHeader, SurfaceCard } from '../components/ui/PageFrame';
 
 const GITHUB = 'https://github.com/ejsinfuego/betterocampo';
 const FACEBOOK = 'https://www.facebook.com/101706771551898';
@@ -46,6 +46,54 @@ const sources = [
   },
 ];
 
+const promises = [
+  {
+    title: 'Independent community guide',
+    body: (
+      <>
+        This site is an independent community guide. No municipal website was
+        found when this was checked. Public updates are on the{' '}
+        <a className="font-semibold text-primary-700 underline" href={FACEBOOK}>
+          LGU Facebook page
+        </a>
+        .
+      </>
+    ),
+  },
+  {
+    title: 'Only records that can be checked',
+    body: (
+      <>
+        <Link
+          className="font-semibold text-primary-700 underline"
+          to="/government/departments"
+        >
+          Government records
+        </Link>{' '}
+        cover officials, the budget, national projects, ordinances, and contact
+        details that could be checked against a public source.{' '}
+        <Link
+          className="font-semibold text-primary-700 underline"
+          to="/services"
+        >
+          Service guides
+        </Link>{' '}
+        cover permits, health, education, and waste.
+      </>
+    ),
+  },
+  {
+    title: 'Missing details stay off the page',
+    body: (
+      <>
+        Local fees, schedules, and hotlines stay off those pages until they are
+        verified. No municipal hotline or office email is listed until one is
+        verified.
+      </>
+    ),
+  },
+] as const;
+
 const About: React.FC = () => {
   return (
     <>
@@ -61,8 +109,8 @@ const About: React.FC = () => {
           title="About Better Ocampo"
           description="Better Ocampo is a community transparency portal for the Municipality of Ocampo, Camarines Sur. No municipal website was found when this was checked."
         >
-          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-emerald-300/80 bg-emerald-50/80 p-4 text-xs text-emerald-950">
-            <span className="inline-flex items-center gap-2 font-bold">
+          <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-emerald-200/80 bg-emerald-50/70 p-4 text-xs text-emerald-950">
+            <span className="inline-flex items-center gap-2 font-semibold">
               <CheckCircle2 className="size-4 text-emerald-600" />
               Local fees, schedules, and hotlines stay blank until a public
               source is checked
@@ -72,77 +120,45 @@ const About: React.FC = () => {
               Postal code: <strong className="font-mono">4419</strong>
             </span>
             <span className="text-emerald-700">•</span>
-            <a href="#contact" className="font-semibold underline">
+            <a
+              href="#contact"
+              className="font-semibold text-primary-700 underline"
+            >
               Municipal contact
             </a>
           </div>
         </PageHeader>
 
-        <section className="grid gap-5 md:grid-cols-3">
-          <article className="civic-card-hover rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-            <span className="rounded-md bg-blue-600 px-2 py-0.5 text-[11px] font-bold text-white">
-              Promise 1
-            </span>
-            <h2 className="mt-3 text-base font-bold text-gray-950">
-              Independent community guide
-            </h2>
-            <p className="mt-2 text-xs leading-relaxed text-gray-600">
-              This site is an independent community guide. No municipal website
-              was found when this was checked. Public updates are on the{' '}
-              <a
-                className="font-semibold text-blue-700 underline"
-                href={FACEBOOK}
-              >
-                LGU Facebook page
-              </a>
-              .
-            </p>
-          </article>
-          <article className="civic-card-hover rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-            <span className="rounded-md bg-emerald-600 px-2 py-0.5 text-[11px] font-bold text-white">
-              Promise 2
-            </span>
-            <h2 className="mt-3 text-base font-bold text-gray-950">
-              Only records that can be checked
-            </h2>
-            <p className="mt-2 text-xs leading-relaxed text-gray-600">
-              <Link
-                className="font-semibold text-blue-700 underline"
-                to="/government/departments"
-              >
-                Government records
-              </Link>{' '}
-              cover officials, the budget, national projects, ordinances, and
-              contact details that could be checked against a public source.{' '}
-              <Link
-                className="font-semibold text-blue-700 underline"
-                to="/services"
-              >
-                Service guides
-              </Link>{' '}
-              cover permits, health, education, and waste.
-            </p>
-          </article>
-          <article className="civic-card-hover rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-            <span className="rounded-md bg-amber-600 px-2 py-0.5 text-[11px] font-bold text-white">
-              Promise 3
-            </span>
-            <h2 className="mt-3 text-base font-bold text-gray-950">
-              Missing details stay off the page
-            </h2>
-            <p className="mt-2 text-xs leading-relaxed text-gray-600">
-              Local fees, schedules, and hotlines stay off those pages until
-              they are verified. No municipal hotline or office email is listed
-              until one is verified.
-            </p>
-          </article>
+        <section className="grid gap-4 md:grid-cols-3">
+          {promises.map(promise => (
+            <SurfaceCard
+              key={promise.title}
+              as="article"
+              className="civic-card-hover p-6"
+            >
+              <div className="flex size-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/10">
+                <CheckCircle2 className="size-5" />
+              </div>
+              <h2 className="mt-5 text-lg font-semibold tracking-tight text-gray-950">
+                {promise.title}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                {promise.body}
+              </p>
+            </SurfaceCard>
+          ))}
         </section>
 
-        <section className="rounded-2xl border border-rose-200 bg-rose-50/70 p-6 sm:p-8">
+        <SurfaceCard
+          as="section"
+          className="border-error-200/80 bg-error-50/60 p-6 sm:p-8"
+        >
           <div className="flex items-start gap-3">
-            <Scale className="mt-0.5 size-5 shrink-0 text-rose-700" />
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-white/80 text-error-700 ring-1 ring-error-600/10">
+              <Scale className="size-5" />
+            </span>
             <div>
-              <h2 className="text-lg font-bold text-gray-950 sm:text-xl">
+              <h2 className="text-lg font-semibold tracking-tight text-gray-950 sm:text-xl">
                 Municipal questions go to the LGU
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-gray-600">
@@ -152,32 +168,35 @@ const About: React.FC = () => {
               </p>
             </div>
           </div>
-        </section>
+        </SurfaceCard>
 
         <section id="sources" className="scroll-mt-28 space-y-4">
           <div>
-            <p className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-blue-700 uppercase">
-              <BookOpenCheck className="size-4" />
-              Public sources named on this portal
+            <p className="text-xs font-semibold tracking-wide text-primary-700 uppercase">
+              <span className="inline-flex items-center gap-1.5">
+                <BookOpenCheck className="size-4" />
+                Public sources named on this portal
+              </span>
             </p>
-            <h2 className="mt-1 text-xl font-bold text-gray-950 sm:text-2xl">
+            <h2 className="mt-2 text-2xl tracking-tight text-gray-950 sm:text-3xl">
               Where the records come from
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             {sources.map(source => (
-              <article
+              <SurfaceCard
                 key={source.name}
-                className="civic-card-hover flex flex-col justify-between rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
+                as="article"
+                className="civic-card-hover flex flex-col justify-between p-5"
               >
                 <div className="space-y-2">
-                  <span className="inline-flex rounded-full bg-emerald-100 px-2.5 py-0.5 text-[11px] font-bold text-emerald-900">
+                  <span className="text-[11px] font-medium tracking-wide text-gray-400 uppercase">
                     Named in this guide
                   </span>
-                  <h3 className="text-base font-bold text-gray-950">
+                  <h3 className="text-lg font-semibold tracking-tight text-gray-950">
                     {source.name}
                   </h3>
-                  <p className="text-xs leading-relaxed text-gray-600">
+                  <p className="text-sm leading-relaxed text-gray-500">
                     {source.note}
                   </p>
                 </div>
@@ -186,37 +205,39 @@ const About: React.FC = () => {
                     href={source.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-blue-700 underline"
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary-700 hover:underline"
                   >
                     Open source
-                    <ExternalLink className="size-3" />
+                    <ExternalLink className="size-3.5" />
                   </a>
                 ) : null}
-              </article>
+              </SurfaceCard>
             ))}
           </div>
         </section>
 
         <section
           id="contact"
-          className="scroll-mt-28 grid gap-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 lg:grid-cols-2"
+          className="scroll-mt-28 grid gap-4 lg:grid-cols-2"
         >
-          <div className="space-y-3">
-            <p className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-blue-700 uppercase">
-              <Send className="size-4" />
-              Contact
+          <SurfaceCard className="space-y-3 p-6 sm:p-8">
+            <p className="text-xs font-semibold tracking-wide text-primary-700 uppercase">
+              <span className="inline-flex items-center gap-1.5">
+                <Send className="size-4" />
+                Contact
+              </span>
             </p>
-            <h2 className="text-xl font-bold text-gray-950">
+            <h2 className="text-xl font-semibold tracking-tight text-gray-950">
               Municipal Hall, Ocampo, Camarines Sur 4419
             </h2>
-            <p className="text-xs leading-relaxed text-gray-600">
+            <p className="text-sm leading-relaxed text-gray-500">
               Municipal questions go to the LGU, not to the people maintaining
               this portal.
             </p>
-            <ul className="space-y-2 text-xs text-gray-700">
+            <ul className="space-y-2 text-sm text-gray-700">
               <li>
                 <a
-                  className="font-semibold text-blue-700 underline"
+                  className="font-semibold text-primary-700 underline"
                   href={FACEBOOK}
                 >
                   LGU Facebook page
@@ -224,7 +245,7 @@ const About: React.FC = () => {
               </li>
               <li>
                 <Link
-                  className="font-semibold text-blue-700 underline"
+                  className="font-semibold text-primary-700 underline"
                   to="/government/departments/contact"
                 >
                   Contact details published on this portal
@@ -232,22 +253,24 @@ const About: React.FC = () => {
               </li>
               <li>No municipal website was found when this was checked.</li>
             </ul>
-            <p className="text-xs text-gray-600">
+            <p className="text-sm text-gray-500">
               No municipal hotline or office email is listed until one is
               verified.
             </p>
-          </div>
+          </SurfaceCard>
 
-          <div className="flex flex-col justify-between gap-4 rounded-2xl border border-blue-200 bg-blue-50/70 p-5">
+          <SurfaceCard className="flex flex-col justify-between gap-4 border-primary-200/80 bg-primary-50/50 p-6 sm:p-8">
             <div className="space-y-2">
-              <p className="inline-flex items-center gap-1.5 text-xs font-bold tracking-wider text-emerald-700 uppercase">
-                <HeartHandshake className="size-4" />
-                Corrections
+              <p className="text-xs font-semibold tracking-wide text-primary-700 uppercase">
+                <span className="inline-flex items-center gap-1.5">
+                  <HeartHandshake className="size-4" />
+                  Corrections
+                </span>
               </p>
-              <h2 className="text-xl font-bold text-gray-950">
+              <h2 className="text-xl font-semibold tracking-tight text-gray-950">
                 Built for Ocampo at ₱0
               </h2>
-              <p className="text-xs leading-relaxed text-gray-600">
+              <p className="text-sm leading-relaxed text-gray-600">
                 This portal is an open community project. If a page states a
                 fact that a public record does not support, open an issue on
                 GitHub.
@@ -256,19 +279,19 @@ const About: React.FC = () => {
             <div className="flex flex-wrap gap-2">
               <a
                 href={GITHUB}
-                className="inline-flex items-center gap-1.5 rounded-xl bg-blue-600 px-4 py-2.5 text-xs font-semibold text-white hover:bg-blue-700"
+                className="inline-flex h-11 items-center gap-1.5 rounded-xl bg-primary-600 px-5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700"
               >
-                <ShieldCheck className="size-3.5" />
+                <ShieldCheck className="size-4" />
                 Open an issue on GitHub
               </a>
               <Link
                 to="/services"
-                className="inline-flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs font-semibold text-gray-900 hover:bg-gray-50"
+                className="inline-flex h-11 items-center gap-1.5 rounded-xl border border-gray-200/90 bg-white/80 px-5 text-sm font-semibold text-gray-900 shadow-[0_1px_2px_rgba(15,23,42,0.04)] hover:border-gray-300 hover:text-primary-700"
               >
                 Browse service guides
               </Link>
             </div>
-          </div>
+          </SurfaceCard>
         </section>
       </CivicPage>
     </>
