@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-3">
             <Link to="/" className="inline-flex items-center gap-2">
               <img
-                src="/ocampo-seal.png"
+                src="/logos/png/BetterOcampo-Seal.png"
                 alt=""
                 className="h-12 w-12 object-contain"
               />

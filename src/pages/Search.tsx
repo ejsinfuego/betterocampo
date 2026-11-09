@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useQueryState } from 'nuqs';
-import { Search as SearchIcon } from 'lucide-react';
+import { ArrowRight, Search as SearchIcon } from 'lucide-react';
 import { trackSearch } from '../lib/analytics';
 import { searchClient, SEARCH_INDEX } from '../lib/meilisearch';
 import type { SearchHit } from '../lib/meilisearch';
-import { CivicPage, PageHeader } from '../components/ui/PageFrame';
+import { CivicPage, PageHeader, SurfaceCard } from '../components/ui/PageFrame';
 
 export default function Search() {
   const [query, setQuery] = useQueryState('q', { defaultValue: '' });
@@ -51,73 +51,77 @@ export default function Search() {
         description="Look through service guides and government pages published on this portal."
       />
 
-      <div className="relative mb-8">
-        <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+      <div className="relative">
+        <SearchIcon className="absolute top-1/2 left-3.5 size-5 -translate-y-1/2 text-gray-400" />
         <input
           type="search"
           value={query}
           onChange={e => setQuery(e.target.value || null)}
           placeholder="Search services, departments, guides..."
-          className="h-12 w-full rounded-xl border border-gray-200 bg-white pr-4 pl-10 text-sm shadow-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-500/20"
+          className="h-12 w-full rounded-xl border border-gray-200/90 bg-white/80 pr-4 pl-11 text-sm shadow-[0_1px_2px_rgba(15,23,42,0.04)] outline-none backdrop-blur-sm focus:border-primary-600 focus:ring-2 focus:ring-primary-500/20"
           autoFocus
         />
       </div>
 
       {error && (
-        <div className="text-center py-12 text-red-500 text-sm">{error}</div>
+        <p className="py-10 text-center text-sm text-error-600">{error}</p>
       )}
 
       {!error && isLoading && (
-        <div className="text-center py-12 text-gray-500 text-sm">
-          Searching...
-        </div>
+        <p className="py-10 text-center text-sm text-gray-500">Searching...</p>
       )}
 
       {!error && !isLoading && hasSearched && results.length === 0 && (
-        <div className="text-center py-12 text-gray-500">
+        <p className="py-10 text-center text-sm text-gray-500">
           No results for{' '}
-          <span className="font-medium">&ldquo;{query}&rdquo;</span>
-        </div>
+          <span className="font-medium text-gray-800">
+            &ldquo;{query}&rdquo;
+          </span>
+        </p>
       )}
 
       {!error && !isLoading && results.length > 0 && (
         <div className="space-y-3">
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-gray-500">
             {results.length} result{results.length !== 1 ? 's' : ''} for &ldquo;
             {query}&rdquo;
           </p>
           {results.map(hit => (
-            <Link key={hit.id} to={hit.url} className="block group">
-              <div className="civic-card-hover rounded-2xl border border-gray-200 bg-white p-4 shadow-sm hover:border-blue-600">
-                <div className="flex items-center gap-2 mb-2">
+            <Link key={hit.id} to={hit.url} className="group block">
+              <SurfaceCard className="civic-card-hover p-5 transition-[border-color,background-color,box-shadow] duration-300 hover:border-gray-300 hover:bg-white">
+                <div className="mb-2 flex items-center gap-2">
                   <span
-                    className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                    className={`text-[11px] font-medium tracking-wide uppercase ${
                       hit.type === 'service'
-                        ? 'bg-blue-100 text-blue-700'
-                        : 'bg-green-100 text-green-700'
+                        ? 'text-primary-700'
+                        : 'text-emerald-700'
                     }`}
                   >
                     {hit.category}
                   </span>
                 </div>
-                <h2 className="text-base font-bold text-gray-950 group-hover:text-blue-700">
+                <h2 className="text-lg font-semibold tracking-tight text-gray-950 transition-colors group-hover:text-primary-700">
                   {hit.title}
                 </h2>
-                {hit.description && (
-                  <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                {hit.description ? (
+                  <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-gray-500">
                     {hit.description}
                   </p>
-                )}
-              </div>
+                ) : null}
+                <div className="mt-4 flex items-center gap-1.5 text-sm font-medium text-primary-700">
+                  <span>Open</span>
+                  <ArrowRight className="size-4 opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
+                </div>
+              </SurfaceCard>
             </Link>
           ))}
         </div>
       )}
 
       {!hasSearched && !isLoading && !error && (
-        <div className="text-center py-12 text-gray-400 text-sm">
+        <p className="py-10 text-center text-sm text-gray-400">
           Start typing to search across services and government information
-        </div>
+        </p>
       )}
     </CivicPage>
   );

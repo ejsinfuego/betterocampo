@@ -2,22 +2,22 @@
   "site_name": "Better Ocampo",
   "site_description": "Ocampo, Camarines Sur",
   "hero": {
-    "title": "Welcome to Better Ocampo",
-    "subtitle": "A community transparency portal for the Municipality of Ocampo, Camarines Sur.",
+    "title": "Community-driven guide to Ocampo",
+    "subtitle": "Find municipal services, offices, and local guides for Ocampo, Camarines Sur—maintained by volunteers for the community.",
     "nationalId": "National ID",
     "birthCertificate": "Birth Certificate",
     "businessRegistration": "Business Registration"
   },
   "services": {
-    "title": "Services & Information",
+    "title": "Find the service you need",
     "governmentServices": "Government Services",
-    "description": "Access official government services quickly and easily. Find what you need for citizenship, business, education, and more.",
+    "description": "Guides for health, business permits, social welfare, education, and more—written for residents of Ocampo.",
     "viewAll": "View All Services",
     "viewAllCategory": "View All"
   },
   "governmentActivity": {
-    "title": "Government Activity",
-    "description": "Stay updated with the latest government activities and announcements."
+    "title": "Offices, records, and local updates",
+    "description": "Find departments, news, guides, reports, and transparency documents for the Municipality of Ocampo."
   },
   "weather": {
     "title": "Weather Updates"

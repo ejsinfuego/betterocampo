@@ -1,5 +1,8 @@
 import { cn } from '../../lib/utils';
 
+const surfaceShadow =
+  'shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)]';
+
 export function CivicPage({
   children,
   className,
@@ -8,13 +11,18 @@ export function CivicPage({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        'mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-6 sm:px-6 sm:py-8 lg:px-8',
-        className
-      )}
-    >
-      {children}
+    <div className="relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="landing-aurora absolute inset-x-0 top-0 h-[28rem] sm:h-[24rem]" />
+      </div>
+      <div
+        className={cn(
+          'relative mx-auto flex w-full max-w-7xl flex-col gap-8 px-4 py-6 sm:px-6 sm:py-8 lg:px-8',
+          className
+        )}
+      >
+        {children}
+      </div>
     </div>
   );
 }
@@ -31,13 +39,18 @@ export function PageHeader({
   children?: React.ReactNode;
 }) {
   return (
-    <header className="rounded-3xl border border-gray-200 bg-gradient-to-br from-blue-50/80 via-white to-white p-4 shadow-sm sm:p-6 lg:p-8">
+    <header
+      className={cn(
+        'rounded-3xl border border-gray-200/90 bg-white/80 p-5 backdrop-blur-sm sm:p-6 lg:p-8',
+        surfaceShadow
+      )}
+    >
       {eyebrow ? (
-        <span className="inline-block rounded-full bg-blue-100 px-3 py-1 text-xs font-bold tracking-wide text-blue-900 uppercase">
+        <p className="text-xs font-semibold tracking-wide text-primary-700 uppercase">
           {eyebrow}
-        </span>
+        </p>
       ) : null}
-      <h1 className="mt-3 text-2xl font-extrabold tracking-tight text-gray-950 sm:text-4xl">
+      <h1 className="mt-2 text-2xl tracking-tight text-gray-950 sm:text-4xl">
         {title}
       </h1>
       {description ? (
@@ -60,14 +73,42 @@ export function Notice({
   children: React.ReactNode;
 }) {
   const tones = {
-    info: 'border-blue-200 bg-blue-50 text-blue-950',
-    error: 'border-rose-200 bg-rose-50 text-rose-950',
+    info: 'border-primary-200 bg-primary-50/80 text-primary-950',
+    error: 'border-error-200 bg-error-50 text-error-950',
   };
 
   return (
-    <div className={`rounded-2xl border p-5 ${tones[tone]}`}>
-      <h1 className="text-lg font-bold">{title}</h1>
-      <div className="mt-1 text-sm leading-relaxed">{children}</div>
+    <div
+      className={cn(
+        'rounded-2xl border p-5 backdrop-blur-sm',
+        surfaceShadow,
+        tones[tone]
+      )}
+    >
+      <h1 className="text-lg">{title}</h1>
+      <div className="mt-1 text-sm leading-relaxed opacity-90">{children}</div>
     </div>
+  );
+}
+
+export function SurfaceCard({
+  children,
+  className,
+  as: Tag = 'div',
+}: {
+  children: React.ReactNode;
+  className?: string;
+  as?: 'div' | 'article' | 'section';
+}) {
+  return (
+    <Tag
+      className={cn(
+        'rounded-2xl border border-gray-200/90 bg-white/80 backdrop-blur-sm',
+        surfaceShadow,
+        className
+      )}
+    >
+      {children}
+    </Tag>
   );
 }

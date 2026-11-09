@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="BetterOcampo">
+  <title>BetterOcampo</title>
+  <defs>
+    <clipPath id="bo-clip-w">
+      <circle cx="64" cy="64" r="60"/>
+    </clipPath>
+  </defs>
+
+  <circle cx="64" cy="64" r="60" fill="#FFFFFF"/>
+
+  <g clip-path="url(#bo-clip-w)">
+    <g fill="#005df5">
+      <rect x="61.5" y="10" width="5" height="20" rx="1.5"/>
+      <rect x="61.5" y="10" width="5" height="20" rx="1.5" transform="rotate(36 64 50)"/>
+      <rect x="61.5" y="10" width="5" height="20" rx="1.5" transform="rotate(-36 64 50)"/>
+      <rect x="61.5" y="10" width="5" height="20" rx="1.5" transform="rotate(72 64 50)"/>
+      <rect x="61.5" y="10" width="5" height="20" rx="1.5" transform="rotate(-72 64 50)"/>
+    </g>
+
+    <circle cx="64" cy="50" r="18" fill="#005df5"/>
+
+    <path
+      fill="#005df5"
+      d="M6 108
+         L28 70
+         L42 86
+         L64 40
+         L86 86
+         L100 70
+         L122 108
+         Z"
+    />
+
+    <path
+      fill="#E6B325"
+      d="M0 100
+         C32 88 48 84 64 84
+         C80 84 96 88 128 100
+         V128 H0 Z"
+    />
+
+    <path
+      fill="#14A34A"
+      d="M58 90
+         C48 98 34 106 20 112
+         C36 104 50 96 62 90
+         C64 88 61 88 58 90Z"
+    />
+    <path
+      fill="#0B7F42"
+      d="M70 90
+         C80 98 94 106 108 112
+         C92 104 78 96 66 90
+         C64 88 67 88 70 90Z"
+    />
+    <path
+      fill="#16A34A"
+      d="M52 94
+         C44 102 32 110 22 116
+         C36 108 48 100 56 94
+         C58 92 55 92 52 94Z"
+    />
+    <path
+      fill="#15803D"
+      d="M76 94
+         C84 102 96 110 106 116
+         C92 108 80 100 72 94
+         C70 92 73 92 76 94Z"
+    />
+  </g>
+</svg>

@@ -7,16 +7,21 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          'Inter',
-          'Figtree',
+          'ui-sans-serif',
+          'system-ui',
           '-apple-system',
           'BlinkMacSystemFont',
           'Segoe UI',
-          'Roboto',
           'sans-serif',
         ],
-        mono: ['SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'monospace'],
-        serif: ['Georgia', 'Times New Roman', 'serif'],
+        serif: ['Source Serif 4', 'Georgia', 'Times New Roman', 'serif'],
+        mono: [
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Consolas',
+          'monospace',
+        ],
       },
       colors: {
         primary: {
