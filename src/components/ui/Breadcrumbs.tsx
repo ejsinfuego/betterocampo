@@ -54,7 +54,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
           {item.href ? (
             <Link
               to={item.href}
-              className="font-medium transition-colors duration-200 hover:text-blue-700"
+              className="font-medium transition-colors duration-200 hover:text-primary-700"
             >
               {item.label.charAt(0).toUpperCase() + item.label.slice(1)}
             </Link>
