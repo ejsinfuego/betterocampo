@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 160" role="img" aria-label="BetterOcampo">
+  <title>BetterOcampo</title>
+  <defs>
+    <clipPath id="bo-h-clip">
+      <circle cx="80" cy="80" r="72"/>
+    </clipPath>
+  </defs>
+
+  <circle cx="80" cy="80" r="72" fill="#005df5"/>
+  <g clip-path="url(#bo-h-clip)">
+    <g fill="#FFFFFF">
+      <rect x="77" y="16" width="6" height="24" rx="1.5"/>
+      <rect x="77" y="16" width="6" height="24" rx="1.5" transform="rotate(36 80 64)"/>
+      <rect x="77" y="16" width="6" height="24" rx="1.5" transform="rotate(-36 80 64)"/>
+      <rect x="77" y="16" width="6" height="24" rx="1.5" transform="rotate(72 80 64)"/>
+      <rect x="77" y="16" width="6" height="24" rx="1.5" transform="rotate(-72 80 64)"/>
+    </g>
+    <circle cx="80" cy="64" r="22" fill="#FFFFFF"/>
+    <path
+      fill="#0B5E3C"
+      d="M10 130 L34 86 L50 104 L80 50 L110 104 L126 86 L150 130 Z"
+    />
+    <path
+      fill="#E6B325"
+      d="M8 120 C36 106 56 100 80 100 C104 100 124 106 152 120 V160 H8 Z"
+    />
+    <path
+      fill="#14A34A"
+      d="M70 108 C58 118 40 128 24 134 C42 126 60 116 74 108 C76 106 73 106 70 108Z"
+    />
+    <path
+      fill="#0B7F42"
+      d="M90 108 C102 118 120 128 136 134 C118 126 100 116 86 108 C84 106 87 106 90 108Z"
+    />
+  </g>
+
+  <text
+    x="188"
+    y="102"
+    fill="#005df5"
+    font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="78"
+    font-weight="800"
+    letter-spacing="-0.055em"
+  >BetterOcampo</text>
+</svg>
