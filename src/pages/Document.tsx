@@ -1,5 +1,11 @@
 import Breadcrumbs from '../components/ui/Breadcrumbs';
-import { CivicPage, Notice, PageHeader } from '../components/ui/PageFrame';
+import {
+  CivicPage,
+  Notice,
+  PageHeader,
+  SurfaceCard,
+} from '../components/ui/PageFrame';
+import DirectoryCard from '../components/ui/DirectoryCard';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
@@ -19,6 +25,7 @@ import {
   type CategoryIndex,
 } from '../data/yamlLoader';
 import SEO from '../components/SEO';
+import { FileText } from 'lucide-react';
 
 interface DocumentProps {
   theme?: string;
@@ -137,6 +144,8 @@ export default function Document({
 
   if (nestedIndex) {
     const nestedPages: Subcategory[] = nestedIndex.pages;
+    const sectionHref =
+      categoryType === 'government' ? '/government' : '/services';
     return (
       <>
         <SEO
@@ -158,19 +167,14 @@ export default function Document({
             }
           >
             {nestedPages.map((page, i) => (
-              <article
+              <DirectoryCard
                 key={page.slug ?? i}
-                className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm"
-              >
-                <h2 className="text-base font-bold text-gray-950">
-                  {page.name}
-                </h2>
-                {page.description ? (
-                  <p className="mt-1.5 text-xs leading-relaxed text-gray-500">
-                    {page.description}
-                  </p>
-                ) : null}
-              </article>
+                to={`${sectionHref}/${documentSlug}/${page.slug}`}
+                title={page.name}
+                description={page.description}
+                icon={<FileText className="size-5" />}
+                footer="Read page"
+              />
             ))}
           </div>
         </CivicPage>
@@ -194,9 +198,9 @@ export default function Document({
       />
       <CivicPage>
         <Breadcrumbs items={breadcrumbs} />
-        <article className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm sm:p-8">
+        <SurfaceCard as="article" className="p-5 sm:p-8">
           {markdownContent.description ? (
-            <p className="mb-4 rounded-xl border border-blue-100 bg-blue-50/70 px-4 py-3 text-sm text-gray-700">
+            <p className="mb-5 rounded-xl border border-primary-100 bg-primary-50/70 px-4 py-3 text-sm text-gray-700">
               {markdownContent.description}
             </p>
           ) : null}
@@ -208,7 +212,7 @@ export default function Document({
               {markdownContent.content}
             </ReactMarkdown>
           </div>
-        </article>
+        </SurfaceCard>
       </CivicPage>
     </>
   );
