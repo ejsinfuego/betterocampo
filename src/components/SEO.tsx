@@ -59,10 +59,10 @@ export default function SEO({
         <>
           <meta property="og:image:type" content="image/jpeg" />
           <meta property="og:image:width" content="1024" />
-          <meta property="og:image:height" content="478" />
+          <meta property="og:image:height" content="574" />
           <meta
             property="og:image:alt"
-            content="BetterOcampo community-driven guide to Ocampo with the municipal seal and local facts"
+            content="Better Ocampo home page: community-driven guide to Ocampo"
           />
         </>
       )}
