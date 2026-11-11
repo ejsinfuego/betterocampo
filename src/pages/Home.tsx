@@ -1,5 +1,6 @@
 import Hero from '../components/sections/Hero';
 import MapSection from '../components/home/MapSection';
+import FloodSection from '../components/home/FloodSection';
 import ServicesSection from '../components/home/ServicesSection';
 import GovernmentActivitySection from '../components/home/GovernmentActivitySection';
 import TrustPromiseSection from '../components/home/TrustPromiseSection';
@@ -26,6 +27,7 @@ const Home: React.FC = () => {
         <div className="relative">
           <Hero />
           <MapSection />
+          <FloodSection />
           <ServicesSection limit={5} />
           <GovernmentActivitySection limit={5} />
         </div>
