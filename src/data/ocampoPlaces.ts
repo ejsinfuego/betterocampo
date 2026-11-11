@@ -1,3 +1,13 @@
+import type { LucideIcon } from 'lucide-react';
+import {
+  Cherry,
+  Droplets,
+  Landmark,
+  Mountain,
+  PawPrint,
+  Trees,
+} from 'lucide-react';
+
 /** Public places in / near Ocampo with map coordinates from OSM / PhilAtlas. */
 
 export type OcampoPlace = {
@@ -8,8 +18,7 @@ export type OcampoPlace = {
   lat: number;
   lng: number;
   kind: 'center' | 'spot';
-  emoji: string;
-  accent: string;
+  icon: LucideIcon;
   blurb: string;
   /** Coordinate quality for honesty labeling. */
   precision: 'exact' | 'approximate';
@@ -30,8 +39,7 @@ export const ocampoPlaces: OcampoPlace[] = [
     lat: OCAMPO_CENTER.lat,
     lng: OCAMPO_CENTER.lng,
     kind: 'center',
-    emoji: '🏛️',
-    accent: '#005df5',
+    icon: Landmark,
     blurb: 'Start here — the Municipal Hall in poblacion.',
     precision: 'exact',
   },
@@ -43,8 +51,7 @@ export const ocampoPlaces: OcampoPlace[] = [
     lat: 13.603207,
     lng: 123.4228502,
     kind: 'spot',
-    emoji: '🦌',
-    accent: '#0B7F42',
+    icon: PawPrint,
     blurb: 'Meet the deer up the highland road toward Isarog.',
     precision: 'exact',
   },
@@ -56,8 +63,7 @@ export const ocampoPlaces: OcampoPlace[] = [
     lat: 13.575226,
     lng: 123.422925,
     kind: 'spot',
-    emoji: '🎋',
-    accent: '#15803d',
+    icon: Trees,
     blurb: 'A quiet grove of bamboo varieties in Hanawan.',
     precision: 'approximate',
   },
@@ -69,8 +75,7 @@ export const ocampoPlaces: OcampoPlace[] = [
     lat: 13.5861875,
     lng: 123.3951875,
     kind: 'spot',
-    emoji: '💧',
-    accent: '#0284c7',
+    icon: Droplets,
     blurb: 'Cool spring water in Gatbo — a local favorite dip.',
     precision: 'exact',
   },
@@ -82,8 +87,7 @@ export const ocampoPlaces: OcampoPlace[] = [
     lat: 13.5665,
     lng: 123.4112,
     kind: 'spot',
-    emoji: '🍓',
-    accent: '#e11d48',
+    icon: Cherry,
     blurb: 'Sweet highland berries when the season is right.',
     precision: 'approximate',
   },
@@ -95,8 +99,7 @@ export const ocampoPlaces: OcampoPlace[] = [
     lat: 13.6155576,
     lng: 123.4240646,
     kind: 'spot',
-    emoji: '⛰️',
-    accent: '#b45309',
+    icon: Mountain,
     blurb: 'Mountain park just past Ocampo — gateway is through Hanawan.',
     precision: 'exact',
   },

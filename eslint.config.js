@@ -25,4 +25,14 @@ export default defineConfig([
       'react-hooks/set-state-in-effect': 'warn',
     },
   },
+  {
+    // Vendored from mapcn (https://mapcn.dev). Upstream updates refs during
+    // render; do not restyle that file to satisfy this repo's hook rules.
+    files: ['src/components/ui/map.tsx'],
+    rules: {
+      'react-hooks/refs': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ]);

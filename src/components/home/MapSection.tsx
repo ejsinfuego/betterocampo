@@ -86,11 +86,12 @@ export default function MapSection() {
               id="map-heading"
               className="mt-2 text-3xl tracking-tight text-gray-950 sm:text-4xl"
             >
-              Find Ocampo on the map
+              Ocampo on the Map
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">
-              Town center, live weather, and tourist stops pinned from public
-              map records—tap a pill to zoom in.
+              Barangay outlines from the NAMRIA administrative map, with the
+              town center and tourist stops pinned on top. Tap a pill to zoom
+              in.
             </p>
           </div>
 
@@ -127,6 +128,10 @@ export default function MapSection() {
             <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-gray-100 px-4 py-3 text-xs text-gray-500">
               <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
                 <span className="inline-flex items-center gap-1.5">
+                  <span className="size-2.5 rounded-sm border border-primary-700 bg-primary-600/20" />
+                  Barangays
+                </span>
+                <span className="inline-flex items-center gap-1.5">
                   <span className="size-2.5 rounded-full bg-primary-600" />
                   Municipal center
                 </span>
@@ -136,12 +141,12 @@ export default function MapSection() {
                 </span>
               </span>
               <a
-                href={OSM_LINK}
+                href="https://data.humdata.org/dataset/cod-ab-phl"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-primary-700 hover:underline"
               >
-                Larger map
+                Barangay boundaries
               </a>
             </div>
           </div>
@@ -224,6 +229,7 @@ export default function MapSection() {
               <div className="mt-3 flex flex-wrap gap-2">
                 {touristSpots.map(spot => {
                   const active = activeId === spot.id;
+                  const Icon = spot.icon;
                   return (
                     <button
                       key={spot.id}
@@ -236,7 +242,11 @@ export default function MapSection() {
                           : 'border-gray-200 bg-gray-50 text-gray-700 hover:border-primary-300 hover:bg-white hover:text-primary-700'
                       }`}
                     >
-                      <span aria-hidden="true">{spot.emoji}</span>
+                      <Icon
+                        aria-hidden="true"
+                        className="size-3.5"
+                        strokeWidth={2}
+                      />
                       {spot.name}
                       {spot.precision === 'approximate' ? (
                         <span

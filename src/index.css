@@ -205,28 +205,6 @@ html {
   );
 }
 
-/* Civic sun on the seal, spread as a quiet field of rays. */
-.landing-rays {
-  background: repeating-conic-gradient(
-    from 0deg at 50% 50%,
-    transparent 0deg 11.2deg,
-    rgb(0 93 245 / 0.2) 11.2deg 11.55deg,
-    transparent 11.55deg 15deg
-  );
-  -webkit-mask-image: radial-gradient(
-    circle at 50% 50%,
-    #000 0%,
-    #000 10%,
-    transparent 64%
-  );
-  mask-image: radial-gradient(
-    circle at 50% 50%,
-    #000 0%,
-    #000 10%,
-    transparent 64%
-  );
-}
-
 .civic-card-hover {
   transition:
     transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
@@ -251,6 +229,6 @@ html {
 }
 
 h1 {
-  font-family: var(--font-kapwa-serif);
+  font-family: var(--font-inter);
   font-weight: 600;
 }

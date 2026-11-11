@@ -1,205 +1,245 @@
-import { useEffect, useRef } from 'react';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-import './ocampo-map.css';
+import { useEffect, useState } from 'react';
+import { LngLatBounds } from 'maplibre-gl';
+import type { FeatureCollection, Geometry } from 'geojson';
+import {
+  Map,
+  MapControls,
+  MapGeoJSON,
+  MapMarker,
+  MapPopup,
+  MapRoute,
+  MarkerContent,
+  useMap,
+} from '../ui/map';
 import {
   ocampoPlaces,
   OCAMPO_CENTER,
   touristSpots,
   type OcampoPlace,
 } from '../../data/ocampoPlaces';
+import './ocampo-map.css';
 
-/** Same pattern as meetmehalfway: Carto Voyager only with a real key; else OSM. */
-function basemapTiles() {
-  const key = import.meta.env.VITE_CARTO_API_KEY?.trim();
-  if (key) {
-    return {
-      url: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${encodeURIComponent(key)}`,
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      subdomains: 'abcd' as const,
-      maxZoom: 20,
-    };
-  }
+const BOUNDARY_URL = '/geo/ocampo-barangays.geojson';
 
-  return {
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    subdomains: 'abc' as const,
-    maxZoom: 19,
-  };
-}
+type BarangayProps = {
+  psgc: string;
+  name: string;
+  areaSqKm: number;
+};
 
-function escapeHtml(value: string) {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;');
-}
-
-function markerIcon(place: OcampoPlace, active: boolean) {
-  return L.divIcon({
-    className: 'ocampo-pin-wrap',
-    iconSize: [44, 52],
-    iconAnchor: [22, 50],
-    popupAnchor: [0, -42],
-    html: `
-      <span class="ocampo-pin${active ? ' is-active' : ''}" style="color:${place.accent}">
-        <span class="ocampo-pin__pulse"></span>
-        <span class="ocampo-pin__bubble" style="background:${place.accent}">
-          <span aria-hidden="true">${place.emoji}</span>
-        </span>
-        <span class="ocampo-pin__tail" style="background:${place.accent}"></span>
-      </span>
-    `,
-  });
-}
-
-function popupHtml(place: OcampoPlace) {
-  const placeLine =
-    place.barangay.includes(',') || place.barangay.includes('Tigaon')
-      ? escapeHtml(place.barangay)
-      : `Brgy. ${escapeHtml(place.barangay)}`;
-  const approx =
-    place.precision === 'approximate'
-      ? `<p class="ocampo-popup__approx">Approximate pin</p>`
-      : '';
-
-  return `
-    <div class="ocampo-popup__card">
-      <div class="ocampo-popup__eyebrow">
-        <span aria-hidden="true">${place.emoji}</span>
-        ${place.kind === 'center' ? 'Town hub' : 'Must-see stop'}
-      </div>
-      <p class="ocampo-popup__title">${escapeHtml(place.name)}</p>
-      <p class="ocampo-popup__blurb">${escapeHtml(place.blurb)}</p>
-      <p class="ocampo-popup__meta">${placeLine}</p>
-      ${approx}
-    </div>
-  `;
-}
+type BarangayCollection = FeatureCollection<Geometry, BarangayProps>;
 
 type OcampoMapProps = {
   activeId?: string | null;
-  onSelect?: (id: string) => void;
+  onSelect?: (id: string | null) => void;
   className?: string;
 };
+
+function walkCoords(value: unknown, visit: (lng: number, lat: number) => void) {
+  if (!Array.isArray(value) || value.length === 0) return;
+  if (typeof value[0] === 'number') {
+    visit(value[0] as number, value[1] as number);
+    return;
+  }
+  for (const child of value) walkCoords(child, visit);
+}
+
+function FitBarangays({ data }: { data: BarangayCollection }) {
+  const { map, isLoaded } = useMap();
+
+  useEffect(() => {
+    if (!map || !isLoaded) return;
+    const bounds = new LngLatBounds();
+    for (const feature of data.features) {
+      const geometry = feature.geometry;
+      if (geometry.type === 'GeometryCollection') continue;
+      walkCoords(geometry.coordinates, (lng, lat) => {
+        bounds.extend([lng, lat]);
+      });
+    }
+    if (bounds.isEmpty()) return;
+    map.fitBounds(bounds, { padding: 28, duration: 0 });
+  }, [data, isLoaded, map]);
+
+  return null;
+}
+
+function FlyToActive({ activeId }: { activeId: string | null }) {
+  const { map, isLoaded } = useMap();
+
+  useEffect(() => {
+    if (!map || !isLoaded || !activeId) return;
+    const place = ocampoPlaces.find(item => item.id === activeId);
+    if (!place) return;
+    map.flyTo({
+      center: [place.lng, place.lat],
+      zoom: Math.max(map.getZoom(), 14),
+      duration: 850,
+    });
+  }, [activeId, isLoaded, map]);
+
+  return null;
+}
+
+function PlacePin({
+  place,
+  active,
+  onSelect,
+}: {
+  place: OcampoPlace;
+  active: boolean;
+  onSelect?: (id: string | null) => void;
+}) {
+  const Icon = place.icon;
+  const placeLine =
+    place.barangay.includes(',') || place.barangay.includes('Tigaon')
+      ? place.barangay
+      : `Brgy. ${place.barangay}`;
+
+  return (
+    <>
+      <MapMarker
+        longitude={place.lng}
+        latitude={place.lat}
+        anchor="center"
+        onClick={() => onSelect?.(place.id)}
+      >
+        <MarkerContent>
+          <span
+            className={`grid size-8 place-items-center rounded-full border shadow-sm ${
+              place.kind === 'center'
+                ? active
+                  ? 'border-primary-600 bg-primary-600 text-white ring-4 ring-primary-600/15'
+                  : 'border-primary-200 bg-white text-primary-600'
+                : active
+                  ? 'border-emerald-700 bg-emerald-700 text-white ring-4 ring-emerald-700/15'
+                  : 'border-emerald-200 bg-white text-emerald-700'
+            }`}
+          >
+            <Icon aria-hidden="true" className="size-4" strokeWidth={2} />
+          </span>
+        </MarkerContent>
+      </MapMarker>
+      {active ? (
+        <MapPopup
+          longitude={place.lng}
+          latitude={place.lat}
+          offset={22}
+          closeButton
+          onClose={() => onSelect?.(null)}
+          className="ocampo-popup__card max-w-64"
+        >
+          <p className="ocampo-popup__eyebrow">
+            <Icon aria-hidden="true" className="size-3.5" strokeWidth={2} />
+            {place.kind === 'center' ? 'Town hub' : 'Must-see stop'}
+          </p>
+          <p className="ocampo-popup__title">{place.name}</p>
+          <p className="ocampo-popup__blurb">{place.blurb}</p>
+          <p className="ocampo-popup__meta">{placeLine}</p>
+          {place.precision === 'approximate' ? (
+            <p className="ocampo-popup__approx">Approximate pin</p>
+          ) : null}
+        </MapPopup>
+      ) : null}
+    </>
+  );
+}
 
 export default function OcampoMap({
   activeId = null,
   onSelect,
   className = '',
 }: OcampoMapProps) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const mapRef = useRef<L.Map | null>(null);
-  const markersRef = useRef<Record<string, L.Marker>>({});
-  const trailRef = useRef<L.Polyline | null>(null);
-  const onSelectRef = useRef(onSelect);
+  const [barangays, setBarangays] = useState<BarangayCollection | null>(null);
+  const [hovered, setHovered] = useState<BarangayProps | null>(null);
 
   useEffect(() => {
-    onSelectRef.current = onSelect;
-  }, [onSelect]);
-
-  useEffect(() => {
-    if (!containerRef.current || mapRef.current) return;
-
-    const map = L.map(containerRef.current, {
-      scrollWheelZoom: false,
-      zoomControl: true,
-      zoomAnimation: true,
-    }).setView([OCAMPO_CENTER.lat, OCAMPO_CENTER.lng], 12);
-
-    containerRef.current.classList.add('ocampo-map');
-
-    const tiles = basemapTiles();
-    L.tileLayer(tiles.url, {
-      attribution: tiles.attribution,
-      maxZoom: tiles.maxZoom,
-      subdomains: tiles.subdomains,
-    }).addTo(map);
-
-    const bounds = L.latLngBounds([]);
-
-    trailRef.current = L.polyline(
-      touristSpots.map(spot => [spot.lat, spot.lng] as [number, number]),
-      {
-        color: '#005df5',
-        weight: 2.5,
-        opacity: 0.35,
-        dashArray: '6 10',
-        lineCap: 'round',
-        interactive: false,
-      }
-    ).addTo(map);
-
-    for (const place of ocampoPlaces) {
-      const marker = L.marker([place.lat, place.lng], {
-        icon: markerIcon(place, false),
-        title: place.name,
-        riseOnHover: true,
-      }).addTo(map);
-
-      marker.bindPopup(popupHtml(place), {
-        className: 'ocampo-popup',
-        maxWidth: 260,
-        closeButton: true,
+    const controller = new AbortController();
+    fetch(BOUNDARY_URL, { signal: controller.signal })
+      .then(response => {
+        if (!response.ok)
+          throw new Error(`Barangay boundaries ${response.status}`);
+        return response.json() as Promise<BarangayCollection>;
+      })
+      .then(data => {
+        if (!controller.signal.aborted) setBarangays(data);
+      })
+      .catch(error => {
+        if (controller.signal.aborted) return;
+        console.error(error);
       });
-
-      marker.on('click', () => onSelectRef.current?.(place.id));
-      markersRef.current[place.id] = marker;
-      bounds.extend([place.lat, place.lng]);
-    }
-
-    if (bounds.isValid()) {
-      map.fitBounds(bounds.pad(0.2));
-    }
-
-    mapRef.current = map;
-
-    const resize = () => map.invalidateSize({ animate: false });
-    window.setTimeout(resize, 80);
-    const observer =
-      typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
-    if (containerRef.current && observer) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      observer?.disconnect();
-      map.remove();
-      mapRef.current = null;
-      markersRef.current = {};
-      trailRef.current = null;
-    };
+    return () => controller.abort();
   }, []);
 
-  useEffect(() => {
-    for (const place of ocampoPlaces) {
-      const marker = markersRef.current[place.id];
-      if (!marker) continue;
-      marker.setIcon(markerIcon(place, place.id === activeId));
-      marker.setZIndexOffset(place.id === activeId ? 1000 : 0);
-    }
-
-    const map = mapRef.current;
-    if (!map || !activeId) return;
-    const place = ocampoPlaces.find(item => item.id === activeId);
-    const marker = markersRef.current[activeId];
-    if (!place || !marker) return;
-
-    map.flyTo([place.lat, place.lng], Math.max(map.getZoom(), 14), {
-      duration: 0.85,
-    });
-    window.setTimeout(() => marker.openPopup(), 280);
-  }, [activeId]);
+  const activePlace = ocampoPlaces.find(place => place.id === activeId) ?? null;
 
   return (
     <div
-      ref={containerRef}
-      className={`h-full w-full ${className}`}
-      role="presentation"
-    />
+      className={`ocampo-map relative h-full min-h-[260px] w-full ${className}`}
+    >
+      <Map
+        theme="light"
+        center={[OCAMPO_CENTER.lng, OCAMPO_CENTER.lat]}
+        zoom={11}
+        scrollZoom={false}
+      >
+        <MapControls showZoom />
+        {barangays ? (
+          <>
+            <FitBarangays data={barangays} />
+            <MapGeoJSON<BarangayProps>
+              id="ocampo-barangays"
+              data={barangays}
+              promoteId="psgc"
+              interactive
+              fillPaint={{
+                'fill-color': '#005df5',
+                'fill-opacity': 0.12,
+              }}
+              fillHoverPaint={{
+                'fill-color': '#005df5',
+                'fill-opacity': 0.32,
+              }}
+              linePaint={{
+                'line-color': '#0052d6',
+                'line-width': 1.25,
+              }}
+              onHover={event => {
+                setHovered(event?.feature.properties ?? null);
+              }}
+              onClick={event => {
+                setHovered(event.feature.properties);
+              }}
+            />
+          </>
+        ) : null}
+        <MapRoute
+          coordinates={touristSpots.map(spot => [spot.lng, spot.lat])}
+          color="#005df5"
+          width={2.5}
+          opacity={0.35}
+          dashArray={[1.5, 2]}
+          interactive={false}
+        />
+        <FlyToActive activeId={activeId ?? null} />
+        {ocampoPlaces.map(place => (
+          <PlacePin
+            key={place.id}
+            place={place}
+            active={place.id === activePlace?.id}
+            onSelect={onSelect}
+          />
+        ))}
+      </Map>
+      {hovered ? (
+        <div className="pointer-events-none absolute top-3 left-3 z-10 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-900 shadow-sm">
+          {hovered.name}
+          <span className="font-medium text-gray-500">
+            {' '}
+            · {hovered.areaSqKm} km²
+          </span>
+        </div>
+      ) : null}
+    </div>
   );
 }

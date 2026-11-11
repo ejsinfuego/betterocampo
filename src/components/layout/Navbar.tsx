@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
               className="h-9 w-auto shrink-0 object-contain sm:h-10"
             />
             <span className="min-w-0 leading-tight">
-              <span className="block truncate font-kapwa-serif text-base font-bold text-[#1d4ed8] sm:text-lg">
+              <span className="block truncate font-kapwa-serif font-extrabold text-[#1d4ed8] sm:text-lg">
                 {siteName}
               </span>
               <span className="block truncate text-xs text-gray-600">
