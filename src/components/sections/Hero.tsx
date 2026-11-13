@@ -26,7 +26,13 @@ export default function Hero() {
   };
 
   return (
-    <section className="font-inter relative w-full pt-10 pb-12 selection:bg-primary-200 selection:text-gray-950 sm:pt-14 sm:pb-16">
+    <section className="font-inter relative isolate w-full overflow-hidden pt-10 pb-12 selection:bg-primary-200 selection:text-gray-950 sm:pt-14 sm:pb-16">
+      <img
+        src="/logos/png/BetterOcampo-Seal.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 -right-40 -z-10 w-[34rem] max-w-none -translate-y-1/2 opacity-[0.055] select-none [mask-image:linear-gradient(to_bottom,black_45%,transparent_85%)] sm:-right-32 lg:w-[44rem]"
+      />
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,26rem)] lg:items-start lg:gap-x-8 xl:grid-cols-[minmax(0,1fr)_minmax(20rem,28rem)] xl:gap-x-10">
           <div className="animate-civic-fade-up max-w-2xl xl:max-w-3xl">
