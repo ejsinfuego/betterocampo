@@ -1,6 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { LngLatBounds } from 'maplibre-gl';
-import type { FeatureCollection, Geometry } from 'geojson';
+import type {
+  FeatureCollection,
+  Geometry,
+  MultiPolygon,
+  Polygon,
+} from 'geojson';
 import {
   Map,
   MapControls,
@@ -17,17 +22,60 @@ import {
   touristSpots,
   type OcampoPlace,
 } from '../../data/ocampoPlaces';
+import { barangayPopulation, DENSITY_STOPS } from '../../data/ocampoBarangays';
+import { labelPoint, type Area } from '../../lib/polygon';
+import BarangayLift, { type LiftTarget } from './BarangayLift';
+import BarangayBillboard from './BarangayBillboard';
+import type { BarangayStats } from './BarangayCard';
 import './ocampo-map.css';
+
+/** Width of TownFactsPanel plus its margin, kept clear when framing the town. */
+const FACTS_PANEL_PX = 264;
+const PITCH = 52;
+const BEARING = -14;
 
 const BOUNDARY_URL = '/geo/ocampo-barangays.geojson';
 
-type BarangayProps = {
+type RawBarangayProps = {
   psgc: string;
   name: string;
   areaSqKm: number;
 };
 
+type BarangayProps = BarangayStats;
+
 type BarangayCollection = FeatureCollection<Geometry, BarangayProps>;
+
+function withPopulation(
+  data: FeatureCollection<Geometry, RawBarangayProps>
+): BarangayCollection {
+  return {
+    ...data,
+    features: data.features.map(feature => {
+      const stats = barangayPopulation[feature.properties.psgc];
+      const population = stats?.pop2020 ?? 0;
+      return {
+        ...feature,
+        properties: {
+          ...feature.properties,
+          population,
+          pop2015: stats?.pop2015 ?? 0,
+          density:
+            feature.properties.areaSqKm > 0
+              ? Math.round(population / feature.properties.areaSqKm)
+              : 0,
+        },
+      };
+    }),
+  };
+}
+
+const densityFill = [
+  'interpolate',
+  ['linear'],
+  ['get', 'density'],
+  ...DENSITY_STOPS.flat(),
+];
 
 type OcampoMapProps = {
   activeId?: string | null;
@@ -58,7 +106,16 @@ function FitBarangays({ data }: { data: BarangayCollection }) {
       });
     }
     if (bounds.isEmpty()) return;
-    map.fitBounds(bounds, { padding: 28, duration: 0 });
+    const roomForFacts = map.getContainer().clientWidth >= 640;
+    map.fitBounds(bounds, {
+      padding: roomForFacts
+        ? { top: 40, right: 56, bottom: 24, left: FACTS_PANEL_PX }
+        : 28,
+      duration: 0,
+      pitch: PITCH,
+      bearing: BEARING,
+    });
+    if (!roomForFacts) map.setZoom(map.getZoom() + 0.35);
   }, [data, isLoaded, map]);
 
   return null;
@@ -126,6 +183,7 @@ function PlacePin({
           latitude={place.lat}
           offset={22}
           closeButton
+          focusAfterOpen={false}
           onClose={() => onSelect?.(null)}
           className="ocampo-popup__card max-w-64"
         >
@@ -151,7 +209,10 @@ export default function OcampoMap({
   className = '',
 }: OcampoMapProps) {
   const [barangays, setBarangays] = useState<BarangayCollection | null>(null);
-  const [hovered, setHovered] = useState<BarangayProps | null>(null);
+  const [hovered, setHovered] = useState<{
+    psgc: string;
+    origin: [number, number];
+  } | null>(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -159,10 +220,12 @@ export default function OcampoMap({
       .then(response => {
         if (!response.ok)
           throw new Error(`Barangay boundaries ${response.status}`);
-        return response.json() as Promise<BarangayCollection>;
+        return response.json() as Promise<
+          FeatureCollection<Geometry, RawBarangayProps>
+        >;
       })
       .then(data => {
-        if (!controller.signal.aborted) setBarangays(data);
+        if (!controller.signal.aborted) setBarangays(withPopulation(data));
       })
       .catch(error => {
         if (controller.signal.aborted) return;
@@ -173,6 +236,53 @@ export default function OcampoMap({
 
   const activePlace = ocampoPlaces.find(place => place.id === activeId) ?? null;
 
+  const hoveredFeature = useMemo(
+    () =>
+      hovered
+        ? (barangays?.features.find(
+            feature => feature.properties.psgc === hovered.psgc
+          ) ?? null)
+        : null,
+    [barangays, hovered]
+  );
+
+  const liftTarget = useMemo<LiftTarget | null>(() => {
+    if (!hovered || !hoveredFeature) return null;
+    const { geometry } = hoveredFeature;
+    if (geometry.type !== 'Polygon' && geometry.type !== 'MultiPolygon') {
+      return null;
+    }
+    return {
+      psgc: hovered.psgc,
+      population: hoveredFeature.properties.population,
+      areaSqKm: hoveredFeature.properties.areaSqKm,
+      geometry: geometry as Polygon | MultiPolygon,
+      origin: hovered.origin,
+    };
+  }, [hovered, hoveredFeature]);
+
+  const billboardAnchor = useMemo(
+    () => (liftTarget ? labelPoint(liftTarget.geometry as Area) : null),
+    [liftTarget]
+  );
+
+  const selectBarangay = (
+    event: {
+      feature: { properties: BarangayProps };
+      longitude: number;
+      latitude: number;
+    } | null
+  ) => {
+    setHovered(
+      event
+        ? {
+            psgc: event.feature.properties.psgc,
+            origin: [event.longitude, event.latitude],
+          }
+        : null
+    );
+  };
+
   return (
     <div
       className={`ocampo-map relative h-full min-h-[260px] w-full ${className}`}
@@ -181,6 +291,9 @@ export default function OcampoMap({
         theme="light"
         center={[OCAMPO_CENTER.lng, OCAMPO_CENTER.lat]}
         zoom={11}
+        pitch={PITCH}
+        bearing={BEARING}
+        maxPitch={70}
         scrollZoom={false}
       >
         <MapControls showZoom />
@@ -193,25 +306,28 @@ export default function OcampoMap({
               promoteId="psgc"
               interactive
               fillPaint={{
-                'fill-color': '#005df5',
-                'fill-opacity': 0.12,
+                'fill-color': densityFill as never,
+                'fill-opacity': 0.55,
               }}
               fillHoverPaint={{
-                'fill-color': '#005df5',
-                'fill-opacity': 0.32,
+                'fill-opacity': 0.75,
               }}
               linePaint={{
-                'line-color': '#0052d6',
+                'line-color': '#ffffff',
                 'line-width': 1.25,
               }}
-              onHover={event => {
-                setHovered(event?.feature.properties ?? null);
-              }}
-              onClick={event => {
-                setHovered(event.feature.properties);
-              }}
+              onHover={selectBarangay}
+              onClick={selectBarangay}
             />
+            <BarangayLift target={liftTarget} />
           </>
+        ) : null}
+        {hoveredFeature && billboardAnchor ? (
+          <BarangayBillboard
+            key={hoveredFeature.properties.psgc}
+            stats={hoveredFeature.properties}
+            anchor={billboardAnchor}
+          />
         ) : null}
         <MapRoute
           coordinates={touristSpots.map(spot => [spot.lng, spot.lat])}
@@ -231,15 +347,6 @@ export default function OcampoMap({
           />
         ))}
       </Map>
-      {hovered ? (
-        <div className="pointer-events-none absolute top-3 left-3 z-10 rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-semibold text-gray-900 shadow-sm">
-          {hovered.name}
-          <span className="font-medium text-gray-500">
-            {' '}
-            · {hovered.areaSqKm} km²
-          </span>
-        </div>
-      ) : null}
     </div>
   );
 }
