@@ -7,8 +7,16 @@ import { LANGUAGES } from '../../i18n/languages';
 import { isMeilisearchEnabled } from '../../lib/meilisearch';
 import type { LanguageType } from '../../types/index';
 import { cn } from '../../lib/utils';
+import HeaderWeather from './HeaderWeather';
 
 const LGU_FACEBOOK = 'https://www.facebook.com/101706771551898';
+
+const LOCAL_HOTLINES = [
+  { agency: 'PNP', number: '92077867646' },
+  { agency: 'BFP', number: '9615193815' },
+  { agency: 'RHU', number: '9122516900' },
+  { agency: 'MDRRMO', number: '9475714857' },
+];
 
 const serviceLinks =
   mainNavigation.find(item => item.href === '/services')?.children ?? [];
@@ -92,23 +100,36 @@ const Navbar: React.FC = () => {
     <>
       <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
         <div className="bg-primary-800 text-white">
-          <div className="mx-auto flex max-w-7xl items-center justify-end gap-3 px-4 py-1.5 sm:px-6">
-            <a
-              href="tel:911"
-              title="National emergency hotline. Local Ocampo numbers are listed only after they are verified."
-              className="rounded-md bg-white px-2 py-1 text-xs font-semibold text-[#c8102e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-            >
-              <span className="sm:hidden">911</span>
-              <span className="hidden sm:inline">Emergency 911</span>
-            </a>
-            <a
-              href={LGU_FACEBOOK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden whitespace-nowrap rounded-md border border-white/40 px-2 py-1 text-xs text-white sm:inline"
-            >
-              Facebook Page
-            </a>
+          <div className="mx-auto flex max-w-7xl items-center gap-3 overflow-x-auto whitespace-nowrap px-4 py-1.5 sm:px-6">
+            <HeaderWeather />
+            <div className="ml-auto flex shrink-0 items-center gap-3">
+              {LOCAL_HOTLINES.map(({ agency, number }) => (
+                <a
+                  key={agency}
+                  href={`tel:${number}`}
+                  title={`${agency} hotline. Local Ocampo numbers are listed only after they are verified.`}
+                  className="px-1 py-1 text-xs font-light text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-2"
+                >
+                  <span className="font-semibold">{agency}</span> {number}
+                </a>
+              ))}
+              <a
+                href="tel:911"
+                title="National emergency hotline. Local Ocampo numbers are listed only after they are verified."
+                className="rounded-md bg-white px-2 py-1 text-xs font-semibold text-[#c8102e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <span className="sm:hidden">911</span>
+                <span className="hidden sm:inline">Emergency 911</span>
+              </a>
+              <a
+                href={LGU_FACEBOOK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden whitespace-nowrap rounded-md border border-white/40 px-2 py-1 text-xs text-white sm:inline"
+              >
+                Facebook Page
+              </a>
+            </div>
           </div>
         </div>
 
@@ -249,6 +270,12 @@ const Navbar: React.FC = () => {
                   </Link>
                 );
               })}
+              <a
+                href="tel:9475714857"
+                className="flex h-11 items-center border-b border-gray-200 text-sm font-semibold text-[#c8102e]"
+              >
+                MDRRMO: 9475714857
+              </a>
               <a
                 href="tel:911"
                 className="flex h-11 items-center border-b border-gray-200 text-sm font-semibold text-[#c8102e]"

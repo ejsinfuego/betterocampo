@@ -13,40 +13,6 @@ const quickLinks = [
   { label: 'About', href: '/about' },
 ];
 
-/** Public LGU profile figures (PSA / DILG / PhilAtlas). */
-const municipalityFacts: { label: string; value: string; note: string }[] = [
-  {
-    label: 'Population',
-    value: '49,535',
-    note: 'PSA 2024 census',
-  },
-  {
-    label: 'Land area',
-    value: '118.33 km²',
-    note: 'PSA land area',
-  },
-  {
-    label: 'Barangays',
-    value: '25',
-    note: 'DILG Region V',
-  },
-  {
-    label: 'Density',
-    value: '419 / km²',
-    note: 'Based on 2024 census',
-  },
-  {
-    label: 'Founded',
-    value: '1949',
-    note: 'Municipality of Ocampo',
-  },
-  {
-    label: 'Postal code',
-    value: '4419',
-    note: 'Camarines Sur · Region V',
-  },
-];
-
 export default function Hero() {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -60,7 +26,13 @@ export default function Hero() {
   };
 
   return (
-    <section className="font-inter relative w-full pt-10 pb-12 selection:bg-primary-200 selection:text-gray-950 sm:pt-14 sm:pb-16">
+    <section className="font-inter relative isolate w-full overflow-hidden pt-10 pb-12 selection:bg-primary-200 selection:text-gray-950 sm:pt-14 sm:pb-16">
+      <img
+        src="/logos/png/BetterOcampo-Seal.png"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 -right-40 -z-10 w-[34rem] max-w-none -translate-y-1/2 opacity-[0.055] select-none [mask-image:linear-gradient(to_bottom,black_45%,transparent_85%)] sm:-right-32 lg:w-[44rem]"
+      />
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,26rem)] lg:items-start lg:gap-x-8 xl:grid-cols-[minmax(0,1fr)_minmax(20rem,28rem)] xl:gap-x-10">
           <div className="animate-civic-fade-up max-w-2xl xl:max-w-3xl">
@@ -131,49 +103,7 @@ export default function Hero() {
           </div>
           <HairlineLedgers className="mx-auto mt-8 w-full max-w-md lg:mx-0 lg:mt-1 lg:max-w-none" />
         </div>
-
-        <div className="mt-12 border-t border-primary-200 pt-8 sm:mt-14">
-          <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10 lg:gap-12">
-            <img
-              src="/logos/png/BetterOcampo-Seal.png"
-              alt="Better Ocampo"
-              className="mx-auto w-28 shrink-0 drop-shadow-[0_18px_28px_rgba(0,56,168,0.18)] sm:mx-0 sm:w-36"
-            />
-            <dl className="grid flex-1 grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:gap-x-8 xl:grid-cols-6">
-              {municipalityFacts.map(fact => (
-                <Fact
-                  key={fact.label}
-                  label={fact.label}
-                  value={fact.value}
-                  note={fact.note}
-                />
-              ))}
-            </dl>
-          </div>
-        </div>
       </div>
     </section>
-  );
-}
-
-function Fact({
-  label,
-  value,
-  note,
-}: {
-  label: string;
-  value: string;
-  note: string;
-}) {
-  return (
-    <div className="min-w-0">
-      <dt className="text-sm font-semibold text-gray-950">{label}</dt>
-      <dd className="mt-1 text-2xl leading-none font-semibold text-primary-900 tabular-nums">
-        {value}
-        <span className="mt-1.5 block text-sm leading-snug font-normal text-gray-700">
-          {note}
-        </span>
-      </dd>
-    </div>
   );
 }
