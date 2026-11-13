@@ -91,7 +91,7 @@ export default function GovernmentActivitySection({
           ) : null}
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
           {shown.map(category => (
             <DirectoryCard
               key={category.slug}
