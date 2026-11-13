@@ -3,11 +3,34 @@ import { ChevronDown } from 'lucide-react';
 import { municipalityFacts } from '../../data/ocampoFacts';
 import { cn } from '../../lib/utils';
 
-/** Glass panel over the map with the seal and the town's headline facts. */
-export default function TownFactsPanel({ className }: { className?: string }) {
-  const [open, setOpen] = useState(
-    () => window.matchMedia('(min-width: 640px)').matches
+function FactList({ id, className }: { id?: string; className?: string }) {
+  return (
+    <dl id={id} className={className}>
+      {municipalityFacts.map(fact => (
+        <div
+          key={fact.label}
+          className="flex items-center justify-between gap-3 py-1.5"
+        >
+          <dt className="min-w-0">
+            <span className="block text-[11px] font-semibold text-gray-700">
+              {fact.label}
+            </span>
+            <span className="block text-[10px] leading-snug text-gray-500">
+              {fact.note}
+            </span>
+          </dt>
+          <dd className="shrink-0 text-sm font-bold text-primary-900 tabular-nums">
+            {fact.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
   );
+}
+
+/** Collapsible glass panel over the map with the town's headline facts. */
+export default function TownFactsPanel({ className }: { className?: string }) {
+  const [open, setOpen] = useState(true);
 
   return (
     <section
@@ -22,13 +45,8 @@ export default function TownFactsPanel({ className }: { className?: string }) {
         onClick={() => setOpen(value => !value)}
         aria-expanded={open}
         aria-controls="town-facts"
-        className="flex w-full items-center gap-3 rounded-2xl p-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
+        className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
       >
-        <img
-          src="/logos/png/BetterOcampo-Seal.png"
-          alt=""
-          className="size-10 shrink-0 drop-shadow-[0_8px_14px_rgba(0,56,168,0.22)]"
-        />
         <span className="min-w-0 flex-1">
           <span className="block text-sm font-bold tracking-tight text-gray-950">
             Ocampo at a glance
@@ -47,30 +65,39 @@ export default function TownFactsPanel({ className }: { className?: string }) {
       </button>
 
       {open ? (
-        <dl
+        <FactList
           id="town-facts"
           className="animate-in fade-in-0 slide-in-from-bottom-1 divide-y divide-gray-200/70 border-t border-gray-200/70 px-3 py-1 duration-200"
-        >
-          {municipalityFacts.map(fact => (
-            <div
-              key={fact.label}
-              className="flex items-center justify-between gap-3 py-1.5"
-            >
-              <dt className="min-w-0">
-                <span className="block text-[11px] font-semibold text-gray-700">
-                  {fact.label}
-                </span>
-                <span className="block text-[10px] leading-snug text-gray-500">
-                  {fact.note}
-                </span>
-              </dt>
-              <dd className="shrink-0 text-sm font-bold text-primary-900 tabular-nums">
-                {fact.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        />
       ) : null}
+    </section>
+  );
+}
+
+/** The same facts, always open, for small screens where the panel would cover the map. */
+export function TownFactsStrip({ className }: { className?: string }) {
+  return (
+    <section
+      aria-label="Ocampo at a glance"
+      className={cn('px-4 py-3', className)}
+    >
+      <h3 className="text-sm font-bold tracking-tight text-gray-950">
+        Ocampo at a glance
+      </h3>
+      <p className="text-[11px] text-gray-600">Camarines Sur, Bicol Region</p>
+      <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-3">
+        {municipalityFacts.map(fact => (
+          <div key={fact.label} className="flex min-w-0 flex-col">
+            <dt className="text-[11px] font-semibold text-gray-700">
+              {fact.label}
+            </dt>
+            <dd className="text-base font-bold text-primary-900 tabular-nums">
+              {fact.value}
+            </dd>
+            <dd className="truncate text-[10px] text-gray-500">{fact.note}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }
