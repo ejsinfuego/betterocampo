@@ -31,20 +31,20 @@ export default function Hero() {
         src="/logos/png/BetterOcampo-Seal.png"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute top-1/2 -right-40 -z-10 w-[34rem] max-w-none -translate-y-1/2 opacity-[0.055] select-none [mask-image:linear-gradient(to_bottom,black_45%,transparent_85%)] sm:-right-32 lg:w-[44rem]"
+        className="pointer-events-none absolute top-1/2 -right-40 -z-10 w-[34rem] max-w-none -translate-y-1/2 opacity-[0.04] select-none sm:opacity-[0.055] [mask-image:linear-gradient(to_bottom,black_45%,transparent_85%)] sm:-right-32 lg:w-[44rem]"
       />
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,26rem)] lg:items-start lg:gap-x-8 xl:grid-cols-[minmax(0,1fr)_minmax(20rem,28rem)] xl:gap-x-10">
           <div className="animate-civic-fade-up max-w-2xl xl:max-w-3xl">
-            <h1 className="max-w-[14ch] text-[2.75rem] leading-[1.02] tracking-tight text-balance text-gray-950 sm:text-6xl lg:text-7xl">
+            <h1 className="max-w-[14ch] text-[2.125rem] leading-[1.05] sm:leading-[1.02] tracking-tight text-balance text-gray-950 sm:text-6xl lg:text-7xl">
               Community-driven guide to{' '}
               <span className="text-primary-800">Ocampo</span>
             </h1>
 
-            <p className="mt-5 max-w-[58ch] text-base leading-relaxed text-gray-800 sm:text-lg">
+            <p className="mt-4 max-w-[58ch] text-sm leading-relaxed text-gray-800 sm:mt-5 sm:text-lg">
               {t('hero.subtitle')}
             </p>
-            <p className="mt-2.5 max-w-[58ch] text-base leading-relaxed text-gray-800">
+            <p className="mt-2 max-w-[58ch] text-sm leading-relaxed text-gray-800 sm:mt-2.5 sm:text-base">
               Independent community guide.{' '}
               <Link
                 to="/about"
@@ -55,7 +55,7 @@ export default function Hero() {
               .
             </p>
 
-            <form onSubmit={onSearch} className="mt-7" role="search">
+            <form onSubmit={onSearch} className="mt-5 sm:mt-7" role="search">
               <label htmlFor="home-search" className="sr-only">
                 Search this guide
               </label>
@@ -71,7 +71,7 @@ export default function Hero() {
                       ? 'Search services and guides'
                       : 'Browse the guides below'
                   }
-                  className={`h-14 w-full rounded-2xl border border-gray-300 bg-white pl-11 text-base text-gray-950 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)] caret-primary-700 outline-none placeholder:text-gray-700 focus:border-primary-600 focus:ring-2 focus:ring-primary-500/25 ${
+                  className={`h-12 w-full rounded-xl sm:h-14 sm:rounded-2xl border border-gray-300 bg-white pl-11 text-base text-gray-950 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)] caret-primary-700 outline-none placeholder:text-gray-700 focus:border-primary-600 focus:ring-2 focus:ring-primary-500/25 ${
                     isMeilisearchEnabled ? 'pr-32' : 'pr-4'
                   }`}
                 />
@@ -87,13 +87,13 @@ export default function Hero() {
               </div>
               <nav
                 aria-label="Common guides"
-                className="mt-1 flex flex-wrap gap-x-5"
+                className="mt-1 flex flex-wrap gap-x-3 sm:gap-x-4"
               >
                 {quickLinks.map(link => (
                   <Link
                     key={link.href}
                     to={link.href}
-                    className="inline-flex min-h-11 items-center text-base font-semibold text-primary-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+                    className="inline-flex min-h-11 items-center text-[13px] font-semibold sm:text-sm text-primary-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
                   >
                     {link.label}
                   </Link>
@@ -101,7 +101,7 @@ export default function Hero() {
               </nav>
             </form>
           </div>
-          <HairlineLedgers className="mx-auto mt-8 w-full max-w-md lg:mx-0 lg:mt-1 lg:max-w-none" />
+          <HairlineLedgers className="mx-auto mt-8 hidden w-full max-w-md sm:block lg:mx-0 lg:mt-1 lg:max-w-none" />
         </div>
       </div>
     </section>
