@@ -11,6 +11,13 @@ import HeaderWeather from './HeaderWeather';
 
 const LGU_FACEBOOK = 'https://www.facebook.com/101706771551898';
 
+const LOCAL_HOTLINES = [
+  { agency: 'PNP', number: '92077867646' },
+  { agency: 'BFP', number: '9615193815' },
+  { agency: 'RHU', number: '9122516900' },
+  { agency: 'MDRRMO', number: '9475714857' },
+];
+
 const serviceLinks =
   mainNavigation.find(item => item.href === '/services')?.children ?? [];
 
@@ -96,38 +103,16 @@ const Navbar: React.FC = () => {
           <div className="mx-auto flex max-w-7xl items-center gap-3 overflow-x-auto whitespace-nowrap px-4 py-1.5 sm:px-6">
             <HeaderWeather />
             <div className="ml-auto flex shrink-0 items-center gap-3">
-              <a
-                href="tel:92077867646"
-                title="PNP hotline. Local Ocampo numbers are listed only after they are verified."
-                className="px-2 py-1 text-xs font-light text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                <span className="sm:hidden">92077867646</span>
-                <span className="hidden sm:inline">PNP: 92077867646</span>
-              </a>
-              <a
-                href="tel:9615193815"
-                title="BFP hotline. Local Ocampo numbers are listed only after they are verified."
-                className="px-2 py-1 text-xs font-light text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                <span className="sm:hidden">9615193815</span>
-                <span className="hidden sm:inline">BFP: 9615193815</span>
-              </a>
-              <a
-                href="tel:9122516900"
-                title="RHU hotline. Local Ocampo numbers are listed only after they are verified."
-                className="px-2 py-1 text-xs font-light text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                <span className="sm:hidden">9122516900</span>
-                <span className="hidden sm:inline">RHU: 9122516900</span>
-              </a>
-              <a
-                href="tel:9475714857"
-                title="MDRRMO hotline. Local Ocampo numbers are listed only after they are verified."
-                className="px-2 py-1 text-xs font-light text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-              >
-                <span className="sm:hidden">9475714857</span>
-                <span className="hidden sm:inline">MDRRMO: 9475714857</span>
-              </a>
+              {LOCAL_HOTLINES.map(({ agency, number }) => (
+                <a
+                  key={agency}
+                  href={`tel:${number}`}
+                  title={`${agency} hotline. Local Ocampo numbers are listed only after they are verified.`}
+                  className="px-1 py-1 text-xs font-light text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-2"
+                >
+                  <span className="font-semibold">{agency}</span> {number}
+                </a>
+              ))}
               <a
                 href="tel:911"
                 title="National emergency hotline. Local Ocampo numbers are listed only after they are verified."
