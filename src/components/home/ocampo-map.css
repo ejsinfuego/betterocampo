@@ -19,6 +19,11 @@
   font-size: 10px;
 }
 
+.ocampo-map .ocampo-billboard,
+.ocampo-map .ocampo-billboard * {
+  pointer-events: none;
+}
+
 .ocampo-popup__card {
   padding: 12px 14px;
   background: #fff;
