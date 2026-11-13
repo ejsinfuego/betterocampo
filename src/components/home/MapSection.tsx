@@ -74,12 +74,12 @@ export default function MapSection() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-2 self-start sm:flex-row lg:self-end">
+          <div className="grid grid-cols-2 gap-2 sm:flex sm:self-start lg:self-end">
             <a
               href={OSM_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 items-center justify-center gap-1.5 rounded-xl bg-primary-600 px-5 text-sm font-semibold text-white shadow-sm hover:bg-primary-700"
+              className="inline-flex h-11 items-center justify-center gap-1.5 rounded-xl bg-primary-600 px-3 text-sm sm:px-5 font-semibold text-white shadow-sm hover:bg-primary-700"
             >
               <MapPin className="size-4" />
               OpenStreetMap
@@ -89,7 +89,7 @@ export default function MapSection() {
               href={GOOGLE_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 items-center justify-center gap-1.5 rounded-xl border border-gray-200/90 bg-white/80 px-5 text-sm font-semibold text-gray-900 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm hover:bg-white hover:text-primary-700"
+              className="inline-flex h-11 items-center justify-center gap-1.5 rounded-xl border border-gray-200/90 bg-white/80 px-3 text-sm sm:px-5 font-semibold text-gray-900 shadow-[0_1px_2px_rgba(15,23,42,0.04)] backdrop-blur-sm hover:bg-white hover:text-primary-700"
             >
               Google Maps
               <ExternalLink className="size-3.5 opacity-70" />
