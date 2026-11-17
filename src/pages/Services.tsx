@@ -16,7 +16,7 @@ import { useState, useEffect } from 'react';
 const Services: React.FC = () => {
   const { category } = useParams();
   const [categoryIndex, setCategoryIndex] = useState<CategoryIndex>({
-    layout: 'list',
+    layout: 'grid',
     pages: [],
   });
   const [loading, setLoading] = useState(false);
