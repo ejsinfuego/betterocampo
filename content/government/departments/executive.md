@@ -1,73 +1,39 @@
-# Your Mayor
+# Executive
 
-Find out about your Mayor and Vice Mayor, including upcoming events, the Mayor's Community Assistance Program, mayoral history, and information about other historic roles in the local government unit.
+Mayor and Vice Mayor for the Local Government Unit of {GOVERNMENT_NAME}, reported for the {YEAR_ELECTED}–2028 term.
 
----
+## Mayor
 
-# Your Mayor and Vice Mayor
+- Name: {MAYOR}
+- Photo: {MAYOR_PHOTO}
+- Phone: {MAYOR_PHONE}
+- Email: {MAYOR_EMAIL}
+- Elected: {YEAR_ELECTED}
 
-The **Mayor** is the chief executive official of the **Local Government Unit of {GOVERNMENT_NAME}**. The Mayor is elected by residents during the **Philippine National and Local Elections**, which are held every three years.
+Mayor **{MAYOR}** was reported as the winner of the **{YEAR_ELECTED}** mayoral race in **{GOVERNMENT_NAME}**. This page lists officeholders from public election reports and the LGU official directory. It does not describe programs, platforms, or personal history that have not been checked against an official source.
 
-The Mayor serves as the head of the local government and is responsible for implementing programs, policies, and development initiatives approved by the **Sangguniang Panlungsod / Sangguniang Bayan (City or Municipal Council)**.
+## Vice Mayor
 
-The Mayor’s duties include representing the LGU during official functions, leading local development programs, overseeing city or municipal services, and ensuring that public services are effectively delivered to residents.
+- Name: {VICE_MAYOR}
+- Photo: {VICE_MAYOR_PHOTO}
+- Phone: {VICE_MAYOR_PHONE}
+- Phone note: {VICE_MAYOR_PHONE_NOTE}
+- Email: {VICE_MAYOR_EMAIL}
+- Elected: {YEAR_ELECTED}
 
-The **current Mayor is {MAYOR}.**
+**{VICE_MAYOR}** presides over the Sangguniang Bayan. When the Mayor is unable to perform official duties, the Vice Mayor may serve as Acting Mayor under Philippine local government law.
 
-**Mayor {MAYOR}** was elected as **Mayor of {GOVERNMENT_NAME}** during the **{YEAR_ELECTED} National and Local Elections**.
+## Mayor responsibilities
 
----
+- Implementing local development plans
+- Overseeing local government operations
+- Managing emergency and disaster response
+- Representing the LGU in regional and national engagements
+- Delivering public services approved with the Sangguniang Bayan
 
-## Mayor of {GOVERNMENT_NAME}
+## Invite the Mayor
 
-**Image Caption**
-
-Mayor of **{GOVERNMENT_NAME}**, **{MAYOR}**
-
----
-
-### Biography of the Mayor
-
-Mayor **{MAYOR}** was reported as the winner of the **{YEAR_ELECTED}** mayoral race in **{GOVERNMENT_NAME}**. This page lists the officeholders from public election reports. It does not describe programs, platforms, or personal history that have not been checked against an official source.
-
----
-
-# Vice Mayor
-
----
-
-## Biography of the Vice Mayor
-
-**{VICE_MAYOR}** currently serves as the **Vice Mayor of {GOVERNMENT_NAME}**.
-
-The Vice Mayor presides over the **Sangguniang Panlungsod / Sangguniang Bayan**, ensuring legislative sessions run properly and that ordinances and resolutions support the development goals of the local government.
-
-Vice Mayor **{VICE_MAYOR}** was reported as the winner of the **{YEAR_ELECTED}** vice-mayoral race in **{GOVERNMENT_NAME}**.
-
----
-
-# About the Office of the Vice Mayor
-
-The **Vice Mayor** performs legislative functions and presides over meetings of the **City or Municipal Council**.
-
-When the Mayor is unable to perform official duties due to travel, illness, or other official commitments, the **Vice Mayor assumes responsibilities as Acting Mayor**, in accordance with Philippine local government laws.
-
-The Vice Mayor may also represent the city or municipality in official functions, civic ceremonies, and community events when designated by the Mayor.
-
----
-
-# Invite the Mayor to Your Event
-
-Residents, organizations, and institutions may invite the Mayor to attend official community activities such as:
-
-- community celebrations
-- school programs
-- civic ceremonies
-- government events
-
-To request the Mayor’s attendance, please submit a formal invitation to the **Office of the Mayor**.
-
-Required information:
+Residents and organizations may invite the Mayor to community celebrations, school programs, civic ceremonies, and government events. Submit a formal invitation to the Office of the Mayor with:
 
 - Name of organization
 - Event title
@@ -75,61 +41,19 @@ Required information:
 - Event location
 - Contact person and details
 
----
+## Contact the Mayor's Office
 
-# Mayor's Events and News
+- Address: Municipal Hall, Ocampo, Camarines Sur 4419
+- Telephone: {MAYOR_PHONE}
+- Email: {MAYOR_EMAIL}
+- Website: https://ocampo.camarinessur.gov.ph
+- Facebook: https://www.facebook.com/101706771551898
 
-Stay updated with the latest activities of the Mayor, including:
+## Sources
 
-- community visits
-- project launches
-- public consultations
-- official ceremonies
+- LGU Ocampo official directory — Mayor telephone and email.
+- LGU-Ocampo Sangguniang Bayan office directory — Vice Mayor telephone and email. Digits marked uncertain were partially obscured in the source image.
+- [Rappler, 2025 local results for Ocampo](https://ph.rappler.com/elections/2025/local-race/camarines-sur/ocampo)
+- [LGU - Ocampo, Camarines Sur on Facebook](https://www.facebook.com/101706771551898)
 
-Updates will be posted regularly on the **official website and social media channels of {GOVERNMENT_NAME}**.
-
----
-
-# Mayoral History and Key Facts
-
-The Office of the Mayor plays a vital role in guiding the development of **{GOVERNMENT_NAME}**.
-
-Key responsibilities include:
-
-- implementing local development plans
-- overseeing local government operations
-- managing emergency and disaster response
-- representing the LGU in regional and national engagements
-
-A historical list of previous mayors and key milestones of the city or municipality can be found on the **Mayoral History page**.
-
----
-
-# Other Historic Roles in the LGU
-
-The local government also recognizes other important civic and ceremonial roles that have contributed to the history of **{GOVERNMENT_NAME}**, including:
-
-- former municipal presidents
-- distinguished public servants
-- honorary community leaders
-
-These roles reflect the legacy of leadership and public service within the community.
-
----
-
-# Contact the Mayor's Office
-
-**Office of the Mayor**
-City/Municipal Hall of **{GOVERNMENT_NAME}**
-
-**Address:**
-Municipal Hall, Ocampo, Camarines Sur 4419
-
-**Telephone:**
-Not yet verified
-
-**Email:**
-Not yet verified
-
-**Official LGU website:**
-https://ocampo.camarinessur.gov.ph
+The municipal hall street address beyond ZIP 4419 is still not listed from a clear public source. The municipal website returned an error when checked; public updates are also posted on the LGU Facebook page.
