@@ -2,16 +2,9 @@ import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { ArrowRight, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { RESIDENT_QUICK_LINKS } from '../../data/residentNeeds';
 import { isMeilisearchEnabled } from '../../lib/meilisearch';
 import HairlineLedgers from '../hairline/HairlineLedgers';
-
-const quickLinks = [
-  { label: 'Health', href: '/services/health-services' },
-  { label: 'Business', href: '/services/business' },
-  { label: 'Social welfare', href: '/services/social-welfare' },
-  { label: 'Departments', href: '/government/departments' },
-  { label: 'About', href: '/about' },
-];
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -86,18 +79,33 @@ export default function Hero() {
                 ) : null}
               </div>
               <nav
-                aria-label="Common guides"
+                aria-label="Common resident needs"
                 className="mt-1 flex flex-wrap gap-x-3 sm:gap-x-4"
               >
-                {quickLinks.map(link => (
-                  <Link
-                    key={link.href}
-                    to={link.href}
-                    className="inline-flex min-h-11 items-center text-[13px] font-semibold sm:text-sm text-primary-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
+                {RESIDENT_QUICK_LINKS.map(link => {
+                  const className =
+                    'inline-flex min-h-11 items-center text-[13px] font-semibold text-primary-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:text-sm';
+
+                  if ('external' in link && link.external) {
+                    return (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={className}
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <Link key={link.href} to={link.href} className={className}>
+                      {link.label}
+                    </Link>
+                  );
+                })}
               </nav>
             </form>
           </div>

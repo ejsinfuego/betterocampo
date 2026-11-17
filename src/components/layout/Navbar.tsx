@@ -63,6 +63,7 @@ const Navbar: React.FC = () => {
 
   const navItems = [
     { label: 'Home', href: '/' },
+    { label: t('navbar.needs'), href: '/needs' },
     { label: t('navbar.services'), href: '/services' },
     { label: t('navbar.government'), href: '/government' },
     { label: 'About', href: '/about' },
@@ -99,7 +100,7 @@ const Navbar: React.FC = () => {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
-        <div className="bg-primary-800 text-white">
+        <div id="hotlines" className="bg-primary-800 text-white">
           <div className="mx-auto flex max-w-7xl items-center gap-3 overflow-x-auto whitespace-nowrap px-4 py-1.5 sm:px-6">
             <HeaderWeather />
             <div className="ml-auto flex shrink-0 items-center gap-3">
