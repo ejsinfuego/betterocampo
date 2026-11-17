@@ -1,12 +1,5 @@
 import type { LucideIcon } from 'lucide-react';
-import {
-  Cherry,
-  Droplets,
-  Landmark,
-  Mountain,
-  PawPrint,
-  Trees,
-} from 'lucide-react';
+import { Cherry, Droplets, Landmark, PawPrint, Trees } from 'lucide-react';
 
 /** Public places in / near Ocampo with map coordinates from OSM / PhilAtlas. */
 
@@ -90,18 +83,6 @@ export const ocampoPlaces: OcampoPlace[] = [
     icon: Cherry,
     blurb: 'Sweet highland berries when the season is right.',
     precision: 'approximate',
-  },
-  {
-    id: 'consocep-gateway',
-    name: 'Consocep Nature Park',
-    barangay: 'Consocep, Tigaon',
-    note: 'OSM pin in neighboring Tigaon — reached via Ocampo’s Hanawan–Consocep Road.',
-    lat: 13.6155576,
-    lng: 123.4240646,
-    kind: 'spot',
-    icon: Mountain,
-    blurb: 'Mountain park just past Ocampo — gateway is through Hanawan.',
-    precision: 'exact',
   },
 ];
 
