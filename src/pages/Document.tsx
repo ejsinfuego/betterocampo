@@ -25,6 +25,12 @@ import {
   type CategoryIndex,
 } from '../data/yamlLoader';
 import SEO from '../components/SEO';
+import ContactView from '../components/government/ContactView';
+import ExecutiveView from '../components/government/ExecutiveView';
+import LegislativeView from '../components/government/LegislativeView';
+import { parseContactMarkdown } from '../components/government/contactDirectory';
+import { parseExecutiveMarkdown } from '../components/government/executiveProfile';
+import { parseLegislativeMarkdown } from '../components/government/legislativeRoster';
 import { FileText } from 'lucide-react';
 
 interface DocumentProps {
@@ -186,6 +192,19 @@ export default function Document({
     return null;
   }
 
+  const legislativeRoster =
+    documentSlug === 'legislative'
+      ? parseLegislativeMarkdown(markdownContent.content)
+      : null;
+  const contactDirectory =
+    documentSlug === 'contact'
+      ? parseContactMarkdown(markdownContent.content)
+      : null;
+  const executiveProfile =
+    documentSlug === 'executive'
+      ? parseExecutiveMarkdown(markdownContent.content)
+      : null;
+
   return (
     <>
       <SEO
@@ -198,21 +217,59 @@ export default function Document({
       />
       <CivicPage>
         <Breadcrumbs items={breadcrumbs} />
-        <SurfaceCard as="article" className="p-5 sm:p-8">
-          {markdownContent.description ? (
-            <p className="mb-5 rounded-xl border border-primary-100 bg-primary-50/70 px-4 py-3 text-sm text-gray-700">
-              {markdownContent.description}
-            </p>
-          ) : null}
-          <div className="markdown-content">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={markdownComponents}
-            >
-              {markdownContent.content}
-            </ReactMarkdown>
-          </div>
-        </SurfaceCard>
+        {legislativeRoster ? (
+          <>
+            <PageHeader
+              title={markdownContent.title || 'Sangguniang Bayan'}
+              description={
+                legislativeRoster.summary ||
+                markdownContent.description ||
+                `Sangguniang Bayan roster for term ${legislativeRoster.term}.`
+              }
+            />
+            <LegislativeView roster={legislativeRoster} />
+          </>
+        ) : contactDirectory ? (
+          <>
+            <PageHeader
+              title={markdownContent.title || 'Contact'}
+              description={
+                contactDirectory.summary ||
+                markdownContent.description ||
+                'How to reach municipal offices in Ocampo.'
+              }
+            />
+            <ContactView directory={contactDirectory} />
+          </>
+        ) : executiveProfile ? (
+          <>
+            <PageHeader
+              title={markdownContent.title || 'Executive'}
+              description={
+                executiveProfile.summary ||
+                markdownContent.description ||
+                'Mayor and Vice Mayor for the current term.'
+              }
+            />
+            <ExecutiveView profile={executiveProfile} />
+          </>
+        ) : (
+          <SurfaceCard as="article" className="p-5 sm:p-8">
+            {markdownContent.description ? (
+              <p className="mb-5 rounded-xl border border-primary-100 bg-primary-50/70 px-4 py-3 text-sm text-gray-700">
+                {markdownContent.description}
+              </p>
+            ) : null}
+            <div className="markdown-content">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={markdownComponents}
+              >
+                {markdownContent.content}
+              </ReactMarkdown>
+            </div>
+          </SurfaceCard>
+        )}
       </CivicPage>
     </>
   );

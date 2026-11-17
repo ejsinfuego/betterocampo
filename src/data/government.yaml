@@ -20,7 +20,7 @@ categories:
         slug: 'department-of-transportation'
   - category: 'News'
     slug: 'news'
-    description: 'Stay informed with the latest local government news, announcements, and policy updates.'
+    description: 'Recent public posts from the LGU Facebook page for the Municipality of Ocampo.'
     icon: 'Newspaper'
     subcategories:
       - name: 'News'

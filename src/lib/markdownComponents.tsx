@@ -271,6 +271,20 @@ export function createMarkdownComponents(theme: TypographyTheme) {
     hr: ({ ...props }: HTMLAttributes<HTMLHRElement>) => (
       <hr className={theme.components.hr} {...props} />
     ),
+    img: ({
+      src,
+      alt,
+      ...props
+    }: { src?: string; alt?: string } & HTMLAttributes<HTMLImageElement>) => (
+      <img
+        src={src}
+        alt={alt ?? ''}
+        loading="lazy"
+        decoding="async"
+        className="my-4 h-auto w-full max-w-xl rounded-2xl border border-gray-200/90 object-cover shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)]"
+        {...props}
+      />
+    ),
     table: ({
       children,
       ...props

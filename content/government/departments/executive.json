@@ -3,7 +3,14 @@
   "MAYOR": "Ronald Allan J. Go",
   "MAYOR_HE_SHE": "he",
   "HONORIFIC_TITLE": "Honorable",
-  "VICE_MAYOR": "Fidel R. Carido, Jr.",
+  "MAYOR_PHONE": "0960-322-5445",
+  "MAYOR_EMAIL": "lguocampo.omm@gmail.com",
+  "MAYOR_PHOTO": "/government/mayor-ronald-allan-go.jpg",
+  "VICE_MAYOR": "Atty. Fidel R. Carido, Jr.",
   "VICE_MAYOR_HE_SHE": "he",
+  "VICE_MAYOR_PHOTO": "/government/vice-mayor-fidel-carido.png",
+  "VICE_MAYOR_PHONE": "0906-632-4411",
+  "VICE_MAYOR_PHONE_NOTE": "",
+  "VICE_MAYOR_EMAIL": "fidelcaridojr@gmail.com",
   "YEAR_ELECTED": "2025"
 }

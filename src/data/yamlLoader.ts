@@ -81,7 +81,7 @@ export async function loadCategoryIndex(
 ): Promise<CategoryIndex> {
   const yamlContent = categoryIndexMap[categorySlug];
   if (!yamlContent) {
-    return { layout: 'list', pages: [] };
+    return { layout: 'grid', pages: [] };
   }
   try {
     const indexData: CategoryIndexData = yaml.load(
@@ -90,7 +90,7 @@ export async function loadCategoryIndex(
     return {
       title: indexData.title,
       description: indexData.description,
-      layout: indexData.layout ?? 'list',
+      layout: indexData.layout ?? 'grid',
       pages: indexData.pages || [],
     };
   } catch (parseError) {
@@ -98,7 +98,7 @@ export async function loadCategoryIndex(
       `Failed to parse YAML content for category ${categorySlug}:`,
       parseError
     );
-    return { layout: 'list', pages: [] };
+    return { layout: 'grid', pages: [] };
   }
 }
 
