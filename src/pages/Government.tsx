@@ -9,6 +9,7 @@ import * as LucideIcons from 'lucide-react';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import GovernmentActivitySection from '../components/home/GovernmentActivitySection';
 import SEO from '../components/SEO';
+import FacebookPageFeed from '../components/government/FacebookPageFeed';
 import DirectoryCard from '../components/ui/DirectoryCard';
 import { CivicPage, Notice, PageHeader } from '../components/ui/PageFrame';
 import { useState, useEffect } from 'react';
@@ -16,7 +17,7 @@ import { useState, useEffect } from 'react';
 const Government: React.FC = () => {
   const { category } = useParams();
   const [categoryIndex, setCategoryIndex] = useState<CategoryIndex>({
-    layout: 'list',
+    layout: 'grid',
     pages: [],
   });
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,7 @@ const Government: React.FC = () => {
   const Icon = ResolvedIcon ?? LucideIcons.Landmark;
 
   useEffect(() => {
-    if (category && categoryData) {
+    if (category && categoryData && category !== 'news') {
       setLoading(true);
       getCategorySubcategories(category)
         .then(setCategoryIndex)
@@ -85,7 +86,9 @@ const Government: React.FC = () => {
           description={categoryData.description}
         />
 
-        {loading ? (
+        {category === 'news' ? (
+          <FacebookPageFeed />
+        ) : loading ? (
           <p className="text-sm text-gray-500">Loading pages...</p>
         ) : (
           <>
