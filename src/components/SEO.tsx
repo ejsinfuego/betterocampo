@@ -8,6 +8,7 @@ interface SEOProps {
   url?: string;
   type?: string;
   siteName?: string;
+  jsonLd?: string;
 }
 
 export default function SEO({
@@ -18,6 +19,7 @@ export default function SEO({
   url,
   type = 'website',
   siteName = import.meta.env.VITE_GOVERNMENT_NAME || 'Local Government Website',
+  jsonLd,
 }: SEOProps) {
   const defaultTitle = `${siteName} - Official Government Website`;
   const defaultDescription =
@@ -106,6 +108,8 @@ export default function SEO({
         sizes="16x16"
         href="/favicon-16x16.png"
       />
+
+      {jsonLd ? <script type="application/ld+json">{jsonLd}</script> : null}
     </Helmet>
   );
 }
