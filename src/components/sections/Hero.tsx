@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router';
 import { ArrowRight, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { RESIDENT_QUICK_LINKS } from '../../data/residentNeeds';
-import { isMeilisearchEnabled } from '../../lib/meilisearch';
 import HairlineLedgers from '../hairline/HairlineLedgers';
 
 export default function Hero() {
@@ -14,7 +13,7 @@ export default function Hero() {
   const onSearch = (event: FormEvent) => {
     event.preventDefault();
     const trimmed = query.trim();
-    if (!trimmed || !isMeilisearchEnabled) return;
+    if (!trimmed) return;
     navigate(`/search?q=${encodeURIComponent(trimmed)}`);
   };
 
@@ -59,24 +58,16 @@ export default function Hero() {
                   type="search"
                   value={query}
                   onChange={event => setQuery(event.target.value)}
-                  placeholder={
-                    isMeilisearchEnabled
-                      ? 'Search services and guides'
-                      : 'Browse the guides below'
-                  }
-                  className={`h-12 w-full rounded-xl sm:h-14 sm:rounded-2xl border border-gray-300 bg-white pl-11 text-base text-gray-950 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)] caret-primary-700 outline-none placeholder:text-gray-700 focus:border-primary-600 focus:ring-2 focus:ring-primary-500/25 ${
-                    isMeilisearchEnabled ? 'pr-32' : 'pr-4'
-                  }`}
+                  placeholder="Search services and guides"
+                  className="h-12 w-full rounded-xl border border-gray-300 bg-white pr-32 pl-11 text-base text-gray-950 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)] caret-primary-700 outline-none placeholder:text-gray-700 focus:border-primary-600 focus:ring-2 focus:ring-primary-500/25 sm:h-14 sm:rounded-2xl"
                 />
-                {isMeilisearchEnabled ? (
-                  <button
-                    type="submit"
-                    className="absolute top-1/2 right-2 inline-flex h-10 -translate-y-1/2 items-center gap-1 rounded-xl bg-primary-600 px-4 text-sm font-semibold text-white hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
-                  >
-                    Search
-                    <ArrowRight className="size-4" />
-                  </button>
-                ) : null}
+                <button
+                  type="submit"
+                  className="absolute top-1/2 right-2 inline-flex h-10 -translate-y-1/2 items-center gap-1 rounded-xl bg-primary-600 px-4 text-sm font-semibold text-white hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+                >
+                  Search
+                  <ArrowRight className="size-4" />
+                </button>
               </div>
               <nav
                 aria-label="Common resident needs"
