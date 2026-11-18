@@ -3,42 +3,29 @@ import { Link } from 'react-router';
 import { useQueryState } from 'nuqs';
 import { ArrowRight, Search as SearchIcon } from 'lucide-react';
 import { trackSearch } from '../lib/analytics';
-import { searchClient, SEARCH_INDEX } from '../lib/meilisearch';
-import type { SearchHit } from '../lib/meilisearch';
-import { CivicPage, PageHeader, SurfaceCard } from '../components/ui/PageFrame';
+import { searchContent } from '../lib/search';
+import type { SearchHit } from '../lib/search';
+import { CivicPage, PageHeader } from '../components/ui/PageFrame';
 
 export default function Search() {
   const [query, setQuery] = useQueryState('q', { defaultValue: '' });
   const [results, setResults] = useState<SearchHit[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!query.trim()) {
       setResults([]);
       setHasSearched(false);
-      setError(null);
       return;
     }
 
-    const timer = setTimeout(async () => {
+    const timer = setTimeout(() => {
       const term = query.trim();
-      setIsLoading(true);
-      setError(null);
-      try {
-        const index = searchClient!.index(SEARCH_INDEX);
-        const res = await index.search<SearchHit>(term, { limit: 20 });
-        setResults(res.hits);
-        setHasSearched(true);
-        trackSearch(term);
-      } catch {
-        setError('Search is unavailable. Please try again later.');
-        setResults([]);
-      } finally {
-        setIsLoading(false);
-      }
-    }, 300);
+      const hits = searchContent(term);
+      setResults(hits);
+      setHasSearched(true);
+      trackSearch(term);
+    }, 200);
 
     return () => clearTimeout(timer);
   }, [query]);
@@ -63,16 +50,8 @@ export default function Search() {
         />
       </div>
 
-      {error && (
-        <p className="py-10 text-center text-sm text-error-600">{error}</p>
-      )}
-
-      {!error && isLoading && (
-        <p className="py-10 text-center text-sm text-gray-500">Searching...</p>
-      )}
-
-      {!error && !isLoading && hasSearched && results.length === 0 && (
-        <p className="py-10 text-center text-sm text-gray-500">
+      {hasSearched && results.length === 0 && (
+        <p className="py-8 text-center text-sm text-gray-500">
           No results for{' '}
           <span className="font-medium text-gray-800">
             &ldquo;{query}&rdquo;
@@ -80,46 +59,48 @@ export default function Search() {
         </p>
       )}
 
-      {!error && !isLoading && results.length > 0 && (
-        <div className="space-y-3">
-          <p className="text-sm text-gray-500">
+      {results.length > 0 && (
+        <div>
+          <p className="mb-1 text-xs text-gray-500">
             {results.length} result{results.length !== 1 ? 's' : ''} for &ldquo;
             {query}&rdquo;
           </p>
-          {results.map(hit => (
-            <Link key={hit.id} to={hit.url} className="group block">
-              <SurfaceCard className="civic-card-hover p-5 transition-[border-color,background-color,box-shadow] duration-300 hover:border-gray-300 hover:bg-white">
-                <div className="mb-2 flex items-center gap-2">
-                  <span
-                    className={`text-[11px] font-medium tracking-wide uppercase ${
-                      hit.type === 'service'
-                        ? 'text-primary-700'
-                        : 'text-emerald-700'
-                    }`}
-                  >
-                    {hit.category}
-                  </span>
-                </div>
-                <h2 className="text-lg font-semibold tracking-tight text-gray-950 transition-colors group-hover:text-primary-700">
-                  {hit.title}
-                </h2>
-                {hit.description ? (
-                  <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-gray-500">
-                    {hit.description}
-                  </p>
-                ) : null}
-                <div className="mt-4 flex items-center gap-1.5 text-sm font-medium text-primary-700">
-                  <span>Open</span>
-                  <ArrowRight className="size-4 opacity-60 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100" />
-                </div>
-              </SurfaceCard>
-            </Link>
-          ))}
+          <ul className="divide-y divide-gray-100 border-t border-gray-100">
+            {results.map(hit => (
+              <li key={hit.id}>
+                <Link
+                  to={hit.url}
+                  className="group flex items-start gap-3 py-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p
+                      className={`text-[11px] font-medium tracking-wide uppercase ${
+                        hit.type === 'service'
+                          ? 'text-primary-700'
+                          : 'text-emerald-700'
+                      }`}
+                    >
+                      {hit.category}
+                    </p>
+                    <p className="mt-0.5 text-[15px] font-semibold tracking-tight text-gray-950 group-hover:text-primary-800">
+                      {hit.title}
+                    </p>
+                    {hit.description ? (
+                      <p className="mt-0.5 line-clamp-1 text-sm text-gray-500">
+                        {hit.description}
+                      </p>
+                    ) : null}
+                  </div>
+                  <ArrowRight className="mt-1 size-4 shrink-0 text-gray-300 transition-all group-hover:translate-x-0.5 group-hover:text-primary-700" />
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
-      {!hasSearched && !isLoading && !error && (
-        <p className="py-10 text-center text-sm text-gray-400">
+      {!hasSearched && (
+        <p className="py-8 text-center text-sm text-gray-400">
           Start typing to search across services and government information
         </p>
       )}
