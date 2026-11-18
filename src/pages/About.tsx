@@ -70,8 +70,15 @@ const promises = [
         >
           Government records
         </Link>{' '}
-        cover officials, the budget, national projects, ordinances, and contact
-        details that could be checked against a public source.{' '}
+        cover officials, the budget, ordinances, and contact details that could
+        be checked against a public source.{' '}
+        <Link
+          className="font-semibold text-primary-700 underline"
+          to="/projects"
+        >
+          National projects
+        </Link>{' '}
+        that name the town are on their own page.{' '}
         <Link
           className="font-semibold text-primary-700 underline"
           to="/services"
