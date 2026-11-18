@@ -47,9 +47,9 @@ function MemberCard({
       <div className="flex items-start gap-2.5">
         {seat !== undefined ? <SeatNumber n={seat} compact /> : null}
         <div className="min-w-0 flex-1">
-          <p className="text-sm font-semibold tracking-tight text-gray-950 sm:text-[15px]">
+          <h3 className="text-sm font-semibold tracking-tight text-gray-950 sm:text-[15px]">
             {name}
-          </p>
+          </h3>
           {meta ? (
             <p className="mt-0.5 text-xs leading-snug text-gray-600">{meta}</p>
           ) : null}
@@ -233,9 +233,9 @@ export default function LegislativeView({
         <h2 className="text-lg font-semibold tracking-tight text-gray-950 sm:text-xl">
           District representative
         </h2>
-        <p className="mt-3 text-xl font-semibold tracking-tight text-gray-950">
+        <h3 className="mt-3 text-xl font-semibold tracking-tight text-gray-950">
           {roster.districtRepresentative.name}
-        </p>
+        </h3>
         <p className="mt-1 text-sm text-gray-600">
           {roster.districtRepresentative.district}
         </p>
