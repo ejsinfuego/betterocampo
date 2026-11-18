@@ -6,7 +6,7 @@ import {
   SurfaceCard,
 } from '../components/ui/PageFrame';
 import DirectoryCard from '../components/ui/DirectoryCard';
-import { useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -30,7 +30,10 @@ import ExecutiveView from '../components/government/ExecutiveView';
 import LegislativeView from '../components/government/LegislativeView';
 import { parseContactMarkdown } from '../components/government/contactDirectory';
 import { parseExecutiveMarkdown } from '../components/government/executiveProfile';
-import { parseLegislativeMarkdown } from '../components/government/legislativeRoster';
+import {
+  legislativePageMeta,
+  parseLegislativeMarkdown,
+} from '../components/government/legislativeRoster';
 import { FileText } from 'lucide-react';
 
 interface DocumentProps {
@@ -43,6 +46,10 @@ export default function Document({
   categoryType,
 }: DocumentProps) {
   const { documentSlug, category } = useParams();
+  const { pathname } = useLocation();
+  const siteUrl = (
+    import.meta.env.VITE_WEBSITE_URL || 'https://betterocampo.org'
+  ).replace(/\/$/, '');
   const [markdownContent, setMarkdownContent] =
     useState<MarkdownContent | null>(null);
   const [nestedIndex, setNestedIndex] = useState<CategoryIndex | null>(null);
@@ -204,23 +211,33 @@ export default function Document({
     documentSlug === 'executive'
       ? parseExecutiveMarkdown(markdownContent.content)
       : null;
+  const legislativeMeta = legislativeRoster
+    ? legislativePageMeta(legislativeRoster, `${siteUrl}${pathname}`, siteUrl)
+    : null;
 
   return (
     <>
       <SEO
-        title={markdownContent.title || documentSlug}
+        title={legislativeMeta?.title || markdownContent.title || documentSlug}
         description={
+          legislativeMeta?.description ||
           markdownContent.description ||
           `Government service information for ${documentSlug}`
         }
-        keywords={`${documentSlug}, government services, public services, local government`}
+        keywords={
+          legislativeMeta?.keywords ||
+          `${documentSlug}, government services, public services, local government`
+        }
+        url={legislativeMeta ? `${siteUrl}${pathname}` : undefined}
+        jsonLd={legislativeMeta?.jsonLd}
       />
       <CivicPage>
         <Breadcrumbs items={breadcrumbs} />
         {legislativeRoster ? (
           <>
             <PageHeader
-              title={markdownContent.title || 'Sangguniang Bayan'}
+              eyebrow={`Camarines Sur · ${legislativeRoster.term}`}
+              title={legislativeMeta?.title || 'Sangguniang Bayan'}
               description={
                 legislativeRoster.summary ||
                 markdownContent.description ||
