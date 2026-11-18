@@ -1,31 +1,22 @@
 /**
- * Indexes all markdown content into Meilisearch.
+ * Builds a static search index from markdown content.
  *
  * Usage:
- *   MEILISEARCH_HOST=http://localhost:7700 \
- *   MEILISEARCH_ADMIN_KEY=your-admin-key \
  *   node scripts/index-content.mjs
+ *   npm run index-content
  *
- * Reads MEILISEARCH_HOST and MEILISEARCH_ADMIN_KEY from the environment
- * (or from .env via dotenv). Does NOT use VITE_ prefixed vars because this
- * script runs outside the browser.
+ * Writes src/data/search-index.json for the client MiniSearch index.
+ * Re-run after adding or editing content under content/.
  */
 
-import { Meilisearch } from 'meilisearch';
-import { readFileSync } from 'fs';
-import { join, dirname } from 'path';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import * as yaml from 'js-yaml';
-import 'dotenv/config';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const INDEX_NAME = 'content';
-
-const client = new Meilisearch({
-  host: process.env.MEILISEARCH_HOST ?? 'http://localhost:7700',
-  apiKey: process.env.MEILISEARCH_ADMIN_KEY,
-});
+const OUTPUT = join(ROOT, 'src/data/search-index.json');
 
 function extractTitle(markdown) {
   const match = markdown.match(/^#\s+(.+)$/m);
@@ -66,7 +57,10 @@ function loadMarkdownPages(dir, categorySlug, categoryName, type) {
   }
 
   for (const page of pages) {
-    const mdPath = join(ROOT, `content/${dir}/${categorySlug}/${page.slug}.md`);
+    const mdPath = join(
+      ROOT,
+      `content/${dir}/${categorySlug}/${page.slug}.md`
+    );
     try {
       const raw = readFileSync(mdPath, 'utf8');
       const title = extractTitle(raw) || page.name;
@@ -90,52 +84,54 @@ function loadMarkdownPages(dir, categorySlug, categoryName, type) {
   return documents;
 }
 
-async function indexContent() {
+function collectDocuments() {
   const documents = [];
 
-  // Index services
-  const servicesYaml = readFileSync(join(ROOT, 'src/data/services.yaml'), 'utf8');
+  const servicesYaml = readFileSync(
+    join(ROOT, 'src/data/services.yaml'),
+    'utf8'
+  );
   const servicesData = yaml.load(servicesYaml);
   for (const cat of servicesData.categories) {
-    documents.push(...loadMarkdownPages('services', cat.slug, cat.category, 'service'));
+    documents.push(
+      ...loadMarkdownPages('services', cat.slug, cat.category, 'service')
+    );
   }
 
-  // Index government
   const govYaml = readFileSync(join(ROOT, 'src/data/government.yaml'), 'utf8');
   const govData = yaml.load(govYaml);
   for (const cat of govData.categories) {
-    documents.push(...loadMarkdownPages('government', cat.slug, cat.category, 'government'));
-    // Also check nested subcategory indexes registered in yamlLoader
+    documents.push(
+      ...loadMarkdownPages('government', cat.slug, cat.category, 'government')
+    );
     if (cat.subcategories) {
       for (const sub of cat.subcategories) {
         documents.push(
-          ...loadMarkdownPages('government', `${cat.slug}/${sub.slug}`, sub.name, 'government')
+          ...loadMarkdownPages(
+            'government',
+            `${cat.slug}/${sub.slug}`,
+            sub.name,
+            'government'
+          )
         );
       }
     }
   }
 
-  if (documents.length === 0) {
-    console.warn('No documents found to index. Check content/ directory.');
-    return;
-  }
-
-  console.log(`Configuring index "${INDEX_NAME}"...`);
-  const index = client.index(INDEX_NAME);
-
-  await index.updateSettings({
-    searchableAttributes: ['title', 'description', 'content', 'category'],
-    filterableAttributes: ['type', 'categorySlug'],
-    displayedAttributes: ['id', 'title', 'description', 'type', 'category', 'categorySlug', 'slug', 'url'],
-    rankingRules: ['words', 'typo', 'proximity', 'attribute', 'sort', 'exactness'],
-  });
-
-  console.log(`Indexing ${documents.length} documents...`);
-  const task = await index.addDocuments(documents, { primaryKey: 'id' });
-  console.log(`Done! Task ID: ${task.taskUid}. ${documents.length} documents queued for indexing.`);
+  return documents;
 }
 
-indexContent().catch(err => {
-  console.error('Indexing failed:', err.message);
-  process.exit(1);
-});
+function main() {
+  const documents = collectDocuments();
+
+  if (documents.length === 0) {
+    console.warn('No documents found to index. Check content/ directory.');
+    process.exit(1);
+  }
+
+  mkdirSync(dirname(OUTPUT), { recursive: true });
+  writeFileSync(OUTPUT, `${JSON.stringify(documents, null, 2)}\n`, 'utf8');
+  console.log(`Wrote ${documents.length} documents to ${OUTPUT}`);
+}
+
+main();
