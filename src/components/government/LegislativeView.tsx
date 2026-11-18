@@ -20,42 +20,6 @@ function SeatNumber({ n, compact = false }: { n: number; compact?: boolean }) {
   );
 }
 
-function MemberRow({
-  name,
-  meta,
-  seat,
-  email,
-  phone,
-  phoneNote,
-  className,
-  style,
-}: {
-  name: string;
-  meta?: string;
-  seat?: number;
-  className?: string;
-  style?: CSSProperties;
-} & ContactFields) {
-  return (
-    <li
-      className={cn(
-        'animate-civic-fade-up flex items-start gap-3 border-b border-gray-100 py-3.5 last:border-b-0 sm:gap-4 sm:py-4',
-        className
-      )}
-      style={style}
-    >
-      {seat !== undefined ? <SeatNumber n={seat} /> : null}
-      <div className="min-w-0 flex-1">
-        <p className="text-base font-semibold tracking-tight text-gray-950 sm:text-lg">
-          {name}
-        </p>
-        {meta ? <p className="mt-0.5 text-sm text-gray-600">{meta}</p> : null}
-        <ContactLinks email={email} phone={phone} phoneNote={phoneNote} />
-      </div>
-    </li>
-  );
-}
-
 function MemberCard({
   name,
   meta,
@@ -209,59 +173,57 @@ export default function LegislativeView({
         </ol>
       </SurfaceCard>
 
-      <div className="grid gap-4 lg:grid-cols-2 lg:gap-5">
-        {/* Ex-officio */}
-        <SurfaceCard
-          as="section"
-          className="animate-civic-fade-up p-5 [animation-delay:160ms] sm:p-6"
-        >
-          <DirectorySectionHeading
-            icon={<Landmark className="size-4" aria-hidden="true" />}
-            title="Ex-officio members"
-            description="Sector representatives who sit with the council."
-            count={roster.exOfficio.length}
-          />
-          <ul className="m-0 list-none p-0">
-            {roster.exOfficio.map((member, i) => (
-              <MemberRow
-                key={member.name}
-                name={member.name}
-                meta={member.role}
-                email={member.email}
-                phone={member.phone}
-                phoneNote={member.phoneNote}
-                style={{ animationDelay: `${180 + i * 40}ms` }}
-              />
-            ))}
-          </ul>
-        </SurfaceCard>
+      {/* Ex-officio */}
+      <SurfaceCard
+        as="section"
+        className="animate-civic-fade-up p-5 [animation-delay:160ms] sm:p-6"
+      >
+        <DirectorySectionHeading
+          icon={<Landmark className="size-4" aria-hidden="true" />}
+          title="Ex-officio members"
+          description="Sector representatives who sit with the council."
+          count={roster.exOfficio.length}
+        />
+        <ul className="m-0 mt-1 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-4">
+          {roster.exOfficio.map((member, i) => (
+            <MemberCard
+              key={member.name}
+              name={member.name}
+              meta={member.role}
+              email={member.email}
+              phone={member.phone}
+              phoneNote={member.phoneNote}
+              style={{ animationDelay: `${180 + i * 40}ms` }}
+            />
+          ))}
+        </ul>
+      </SurfaceCard>
 
-        {/* Secretariat */}
-        <SurfaceCard
-          as="section"
-          className="animate-civic-fade-up p-5 [animation-delay:200ms] sm:p-6"
-        >
-          <DirectorySectionHeading
-            icon={<UserRound className="size-4" aria-hidden="true" />}
-            title="Secretariat"
-            description="Staff who support legislative sessions and records."
-            count={roster.secretariat.length}
-          />
-          <ul className="m-0 list-none p-0">
-            {roster.secretariat.map((member, i) => (
-              <MemberRow
-                key={member.name}
-                name={member.name}
-                meta={member.role}
-                email={member.email}
-                phone={member.phone}
-                phoneNote={member.phoneNote}
-                style={{ animationDelay: `${220 + i * 40}ms` }}
-              />
-            ))}
-          </ul>
-        </SurfaceCard>
-      </div>
+      {/* Secretariat */}
+      <SurfaceCard
+        as="section"
+        className="animate-civic-fade-up p-5 [animation-delay:200ms] sm:p-6"
+      >
+        <DirectorySectionHeading
+          icon={<UserRound className="size-4" aria-hidden="true" />}
+          title="Secretariat"
+          description="Staff who support legislative sessions and records."
+          count={roster.secretariat.length}
+        />
+        <ul className="m-0 mt-1 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-4">
+          {roster.secretariat.map((member, i) => (
+            <MemberCard
+              key={member.name}
+              name={member.name}
+              meta={member.role}
+              email={member.email}
+              phone={member.phone}
+              phoneNote={member.phoneNote}
+              style={{ animationDelay: `${220 + i * 40}ms` }}
+            />
+          ))}
+        </ul>
+      </SurfaceCard>
 
       {/* District + sources */}
       <SurfaceCard
