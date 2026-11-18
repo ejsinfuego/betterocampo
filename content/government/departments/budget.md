@@ -25,6 +25,6 @@ Older years are on [Wikidata Q208878](https://www.wikidata.org/wiki/Q208878), ea
 
 ## What this is not
 
-The Department of Budget and Management open data used by [budget.bettergov.ph](https://budget.bettergov.ph) covers the national budget. It does not publish Ocampo's municipal appropriation ordinance. National projects that name the town are on the Projects page.
+The Department of Budget and Management open data used by [budget.bettergov.ph](https://budget.bettergov.ph) covers the national budget. It does not publish Ocampo's municipal appropriation ordinance. National projects that name the town are on the [Projects](/projects) page.
 
 PhilSys holds identity records. Those records are not an open dataset, and this portal does not publish them.
