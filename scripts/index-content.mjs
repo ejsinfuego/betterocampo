@@ -57,10 +57,7 @@ function loadMarkdownPages(dir, categorySlug, categoryName, type) {
   }
 
   for (const page of pages) {
-    const mdPath = join(
-      ROOT,
-      `content/${dir}/${categorySlug}/${page.slug}.md`
-    );
+    const mdPath = join(ROOT, `content/${dir}/${categorySlug}/${page.slug}.md`);
     try {
       const raw = readFileSync(mdPath, 'utf8');
       const title = extractTitle(raw) || page.name;
@@ -116,6 +113,24 @@ function collectDocuments() {
         );
       }
     }
+  }
+
+  const projectsPath = join(ROOT, 'content/government/departments/projects.md');
+  try {
+    const raw = readFileSync(projectsPath, 'utf8');
+    documents.push({
+      id: 'projects',
+      title: extractTitle(raw) || 'Projects',
+      description: extractDescription(raw),
+      content: stripMarkdown(raw),
+      type: 'government',
+      category: 'Projects',
+      categorySlug: 'projects',
+      slug: 'projects',
+      url: '/projects',
+    });
+  } catch {
+    // The standalone projects page is optional.
   }
 
   return documents;

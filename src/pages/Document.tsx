@@ -28,6 +28,8 @@ import SEO from '../components/SEO';
 import ContactView from '../components/government/ContactView';
 import ExecutiveView from '../components/government/ExecutiveView';
 import LegislativeView from '../components/government/LegislativeView';
+import ProjectsMap from '../components/government/ProjectsMap';
+import { projectsBody } from '../components/government/nationalProjects';
 import { parseContactMarkdown } from '../components/government/contactDirectory';
 import { parseExecutiveMarkdown } from '../components/government/executiveProfile';
 import {
@@ -39,14 +41,20 @@ import { FileText } from 'lucide-react';
 interface DocumentProps {
   theme?: string;
   categoryType?: 'service' | 'government';
+  slug?: string;
+  category?: string;
 }
 
 export default function Document({
   theme: initialTheme = 'default',
   categoryType,
+  slug,
+  category: categoryProp,
 }: DocumentProps) {
-  const { documentSlug, category } = useParams();
+  const params = useParams();
   const { pathname } = useLocation();
+  const documentSlug = slug ?? params.documentSlug;
+  const category = categoryProp ?? params.category;
   const siteUrl = (
     import.meta.env.VITE_WEBSITE_URL || 'https://betterocampo.org'
   ).replace(/\/$/, '');
@@ -110,18 +118,25 @@ export default function Document({
         );
         setMarkdownContent(content);
 
-        setBreadcrumbs([
-          { label: 'Home', href: '/' },
-          { label: sectionLabel, href: sectionHref },
-          {
-            label: categoryData?.category ?? category,
-            href: `${sectionHref}/${category}`,
-          },
-          {
-            label: content.title ?? documentSlug,
-            href: `${sectionHref}/${category}/${documentSlug}`,
-          },
-        ]);
+        setBreadcrumbs(
+          documentSlug === 'projects'
+            ? [
+                { label: 'Home', href: '/' },
+                { label: 'Projects', href: '/projects' },
+              ]
+            : [
+                { label: 'Home', href: '/' },
+                { label: sectionLabel, href: sectionHref },
+                {
+                  label: categoryData?.category ?? category,
+                  href: `${sectionHref}/${category}`,
+                },
+                {
+                  label: content.title ?? documentSlug,
+                  href: `${sectionHref}/${category}/${documentSlug}`,
+                },
+              ]
+        );
       } catch (err) {
         setError(
           err instanceof Error ? err.message : 'Failed to load document'
@@ -269,6 +284,24 @@ export default function Document({
               }
             />
             <ExecutiveView profile={executiveProfile} />
+          </>
+        ) : documentSlug === 'projects' ? (
+          <>
+            <PageHeader
+              title={markdownContent.title || 'Projects'}
+              description={markdownContent.description}
+            />
+            <ProjectsMap markdown={markdownContent.content} />
+            <SurfaceCard as="article" className="p-5 sm:p-8">
+              <div className="markdown-content">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={markdownComponents}
+                >
+                  {projectsBody(markdownContent.content)}
+                </ReactMarkdown>
+              </div>
+            </SurfaceCard>
           </>
         ) : (
           <SurfaceCard as="article" className="p-5 sm:p-8">
