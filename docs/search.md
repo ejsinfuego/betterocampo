@@ -4,7 +4,7 @@ Site search runs entirely in the browser with [MiniSearch](https://lucaong.githu
 
 ## How it works
 
-1. `npm run index-content` reads markdown under `content/` (via category YAML) and writes `src/data/search-index.json`.
+1. `npm run index-content` reads markdown under `content/` (via category YAML) and writes `src/data/search-index.json`. The same command writes `public/sitemap.xml` and `public/robots.txt`.
 2. `src/lib/search.ts` loads that JSON into MiniSearch.
 3. `/search` and the hero search box query that in-memory index.
 
