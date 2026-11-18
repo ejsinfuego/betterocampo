@@ -85,7 +85,7 @@ The sections below are the starter kit's own setup notes.
 - **[DEPLOYMENT-GUIDE.md](DEPLOYMENT-GUIDE.md)** - Deployment instructions for Vercel and other platforms
 - **[STARTER-KIT-SUMMARY.md](STARTER-KIT-SUMMARY.md)** - Audit results and implementation summary
 - **[CHANGELOG.md](CHANGELOG.md)** - Version history and release notes
-- **[docs/meilisearch.md](docs/meilisearch.md)** - Meilisearch search setup and integration guide
+- **[docs/search.md](docs/search.md)** - Local MiniSearch index setup
 
 ## 🎯 Perfect For
 
