@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
@@ -23,8 +23,6 @@ const serviceLinks =
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const [guideOpen, setGuideOpen] = useState(false);
-  const closeGuideRef = useRef<HTMLButtonElement>(null);
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const siteName = import.meta.env.VITE_GOVERNMENT_NAME || 'Better Ocampo';
@@ -32,24 +30,18 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     setIsOpen(false);
     setServicesOpen(false);
-    setGuideOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
-    if (!guideOpen && !servicesOpen && !isOpen) return;
+    if (!servicesOpen && !isOpen) return;
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return;
-      setGuideOpen(false);
       setServicesOpen(false);
       setIsOpen(false);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [guideOpen, servicesOpen, isOpen]);
-
-  useEffect(() => {
-    if (guideOpen) closeGuideRef.current?.focus();
-  }, [guideOpen]);
+  }, [servicesOpen, isOpen]);
 
   const changeLanguage = (newLanguage: LanguageType) => {
     i18n.changeLanguage(newLanguage);
@@ -65,6 +57,7 @@ const Navbar: React.FC = () => {
     { label: t('navbar.needs'), href: '/needs' },
     { label: t('navbar.services'), href: '/services' },
     { label: t('navbar.government'), href: '/government' },
+    { label: 'Projects', href: '/projects' },
     { label: 'About', href: '/about' },
   ];
 
@@ -214,17 +207,6 @@ const Navbar: React.FC = () => {
             >
               Search
             </Link>
-            <button
-              type="button"
-              onClick={() => {
-                setServicesOpen(false);
-                setIsOpen(false);
-                setGuideOpen(true);
-              }}
-              className="h-10 text-sm text-gray-700 underline decoration-gray-300 underline-offset-2 hover:text-gray-950 hover:decoration-gray-500"
-            >
-              About this guide
-            </button>
           </nav>
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
@@ -288,16 +270,6 @@ const Navbar: React.FC = () => {
               >
                 LGU Facebook
               </a>
-              <button
-                type="button"
-                onClick={() => {
-                  setIsOpen(false);
-                  setGuideOpen(true);
-                }}
-                className="flex h-11 w-full items-center text-left text-sm text-gray-800"
-              >
-                About this guide
-              </button>
             </nav>
             {serviceLinks.length > 0 ? (
               <div className="mx-auto max-w-7xl px-4 py-3">
@@ -319,66 +291,6 @@ const Navbar: React.FC = () => {
           </div>
         ) : null}
       </header>
-
-      {guideOpen ? (
-        <div className="fixed inset-0 z-[60] flex items-end justify-center bg-gray-950/40 p-4 sm:items-center">
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="community-guide-title"
-            className="w-full max-w-md rounded-2xl border border-gray-200 bg-white p-5 shadow-xl"
-          >
-            <h2
-              id="community-guide-title"
-              className="text-xl font-semibold text-gray-950"
-            >
-              About this community guide
-            </h2>
-            <div className="mt-3 space-y-3 text-sm leading-relaxed text-gray-800">
-              <p>
-                <strong className="font-semibold text-gray-950">
-                  {siteName}
-                </strong>{' '}
-                is an independent community guide for the Municipality of
-                Ocampo, Camarines Sur.
-              </p>
-              <p>
-                No municipal website was found when this was checked. Public
-                updates are on the{' '}
-                <a
-                  href={LGU_FACEBOOK}
-                  className="text-primary-700 underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LGU Facebook page
-                </a>
-                .
-              </p>
-              <p>
-                Local fees, schedules, and hotlines stay off these pages until
-                they can be checked against a public source.
-              </p>
-            </div>
-            <div className="mt-5 flex flex-wrap justify-end gap-3 border-t border-gray-200 pt-4">
-              <button
-                ref={closeGuideRef}
-                type="button"
-                onClick={() => setGuideOpen(false)}
-                className="h-10 rounded-xl border border-gray-200 px-3 text-sm font-semibold text-gray-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
-              >
-                Close
-              </button>
-              <Link
-                to="/about"
-                className="inline-flex h-10 items-center rounded-xl bg-primary-600 px-3 text-sm font-semibold text-white"
-              >
-                Read About
-              </Link>
-            </div>
-          </div>
-        </div>
-      ) : null}
     </>
   );
 };
