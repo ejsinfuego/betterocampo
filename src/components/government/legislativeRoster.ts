@@ -251,3 +251,106 @@ export function parseLegislativeMarkdown(
       'This page does not list appointed department heads.',
   };
 }
+
+function person(name: string, jobTitle: string) {
+  return { '@type': 'Person', name, jobTitle };
+}
+
+/** Title, description, and structured data for the legislative roster page. */
+export function legislativePageMeta(
+  roster: LegislativeRoster,
+  pageUrl: string,
+  siteUrl: string
+) {
+  const title = 'Sangguniang Bayan of Ocampo';
+  const description = `Sangguniang Bayan of Ocampo, Camarines Sur, ${roster.term}. ${roster.mayor.office} ${roster.mayor.name}, ${roster.presiding.office} ${roster.presiding.name}, council, ex-officio, and secretariat.`;
+  const members = [
+    person(roster.mayor.name, roster.mayor.office),
+    person(
+      roster.presiding.name,
+      `${roster.presiding.office}, presiding officer`
+    ),
+    ...roster.council.map(member =>
+      person(member.name, 'Sangguniang Bayan member')
+    ),
+    ...roster.exOfficio.map(member =>
+      person(member.name, member.role ?? 'Ex-officio member')
+    ),
+    ...roster.secretariat.map(member =>
+      person(member.name, member.role ?? 'Secretariat')
+    ),
+    person(
+      roster.districtRepresentative.name,
+      `Representative, ${roster.districtRepresentative.district}`
+    ),
+  ];
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': pageUrl,
+        url: pageUrl,
+        name: `${title}, Camarines Sur`,
+        description,
+        inLanguage: 'en',
+        isPartOf: {
+          '@type': 'WebSite',
+          name: 'Better Ocampo',
+          url: siteUrl,
+        },
+        about: { '@id': `${pageUrl}#sangguniang-bayan` },
+        breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: `${siteUrl}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Government',
+            item: `${siteUrl}/government`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: 'Departments',
+            item: `${siteUrl}/government/departments`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 4,
+            name: 'Sangguniang Bayan',
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        '@type': 'GovernmentOrganization',
+        '@id': `${pageUrl}#sangguniang-bayan`,
+        name: title,
+        member: members,
+        areaServed: {
+          '@type': 'AdministrativeArea',
+          name: 'Municipality of Ocampo, Camarines Sur, Philippines',
+        },
+      },
+    ],
+  };
+
+  return {
+    title,
+    description,
+    keywords:
+      'Sangguniang Bayan, Ocampo, Camarines Sur, municipal council, Vice Mayor',
+    jsonLd: JSON.stringify(jsonLd),
+  };
+}
