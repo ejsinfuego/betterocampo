@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { mainNavigation } from '../../data/navigation';
 import { LANGUAGES } from '../../i18n/languages';
-import { isMeilisearchEnabled } from '../../lib/meilisearch';
 import type { LanguageType } from '../../types/index';
 import { cn } from '../../lib/utils';
 import HeaderWeather from './HeaderWeather';
@@ -208,15 +207,13 @@ const Navbar: React.FC = () => {
                 </Link>
               );
             })}
-            {isMeilisearchEnabled ? (
-              <Link
-                to="/search"
-                className={linkClass(isActive('/search'))}
-                aria-current={isActive('/search') ? 'page' : undefined}
-              >
-                Search
-              </Link>
-            ) : null}
+            <Link
+              to="/search"
+              className={linkClass(isActive('/search'))}
+              aria-current={isActive('/search') ? 'page' : undefined}
+            >
+              Search
+            </Link>
             <button
               type="button"
               onClick={() => {
