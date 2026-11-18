@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { MapMarker, MarkerContent, useMap } from '../ui/map';
 import BarangayCard, { type BarangayStats } from './BarangayCard';
 import { BAR_M, LIFT_M, REVEAL_MS, SLAB_M, metersToPixels } from './liftConfig';
@@ -35,9 +35,11 @@ function usePoleHeight(latitude: number) {
 export default function BarangayBillboard({
   stats,
   anchor,
+  children,
 }: {
   stats: BarangayStats;
   anchor: [number, number];
+  children?: ReactNode;
 }) {
   const pole = usePoleHeight(anchor[1]);
   const [raised, setRaised] = useState(false);
@@ -69,7 +71,7 @@ export default function BarangayBillboard({
               transform: raised ? 'none' : 'translateY(12px) scale(0.96)',
             }}
           >
-            <BarangayCard stats={stats} />
+            {children ?? <BarangayCard stats={stats} />}
           </div>
           <div
             className="w-px bg-gradient-to-b from-gray-900/70 to-gray-900/10 ease-out"

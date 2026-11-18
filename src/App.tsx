@@ -12,7 +12,7 @@ import Government from './pages/Government';
 import Search from './pages/Search';
 import About from './pages/About';
 import Needs from './pages/Needs';
-import { BrowserRouter as Router, Routes, Route } from 'react-router';
+import { BrowserRouter as Router, Navigate, Routes, Route } from 'react-router';
 
 function App() {
   return (
@@ -45,8 +45,22 @@ function App() {
                 <Route path="/government/:category" element={<Government />} />
                 <Route path="/government" element={<Government />} />
                 <Route
+                  path="/government/departments/projects"
+                  element={<Navigate to="/projects" replace />}
+                />
+                <Route
                   path="/government/:category/:documentSlug"
                   element={<Document categoryType="government" />}
+                />
+                <Route
+                  path="/projects"
+                  element={
+                    <Document
+                      categoryType="government"
+                      slug="projects"
+                      category="departments"
+                    />
+                  }
                 />
                 <Route path="/search" element={<Search />} />
                 <Route path="/needs" element={<Needs />} />

@@ -6,6 +6,8 @@
  *   node scripts/sitemap.mjs
  *
  * Called from `npm run index-content`, which `dev` and `build` already run.
+ * The old /government/departments/projects address is a redirect, so it is
+ * left out. The canonical projects URL is /projects.
  */
 
 import { readFileSync, statSync, writeFileSync } from 'fs';
@@ -62,6 +64,14 @@ function collectPages() {
   add(pages, '/government', '0.8');
   add(pages, '/about', '0.5');
   add(pages, '/search', '0.4');
+
+  const projectsPath = join(ROOT, 'content/government/departments/projects.md');
+  try {
+    readFileSync(projectsPath, 'utf8');
+    add(pages, '/projects', '0.8', projectsPath);
+  } catch {
+    // The standalone projects page is optional.
+  }
 
   const services = yaml.load(
     readFileSync(join(ROOT, 'src/data/services.yaml'), 'utf8')
