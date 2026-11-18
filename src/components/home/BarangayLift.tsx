@@ -24,6 +24,8 @@ export type LiftTarget = {
   areaSqKm: number;
   geometry: Area;
   origin: [number, number];
+  /** When set, draw this many bars instead of one per 20 residents. */
+  barCount?: number;
 };
 
 type BarProps = { delay: number };
@@ -46,24 +48,39 @@ function seededRandom(seed: string) {
 
 const pointCache = new Map<string, Position[]>();
 
+function barTotal(target: LiftTarget) {
+  return target.barCount != null
+    ? target.barCount
+    : Math.max(1, Math.round(target.population / PEOPLE_PER_DOT));
+}
+
 function scatter(target: LiftTarget): Position[] {
-  const cached = pointCache.get(target.psgc);
+  const wanted = barTotal(target);
+  const cacheKey =
+    target.barCount != null ? `${target.psgc}#${wanted}` : target.psgc;
+  const cached = pointCache.get(cacheKey);
   if (cached) return cached;
+  if (wanted === 0) {
+    pointCache.set(cacheKey, []);
+    return [];
+  }
   const [minX, minY, maxX, maxY] = bboxOf(target.geometry);
-  const random = seededRandom(target.psgc);
-  const wanted = Math.max(1, Math.round(target.population / PEOPLE_PER_DOT));
+  const random = seededRandom(cacheKey);
   const points: Position[] = [];
   for (let tries = 0; points.length < wanted && tries < wanted * 200; tries++) {
     const x = minX + random() * (maxX - minX);
     const y = minY + random() * (maxY - minY);
     if (inArea(x, y, target.geometry)) points.push([x, y]);
   }
-  pointCache.set(target.psgc, points);
+  pointCache.set(cacheKey, points);
   return points;
 }
 
 function buildBars(target: LiftTarget): FeatureCollection<Polygon, BarProps> {
   const points = scatter(target);
+  if (points.length === 0) {
+    return { type: 'FeatureCollection', features: [] };
+  }
   const spacing = Math.sqrt((target.areaSqKm * 1e6) / points.length);
   const size = Math.max(8, Math.min(45, spacing * 0.42));
   const [ox, oy] = target.origin;
