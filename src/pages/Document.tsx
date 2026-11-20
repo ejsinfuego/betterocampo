@@ -235,13 +235,17 @@ export default function Document({
       <SEO
         title={legislativeMeta?.title || markdownContent.title || documentSlug}
         description={
-          legislativeMeta?.description ||
-          markdownContent.description ||
-          `Government service information for ${documentSlug}`
+          documentSlug === 'projects'
+            ? 'Ocampo Cam Sur projects named in the national budget for Ocampo, Camarines Sur.'
+            : legislativeMeta?.description ||
+              markdownContent.description ||
+              `Government service information for ${documentSlug}`
         }
         keywords={
-          legislativeMeta?.keywords ||
-          `${documentSlug}, government services, public services, local government`
+          documentSlug === 'projects'
+            ? 'ocampo cam sur projects, Ocampo Cam Sur projects, Ocampo, Camarines Sur'
+            : legislativeMeta?.keywords ||
+              `${documentSlug}, government services, public services, local government`
         }
         url={legislativeMeta ? `${siteUrl}${pathname}` : undefined}
         jsonLd={legislativeMeta?.jsonLd}
