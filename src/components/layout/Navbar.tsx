@@ -130,11 +130,13 @@ const Navbar: React.FC = () => {
           <Link
             to="/"
             className="flex min-w-0 items-center gap-2.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
-            aria-label={`${siteName} home`}
           >
             <img
-              src="/logos/png/BetterOcampo-Mark.png"
+              src="/logos/webp/BetterOcampo-Mark.webp"
               alt=""
+              width={162}
+              height={80}
+              decoding="async"
               className="h-9 w-auto shrink-0 object-contain sm:h-10"
             />
             <span className="min-w-0 leading-tight">
@@ -218,6 +220,7 @@ const Navbar: React.FC = () => {
               className="inline-flex h-9 items-center rounded-lg border border-gray-200 px-2.5 text-sm text-gray-950 lg:hidden"
               onClick={() => setIsOpen(open => !open)}
               aria-expanded={isOpen}
+              aria-label={isOpen ? 'Close' : 'Menu'}
             >
               {isOpen ? (
                 <X className="mr-1 size-4" />
