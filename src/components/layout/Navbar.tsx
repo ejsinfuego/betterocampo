@@ -224,7 +224,6 @@ const Navbar: React.FC = () => {
               ) : (
                 <Menu className="mr-1 size-4" />
               )}
-              {isOpen ? 'Close' : 'Menu'}
             </button>
           </div>
         </div>

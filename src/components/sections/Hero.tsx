@@ -1,9 +1,9 @@
 import { FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
-import { ArrowRight, Search } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { RESIDENT_QUICK_LINKS } from '../../data/residentNeeds';
-import HairlineLedgers from '../hairline/HairlineLedgers';
+import HairlineMap from '../hairline/HairlineMap';
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -18,7 +18,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="font-inter relative isolate w-full overflow-hidden pt-10 pb-12 selection:bg-primary-200 selection:text-gray-950 sm:pt-14 sm:pb-16">
+    <section className="font-inter relative isolate w-full overflow-hidden pt-10 sm:pb-12 selection:bg-primary-200 selection:text-gray-950 sm:pt-14 sm:pb-16">
       <img
         src="/logos/png/BetterOcampo-Seal.png"
         alt=""
@@ -52,35 +52,39 @@ export default function Hero() {
               .
             </p>
 
-            <form onSubmit={onSearch} className="mt-5 sm:mt-7" role="search">
+            <form
+              onSubmit={onSearch}
+              className="mt-5 max-w-[88%] sm:mt-7"
+              role="search"
+            >
               <label htmlFor="home-search" className="sr-only">
                 Search this guide
               </label>
               <div className="relative">
-                <Search className="pointer-events-none absolute top-1/2 left-4 size-4 -translate-y-1/2 text-gray-700" />
+                <Search className="pointer-events-none hidden sm:block absolute top-1/2 left-4 size-4 -translate-y-1/2 text-gray-700" />
                 <input
                   id="home-search"
                   type="search"
                   value={query}
                   onChange={event => setQuery(event.target.value)}
                   placeholder="Search services and guides"
-                  className="h-12 w-full rounded-xl border border-gray-300 bg-white pr-32 pl-11 text-base text-gray-950 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)] caret-primary-700 outline-none placeholder:text-gray-700 focus:border-primary-600 focus:ring-2 focus:ring-primary-500/25 sm:h-14 sm:rounded-2xl"
+                  className="h-10 w-full rounded-xl border border-gray-300 bg-white sm:pr-32 pl-3 sm:pl-11 text-sm text-gray-950 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)] caret-primary-700 outline-none placeholder:text-gray-700 focus:border-primary-600 focus:ring-2 focus:ring-primary-500/25 sm:h-12 sm:rounded-2xl sm:text-base"
                 />
                 <button
                   type="submit"
-                  className="absolute top-1/2 right-2 inline-flex h-10 -translate-y-1/2 items-center gap-1 rounded-xl bg-primary-600 px-4 text-sm font-semibold text-white hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+                  aria-label="Search"
+                  className="absolute inset-y-1 right-1 inline-flex items-center gap-1 rounded-lg bg-primary-600 px-3.5 text-sm font-semibold text-white hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-inset sm:rounded-xl"
                 >
-                  Search
-                  <ArrowRight className="size-4" />
+                  <Search className="size-4" aria-hidden="true" />
                 </button>
               </div>
               <nav
                 aria-label="Common resident needs"
-                className="mt-1 flex flex-wrap gap-x-3 sm:gap-x-4"
+                className="mt-1 flex flex-wrap gap-x-2 sm:gap-x-4"
               >
                 {RESIDENT_QUICK_LINKS.map(link => {
                   const className =
-                    'inline-flex min-h-11 items-center text-[13px] font-semibold text-primary-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:text-sm';
+                    'inline-flex min-h-5 sm:min-h-11 items-center text-[10px] sm:text-[13px] font-semibold text-primary-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:text-sm';
 
                   if ('external' in link && link.external) {
                     return (
@@ -105,7 +109,7 @@ export default function Hero() {
               </nav>
             </form>
           </div>
-          <HairlineLedgers className="mx-auto mt-8 hidden w-full max-w-md sm:block lg:mx-0 lg:mt-1 lg:max-w-none" />
+          <HairlineMap className="mx-auto mt-8 hidden w-full max-w-md translate-y-6 sm:block lg:mx-0 lg:mt-1 lg:max-w-none lg:translate-y-10" />
         </div>
       </div>
     </section>
