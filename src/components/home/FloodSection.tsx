@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
-import { Protocol } from 'pmtiles';
+import type { Protocol } from 'pmtiles';
 import type { FeatureCollection, Geometry } from 'geojson';
 import { Map, MapControls, useMap } from '../ui/map';
+import WhenVisible from '../ui/WhenVisible';
+import { loadBarangayBoundaries } from '../../lib/barangayBoundaries';
 import { OCAMPO_CENTER } from '../../data/ocampoPlaces';
 
-const BOUNDARY_URL = '/geo/ocampo-barangays.geojson';
 const FLOOD_URL =
   'https://huggingface.co/datasets/bettergovph/project-noah-hazard-maps/resolve/main/PMTiles/layers/flood_100yr.pmtiles';
 const NOAH_SOURCE = 'https://data.bettergov.ph/datasets/22';
@@ -22,10 +23,11 @@ const LEVELS = [
 let protocolReady = false;
 
 function registerPmtiles(
-  addProtocol: (protocol: string, loadFn: Protocol['tile']) => void
+  addProtocol: (protocol: string, loadFn: Protocol['tile']) => void,
+  ProtocolCtor: typeof Protocol
 ) {
   if (protocolReady) return;
-  const protocol = new Protocol();
+  const protocol = new ProtocolCtor();
   addProtocol('pmtiles', protocol.tile);
   protocolReady = true;
 }
@@ -44,9 +46,7 @@ function FloodLayers() {
 
   useEffect(() => {
     if (!map || !mapLib || !isLoaded) return;
-    registerPmtiles(mapLib.addProtocol);
 
-    const controller = new AbortController();
     let cancelled = false;
 
     const addFlood = () => {
@@ -101,24 +101,23 @@ function FloodLayers() {
       });
     };
 
-    addFlood();
+    void import('pmtiles').then(({ Protocol: ProtocolCtor }) => {
+      if (cancelled) return;
+      registerPmtiles(mapLib.addProtocol, ProtocolCtor);
+      addFlood();
+    });
 
-    fetch(BOUNDARY_URL, { signal: controller.signal })
-      .then(response => {
-        if (!response.ok) throw new Error(`Boundaries ${response.status}`);
-        return response.json() as Promise<FeatureCollection<Geometry>>;
-      })
+    loadBarangayBoundaries()
       .then(data => {
         if (!cancelled) addBounds(data);
       })
       .catch(error => {
-        if (controller.signal.aborted) return;
+        if (cancelled) return;
         console.error(error);
       });
 
     return () => {
       cancelled = true;
-      controller.abort();
       if (!map.getStyle()) return;
       if (map.getLayer(BOUNDARY_LAYER_ID)) map.removeLayer(BOUNDARY_LAYER_ID);
       if (map.getLayer(FLOOD_LAYER_ID)) map.removeLayer(FLOOD_LAYER_ID);
@@ -153,16 +152,18 @@ export default function FloodSection() {
         </div>
 
         <div className="mt-8 overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)]">
-          <Map
-            theme="light"
-            center={[OCAMPO_CENTER.lng, OCAMPO_CENTER.lat]}
-            zoom={11}
-            scrollZoom={false}
-            className="h-[420px] w-full sm:h-[480px]"
-          >
-            <MapControls showZoom />
-            <FloodLayers />
-          </Map>
+          <WhenVisible className="h-[420px] w-full sm:h-[480px]">
+            <Map
+              theme="light"
+              center={[OCAMPO_CENTER.lng, OCAMPO_CENTER.lat]}
+              zoom={11}
+              scrollZoom={false}
+              className="h-full w-full"
+            >
+              <MapControls showZoom />
+              <FloodLayers />
+            </Map>
+          </WhenVisible>
           <div className="flex shrink-0 flex-wrap items-center justify-between gap-3 border-t border-gray-100 px-4 py-3 text-xs text-gray-500">
             <span className="inline-flex flex-wrap items-center gap-x-3 gap-y-1">
               {LEVELS.map(level => (

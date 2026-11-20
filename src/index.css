@@ -77,9 +77,10 @@
   --color-gray-100: #f1f3f5;
   --color-gray-200: #e9ecef;
   --color-gray-300: #dee2e6;
-  --color-gray-400: #ced4da;
-  --color-gray-500: #adb5bd;
-  --color-gray-600: #868e96;
+  /* 400–600 stay lighter than 700, and each clears 4.5:1 on white. */
+  --color-gray-400: #6b7280;
+  --color-gray-500: #5c6770;
+  --color-gray-600: #52606a;
   --color-gray-700: #495057;
   --color-gray-800: #343a40;
   --color-gray-900: #212529;

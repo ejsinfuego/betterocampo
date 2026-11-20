@@ -5,7 +5,8 @@ import {
   type Subcategory,
   type CategoryIndex,
 } from '../data/yamlLoader';
-import * as LucideIcons from 'lucide-react';
+import { FileText } from 'lucide-react';
+import { categoryIcon } from '../lib/categoryIcons';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import ServicesSection from '../components/home/ServicesSection';
 import SEO from '../components/SEO';
@@ -47,10 +48,7 @@ const Services: React.FC = () => {
   };
 
   const categoryData = getCategory();
-  const ResolvedIcon = LucideIcons[
-    categoryData?.icon as keyof typeof LucideIcons
-  ] as React.ComponentType<{ className?: string }> | undefined;
-  const Icon = ResolvedIcon ?? LucideIcons.FileText;
+  const Icon = categoryIcon(categoryData?.icon) ?? FileText;
 
   useEffect(() => {
     if (category && categoryData) {

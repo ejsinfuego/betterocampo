@@ -1,8 +1,8 @@
-import * as LucideIcons from 'lucide-react';
 import { ArrowRight, Landmark } from 'lucide-react';
 import { Link } from 'react-router';
 import { useTranslation } from '../../hooks/useTranslation';
 import { governmentCategories } from '../../data/yamlLoader';
+import { categoryIcon } from '../../lib/categoryIcons';
 import DirectoryCard from '../ui/DirectoryCard';
 import { CivicPage, PageHeader } from '../ui/PageFrame';
 
@@ -32,9 +32,7 @@ export default function GovernmentActivitySection({
     typeof limit === 'number' ? categories.slice(0, limit) : categories;
 
   const getIcon = (name: string) => {
-    const IconComponent = LucideIcons[
-      name as keyof typeof LucideIcons
-    ] as React.ComponentType<{ className?: string }>;
+    const IconComponent = categoryIcon(name);
     return IconComponent ? <IconComponent className="size-5" /> : null;
   };
 

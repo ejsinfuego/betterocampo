@@ -5,7 +5,8 @@ import {
   type Subcategory,
   type CategoryIndex,
 } from '../data/yamlLoader';
-import * as LucideIcons from 'lucide-react';
+import { Landmark } from 'lucide-react';
+import { categoryIcon } from '../lib/categoryIcons';
 import Breadcrumbs from '../components/ui/Breadcrumbs';
 import GovernmentActivitySection from '../components/home/GovernmentActivitySection';
 import SEO from '../components/SEO';
@@ -28,10 +29,7 @@ const Government: React.FC = () => {
   };
 
   const categoryData = getCategory();
-  const ResolvedIcon = LucideIcons[
-    categoryData?.icon as keyof typeof LucideIcons
-  ] as React.ComponentType<{ className?: string }> | undefined;
-  const Icon = ResolvedIcon ?? LucideIcons.Landmark;
+  const Icon = categoryIcon(categoryData?.icon) ?? Landmark;
 
   useEffect(() => {
     if (category && categoryData && category !== 'news') {

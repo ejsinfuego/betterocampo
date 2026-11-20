@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
-import { LngLatBounds } from 'maplibre-gl';
 import type {
   FeatureCollection,
   Geometry,
@@ -23,6 +22,7 @@ import {
   type OcampoPlace,
 } from '../../data/ocampoPlaces';
 import { barangayPopulation, DENSITY_STOPS } from '../../data/ocampoBarangays';
+import { loadBarangayBoundaries } from '../../lib/barangayBoundaries';
 import { labelPoint, type Area } from '../../lib/polygon';
 import BarangayLift, { type LiftTarget } from './BarangayLift';
 import BarangayBillboard from './BarangayBillboard';
@@ -33,8 +33,6 @@ import './ocampo-map.css';
 const FACTS_PANEL_PX = 264;
 const PITCH = 52;
 const BEARING = -14;
-
-const BOUNDARY_URL = '/geo/ocampo-barangays.geojson';
 
 type RawBarangayProps = {
   psgc: string;
@@ -120,11 +118,11 @@ function FitBarangays({
   data: BarangayCollection;
   padForFacts: boolean;
 }) {
-  const { map, isLoaded } = useMap();
+  const { map, mapLib, isLoaded } = useMap();
 
   useEffect(() => {
-    if (!map || !isLoaded) return;
-    const bounds = new LngLatBounds();
+    if (!map || !mapLib || !isLoaded) return;
+    const bounds = new mapLib.LngLatBounds();
     for (const feature of data.features) {
       const geometry = feature.geometry;
       if (geometry.type === 'GeometryCollection') continue;
@@ -143,7 +141,7 @@ function FitBarangays({
       bearing: BEARING,
     });
     if (!roomForFacts) map.setZoom(map.getZoom() + 0.35);
-  }, [data, isLoaded, map, padForFacts]);
+  }, [data, isLoaded, map, mapLib, padForFacts]);
 
   return null;
 }
@@ -310,23 +308,20 @@ export default function OcampoMap({
   } | null>(null);
 
   useEffect(() => {
-    const controller = new AbortController();
-    fetch(BOUNDARY_URL, { signal: controller.signal })
-      .then(response => {
-        if (!response.ok)
-          throw new Error(`Barangay boundaries ${response.status}`);
-        return response.json() as Promise<
-          FeatureCollection<Geometry, RawBarangayProps>
-        >;
-      })
+    let cancelled = false;
+    loadBarangayBoundaries()
       .then(data => {
-        if (!controller.signal.aborted) setBarangays(withPopulation(data));
+        if (cancelled) return;
+        setBarangays(
+          withPopulation(data as FeatureCollection<Geometry, RawBarangayProps>)
+        );
       })
       .catch(error => {
-        if (controller.signal.aborted) return;
-        console.error(error);
+        if (!cancelled) console.error(error);
       });
-    return () => controller.abort();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const showPlaces = pins.length === 0;
