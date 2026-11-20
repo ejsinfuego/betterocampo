@@ -28,9 +28,14 @@ export default function Hero() {
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,26rem)] lg:items-start lg:gap-x-8 xl:grid-cols-[minmax(0,1fr)_minmax(20rem,28rem)] xl:gap-x-10">
           <div className="animate-civic-fade-up max-w-2xl xl:max-w-3xl">
-            <h1 className="max-w-[14ch] text-[2.125rem] leading-[1.05] sm:leading-[1.02] tracking-tight text-balance text-gray-950 sm:text-6xl lg:text-7xl">
-              Community-driven guide to{' '}
-              <span className="text-primary-800">Ocampo</span>
+            <h1 className="max-w-xl text-[2.125rem] leading-[1.05] tracking-tight text-gray-950 sm:text-6xl lg:text-7xl">
+              <span className="block max-w-[14ch] text-balance sm:leading-[1.02]">
+                Community-driven guide to{' '}
+                <span className="text-primary-800">Ocampo</span>
+              </span>
+              <span className="mt-2 block text-lg font-semibold tracking-tight text-gray-800 sm:mt-3 sm:text-2xl">
+                Camarines Sur
+              </span>
             </h1>
 
             <p className="mt-4 max-w-[58ch] text-sm leading-relaxed text-gray-800 sm:mt-5 sm:text-lg">
