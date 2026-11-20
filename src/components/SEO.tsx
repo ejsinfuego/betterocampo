@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
@@ -9,6 +10,8 @@ interface SEOProps {
   type?: string;
   siteName?: string;
   jsonLd?: string;
+  /** Use `title` as the full document title, without appending the site name. */
+  exactTitle?: boolean;
 }
 
 export default function SEO({
@@ -18,27 +21,39 @@ export default function SEO({
   image,
   url,
   type = 'website',
-  siteName = import.meta.env.VITE_GOVERNMENT_NAME || 'Local Government Website',
+  siteName = import.meta.env.VITE_GOVERNMENT_NAME || 'Better Ocampo',
   jsonLd,
+  exactTitle = false,
 }: SEOProps) {
-  const defaultTitle = `${siteName} - Official Government Website`;
+  const defaultTitle = `${siteName} | Ocampo, Camarines Sur`;
   const defaultDescription =
     import.meta.env.VITE_SITE_DESCRIPTION ||
-    `Official website of ${siteName}. Access government services, information, and resources.`;
+    `Community guide to Ocampo, Camarines Sur: municipal services, offices, and local records for ${siteName}.`;
   const defaultKeywords =
     import.meta.env.VITE_SITE_KEYWORDS ||
-    'government, local government, services, public services, civic services';
+    'Ocampo, Camarines Sur, Ocampo Camarines Sur, municipality, local government, services';
 
-  const fullTitle = title ? `${title} | ${siteName}` : defaultTitle;
+  const fullTitle = title
+    ? exactTitle
+      ? title
+      : `${title} | ${siteName}`
+    : defaultTitle;
   const fullDescription = description || defaultDescription;
   const fullKeywords = keywords || defaultKeywords;
   const siteUrl = (
     import.meta.env.VITE_WEBSITE_URL || 'https://betterocampo.org'
   ).replace(/\/$/, '');
-  const fullUrl = url || siteUrl;
+  const currentPath =
+    typeof window === 'undefined' ? '/' : window.location.pathname || '/';
+  const fullUrl = url || `${siteUrl}${currentPath}`;
   const fullImage =
     image || import.meta.env.VITE_OG_IMAGE_URL || `${siteUrl}/og-image.jpg`;
   const twitterHandle = import.meta.env.VITE_TWITTER_HANDLE || '';
+
+  useEffect(() => {
+    const nodes = [...document.querySelectorAll('meta[name="description"]')];
+    nodes.slice(0, -1).forEach(node => node.remove());
+  }, [fullDescription]);
 
   return (
     <Helmet>
@@ -69,7 +84,7 @@ export default function SEO({
         </>
       )}
       <meta property="og:site_name" content={siteName} />
-      <meta property="og:locale" content="en_US" />
+      <meta property="og:locale" content="en_PH" />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
