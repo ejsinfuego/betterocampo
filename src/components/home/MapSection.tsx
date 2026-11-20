@@ -64,7 +64,7 @@ export default function MapSection() {
               id="map-heading"
               className="mt-2 text-3xl tracking-tight text-gray-950 sm:text-4xl"
             >
-              Ocampo on the Map
+              Ocampo Cam Sur tourist spots
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-gray-600 sm:text-base">
               Barangays shaded by how many people live in each square kilometer.
