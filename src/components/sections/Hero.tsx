@@ -20,8 +20,11 @@ export default function Hero() {
   return (
     <section className="font-inter relative isolate w-full overflow-hidden pt-10 sm:pb-12 selection:bg-primary-200 selection:text-gray-950 sm:pt-14 sm:pb-16">
       <img
-        src="/logos/png/BetterOcampo-Seal.png"
+        src="/logos/webp/BetterOcampo-Seal.webp"
         alt=""
+        width={640}
+        height={640}
+        fetchPriority="high"
         aria-hidden="true"
         className="pointer-events-none absolute top-1/2 -right-40 -z-10 w-[34rem] max-w-none -translate-y-1/2 opacity-[0.04] select-none sm:opacity-[0.055] [mask-image:linear-gradient(to_bottom,black_45%,transparent_85%)] sm:-right-32 lg:w-[44rem]"
       />
