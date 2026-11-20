@@ -106,12 +106,12 @@ export const RESIDENT_NEEDS: ResidentNeed[] = [
 /** Compact links for Hero / chrome — highest-frequency resident intents. */
 export const RESIDENT_QUICK_LINKS = [
   { label: 'What I need', href: '/needs' },
-  { label: 'Permits', href: '/services/business' },
+  { label: 'Education', href: '/services/education' },
   { label: 'Health', href: '/services/health-services' },
-  { label: 'Garbage', href: '/services/garbage-waste-disposal' },
+  { label: 'Projects', href: '/projects' },
   { label: 'Contact', href: '/government/departments/contact' },
   {
-    label: 'LGU Facebook',
+    label: 'Facebook Page',
     href: 'https://www.facebook.com/101706771551898',
     external: true,
   },
