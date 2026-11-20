@@ -90,8 +90,11 @@ const VolunteerModal: React.FC = () => {
             />
             <div className="relative">
               <img
-                src="/logos/png/BetterOcampo-Seal.png"
+                src="/logos/webp/BetterOcampo-Seal.webp"
                 alt=""
+                width={640}
+                height={640}
+                decoding="async"
                 className="mx-auto size-16 object-contain"
               />
               <span className="mt-3 inline-block rounded-full bg-white/15 px-3 py-0.5 text-[11px] font-semibold tracking-wide text-white/95 uppercase">
