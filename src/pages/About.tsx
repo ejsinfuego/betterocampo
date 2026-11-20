@@ -105,16 +105,16 @@ const About: React.FC = () => {
   return (
     <>
       <SEO
-        title="About"
-        description="Better Ocampo is a community transparency portal for the Municipality of Ocampo, Camarines Sur. No municipal website was found when this was checked."
-        keywords="Ocampo, Camarines Sur, Better Ocampo, transparency, local government"
+        title="Ocampo Camarines Sur volunteer"
+        description="Ocampo Camarines Sur volunteer project and Ocampo Cam Sur volunteer community behind Better Ocampo, the independent guide to LGU Ocampo."
+        keywords="ocampo camarines sur volunteer, ocampo cam sur volunteer, better ocampo, lgu ocampo community"
       />
       <CivicPage>
         <Breadcrumbs />
         <PageHeader
-          eyebrow="Independent community guide"
+          eyebrow="Ocampo Cam Sur volunteer"
           title="About Better Ocampo"
-          description="Better Ocampo is a community transparency portal for the Municipality of Ocampo, Camarines Sur. No municipal website was found when this was checked."
+          description="Better Ocampo is the Ocampo, Camarines Sur volunteer community guide for LGU Ocampo. No municipal website was found when this was checked."
         >
           <div className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-xl border border-emerald-200/80 bg-emerald-50/70 p-4 text-xs text-emerald-950">
             <span className="inline-flex items-center gap-2 font-semibold">

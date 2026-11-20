@@ -262,8 +262,9 @@ export function legislativePageMeta(
   pageUrl: string,
   siteUrl: string
 ) {
-  const title = 'Legislative Department of Ocampo, Camarines Sur';
-  const description = `Legislative department of Ocampo, Camarines Sur (Cam Sur): the Sangguniang Bayan for ${roster.term}. ${roster.mayor.office} ${roster.mayor.name}, ${roster.presiding.office} ${roster.presiding.name}, council, ex-officio members, and secretariat.`;
+  const title = 'LGU Ocampo legislative';
+  const officialName = 'Legislative Department of Ocampo, Camarines Sur';
+  const description = `LGU Ocampo legislative department for Camarines Sur (Cam Sur): the Sangguniang Bayan for ${roster.term}. ${roster.mayor.office} ${roster.mayor.name}, ${roster.presiding.office} ${roster.presiding.name}, council, ex-officio members, and secretariat.`;
   const members = [
     person(roster.mayor.name, roster.mayor.office),
     person(
@@ -292,7 +293,7 @@ export function legislativePageMeta(
         '@type': 'WebPage',
         '@id': pageUrl,
         url: pageUrl,
-        name: title,
+        name: officialName,
         description,
         inLanguage: 'en',
         isPartOf: {
@@ -328,7 +329,7 @@ export function legislativePageMeta(
           {
             '@type': 'ListItem',
             position: 4,
-            name: 'Legislative Department',
+            name: officialName,
             item: pageUrl,
           },
         ],
@@ -336,8 +337,9 @@ export function legislativePageMeta(
       {
         '@type': 'GovernmentOrganization',
         '@id': `${pageUrl}#sangguniang-bayan`,
-        name: title,
+        name: officialName,
         alternateName: [
+          'LGU Ocampo legislative',
           'Sangguniang Bayan of Ocampo',
           'Legislative Department of Ocampo',
           'SB Ocampo Cam Sur',
@@ -355,7 +357,7 @@ export function legislativePageMeta(
     title,
     description,
     keywords:
-      'legislative department, Sangguniang Bayan, Ocampo, Camarines Sur, Cam Sur, municipal council, Vice Mayor',
+      'lgu ocampo legislative, LGU Ocampo legislative, legislative department, Sangguniang Bayan, Ocampo, Camarines Sur, Cam Sur, municipal council, Vice Mayor',
     jsonLd: JSON.stringify(jsonLd),
   };
 }
