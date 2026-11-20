@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { ExternalLink, MapPin } from 'lucide-react';
 import { OCAMPO_CENTER, touristSpots } from '../../data/ocampoPlaces';
 import {
   BARANGAY_POPULATION_SOURCE,
   DENSITY_STOPS,
 } from '../../data/ocampoBarangays';
-import OcampoMap from './OcampoMap';
 import TownFactsPanel, { TownFactsStrip } from './TownFactsPanel';
+import WhenVisible from '../ui/WhenVisible';
+
+const OcampoMap = lazy(() => import('./OcampoMap'));
 
 const OSM_LINK = `https://www.openstreetmap.org/?mlat=${OCAMPO_CENTER.lat}&mlon=${OCAMPO_CENTER.lng}#map=12/${OCAMPO_CENTER.lat}/${OCAMPO_CENTER.lng}`;
 const GOOGLE_LINK = `https://www.google.com/maps/search/?api=1&query=${OCAMPO_CENTER.lat},${OCAMPO_CENTER.lng}`;
@@ -99,7 +101,11 @@ export default function MapSection() {
 
         <div className="relative z-0 isolate mt-8 flex flex-col overflow-hidden rounded-2xl border border-gray-200/90 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_8px_24px_-12px_rgba(15,23,42,0.12)]">
           <div className="relative h-[400px] sm:h-[480px] lg:h-[560px]">
-            <OcampoMap activeId={activeId} onSelect={setActiveId} />
+            <WhenVisible className="h-full">
+              <Suspense fallback={null}>
+                <OcampoMap activeId={activeId} onSelect={setActiveId} />
+              </Suspense>
+            </WhenVisible>
             <TownFactsPanel className="absolute bottom-3 left-3 z-10 hidden sm:block" />
           </div>
           <TownFactsStrip className="border-t border-gray-100 sm:hidden" />
