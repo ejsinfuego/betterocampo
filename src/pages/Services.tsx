@@ -13,6 +13,26 @@ import DirectoryCard from '../components/ui/DirectoryCard';
 import { CivicPage, Notice, PageHeader } from '../components/ui/PageFrame';
 import { useState, useEffect } from 'react';
 
+const categorySeo: Record<
+  string,
+  { title: string; description: string; keywords: string }
+> = {
+  'health-services': {
+    title: 'LGU Ocampo health',
+    description:
+      'LGU Ocampo health services in Ocampo, Camarines Sur: check-ups, vaccines, medicines, hospitals, and health programs.',
+    keywords:
+      'lgu ocampo health, LGU Ocampo health, Ocampo health, Camarines Sur',
+  },
+  education: {
+    title: 'LGU Ocampo education',
+    description:
+      'LGU Ocampo education in Ocampo, Camarines Sur: daycare, preschool, scholarships, and education support from the LGU.',
+    keywords:
+      'lgu ocampo education, LGU Ocampo education, Ocampo education, Camarines Sur',
+  },
+};
+
 const Services: React.FC = () => {
   const { category } = useParams();
   const [categoryIndex, setCategoryIndex] = useState<CategoryIndex>({
@@ -73,15 +93,24 @@ const Services: React.FC = () => {
   return (
     <>
       <SEO
-        title={categoryData.category || category}
-        description={categoryData.description}
-        keywords={`${categoryData.category}, government services, public services, local government`}
+        title={
+          categorySeo[category]?.title || categoryData.category || category
+        }
+        description={
+          categorySeo[category]?.description || categoryData.description
+        }
+        keywords={
+          categorySeo[category]?.keywords ||
+          `${categoryData.category}, government services, public services, local government`
+        }
       />
       <CivicPage>
         <Breadcrumbs />
         <PageHeader
           eyebrow="Service guide"
-          title={categoryData.category || category}
+          title={
+            categorySeo[category]?.title || categoryData.category || category
+          }
           description={categoryData.description}
         />
 
