@@ -39,8 +39,11 @@ const Footer: React.FC = () => {
           <div className="flex flex-col gap-3">
             <Link to="/" className="inline-flex items-center gap-2">
               <img
-                src="/logos/png/BetterOcampo-Seal.png"
+                src="/logos/webp/BetterOcampo-Seal.webp"
                 alt=""
+                width={640}
+                height={640}
+                decoding="async"
                 className="h-12 w-12 object-contain"
               />
               <span>
@@ -96,7 +99,7 @@ const Footer: React.FC = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="hover:text-white hover:underline"
+                    className="inline-flex min-h-6 items-center hover:text-white hover:underline"
                   >
                     {link.label}
                   </Link>
@@ -106,7 +109,7 @@ const Footer: React.FC = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="hover:text-white hover:underline"
+                    className="inline-flex min-h-6 items-center hover:text-white hover:underline"
                   >
                     {link.label}
                   </Link>
@@ -127,7 +130,7 @@ const Footer: React.FC = () => {
                     href={source.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-slate-300 hover:text-white"
+                    className="inline-flex min-h-6 items-center gap-1 py-1 text-slate-300 hover:text-white"
                   >
                     {source.label}
                     <ExternalLink className="size-3 shrink-0 text-slate-500" />
