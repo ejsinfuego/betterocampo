@@ -25,6 +25,12 @@ The Assistance to Individuals in Crisis Situation program is run by the Departme
 - School ID and grades or a certificate of enrollment
 - ID photos
 
+## Youth office
+
+The [Local Youth Development Office](https://www.facebook.com/277183935485458) page calls itself the municipal youth office and names Ms. Karen A. Benosa as LYDO-Designate. That name is not in the LGU office directory, so this page does not add a phone number for the office.
+
+A post on that page dated 23 February 2026 said nine of 25 barangay Sangguniang Kabataan councils had submitted 2025 monitoring reports. Another post that day said twelve of 25 had complied with a financial-disclosure count it dated 20 February 2025. Those figures are the page's own.
+
 ## Where to ask
 
 - Your public school
