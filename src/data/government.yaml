@@ -5,7 +5,7 @@
 categories:
   - category: 'Departments'
     slug: 'departments'
-    description: 'Explore local government departments, agencies, and offices with their mandates, services, and contact details.'
+    description: 'Mayor, vice mayor, Sangguniang Bayan, bids and awards, budget, census notes, and contacts for the Municipality of Ocampo.'
     icon: 'Building2'
     subcategories:
       - name: 'Executive Department'
