@@ -4,7 +4,7 @@ No public archive of Sangguniang Bayan ordinances or resolutions was found for O
 
 ## Executive order reported by the LGU page
 
-The Facebook page titled "LGU - Ocampo, Camarines Sur," which describes itself as the official page, posted the title and a summary of **Executive Order No. 29, series of 2026**. The order, as described in that post, bans the entry of live pigs, pork, and hog transport vehicles from African swine fever affected, restricted, or high-risk areas, and reactivates the Municipal ASF Task Force. The post names these entry points: Barangay May-Ogob, Barangay Ayugan, and Barangay Santo Niño. It attributes the order to Mayor Ronald Allan J. Go, with the Municipal Agriculture Office and the task force.
+Public scrape, stated by the LGU. The Facebook page titled "LGU - Ocampo, Camarines Sur," which describes itself as the official page, posted the title and a summary of **Executive Order No. 29, series of 2026**. The order, as described in that post, bans the entry of live pigs, pork, and hog transport vehicles from African swine fever affected, restricted, or high-risk areas, and reactivates the Municipal ASF Task Force. The post names these entry points: Barangay May-Ogob, Barangay Ayugan, and Barangay Santo Niño. It attributes the order to Mayor Ronald Allan J. Go, with the Municipal Agriculture Office and the task force.
 
 The full text of the order was not in that post. This page does not treat the summary as the ordinance itself.
 
