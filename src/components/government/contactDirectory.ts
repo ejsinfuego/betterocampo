@@ -27,6 +27,12 @@ export interface ContactDirectory {
     url?: string;
     note?: string;
   }>;
+  publicPagesIntro?: string;
+  publicPages: Array<{
+    label: string;
+    url?: string;
+    note?: string;
+  }>;
   missingNote?: string;
   privacyNote?: string;
 }
@@ -75,13 +81,10 @@ function parseEmailCell(
   value: string
 ): Pick<ContactFields, 'email' | 'emailNote'> {
   if (!value) return {};
-  const uncertain = /\(uncertain\)/i.test(value);
-  const email = value.replace(/\s*\(uncertain\)\s*/i, '').trim();
+  if (/\(uncertain\)/i.test(value)) return {};
+  const email = value.trim();
   if (!email.includes('@')) return {};
-  return {
-    email,
-    ...(uncertain ? { emailNote: 'uncertain' } : {}),
-  };
+  return { email };
 }
 
 function bulletLines(body: string): string[] {
@@ -163,6 +166,15 @@ export function parseContactMarkdown(
 
   if (offices.length === 0) return null;
 
+  const pagesBody = sectionBody(markdown, 'Public pages');
+  const publicPagesIntro = pagesBody
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith('- '))
+    .join(' ')
+    .trim();
+  const publicPages = parseSources(pagesBody);
+
   const sourcesBody = sectionBody(markdown, 'Sources');
   const sources = parseSources(sourcesBody);
   const missingMatch = markdown.match(
@@ -181,6 +193,8 @@ export function parseContactMarkdown(
     directoryIntro: directoryIntro || undefined,
     offices,
     sources,
+    publicPagesIntro: publicPagesIntro || undefined,
+    publicPages,
     missingNote: missingMatch?.[0]?.trim(),
     privacyNote: privacyMatch?.[0]?.trim(),
   };
