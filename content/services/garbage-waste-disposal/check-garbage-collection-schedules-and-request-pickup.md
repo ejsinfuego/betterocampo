@@ -28,4 +28,4 @@ Establishments must segregate waste. Industrial or bulky waste may need an accre
 - Municipal environment office, Municipal Hall, Ocampo, Camarines Sur 4419
 - [LGU Facebook page](https://www.facebook.com/101706771551898)
 
-No environment-office phone number is listed here.
+No environment-office phone number is listed here. Barangay collection days stay blank until the municipality publishes them.

@@ -34,4 +34,19 @@ export const municipalityFacts: {
     value: '4419',
     note: 'Camarines Sur · Region V',
   },
+  {
+    label: 'Income class',
+    value: '3rd class',
+    note: 'Landlocked · PhilAtlas',
+  },
+  {
+    label: 'Elevation',
+    value: '~55.4 m',
+    note: 'Approximate · PhilAtlas',
+  },
+  {
+    label: 'Registered voters',
+    value: '30,473',
+    note: '2025 · 86.10% turnout',
+  },
 ];

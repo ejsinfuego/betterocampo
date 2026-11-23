@@ -18,11 +18,28 @@ Pregnant women can ask for tetanus toxoid and prenatal supplements during prenat
 
 For an animal bite, go to the health station the same day and ask where anti-rabies vaccine is given. Do not wait for a schedule posted on this portal.
 
+## Rural health unit, pharmacy, and lying-in
+
+The Ocampo Rural Health Unit, the LGU pharmacy, and the lying-in facility are in Brgy. Poblacion West, Ocampo, Camarines Sur 4419.
+
+| Record                            | Value              |
+| --------------------------------- | ------------------ |
+| DOH facility code                 | DOH000000000001517 |
+| Short code                        | 1517               |
+| PSGC, barangay (DOH registry)     | 51725016           |
+| PSGC, municipality (DOH registry) | 51725000           |
+
+The 10-digit codes used elsewhere on this site for the same places are 0501725016 (Poblacion West) and 0501725000 (the municipality). This table keeps the codes as the health registry prints them.
+
+Sources: Department of Health National Health Facility Registry, and PhilGEPS notice GDS112024174 (12 November 2024).
+
 ## Where to go
 
 - Your barangay health station
-- Municipal Health Office, Municipal Hall, Ocampo, Camarines Sur 4419
+- Ocampo Rural Health Unit, Brgy. Poblacion West, Ocampo, Camarines Sur 4419
 - [LGU Facebook page](https://www.facebook.com/101706771551898) for announcements
 - [Department of Health](https://doh.gov.ph/) for the national immunization schedule
 
-No clinic phone number is listed here.
+The header RHU number, confirmed with the LGU, is 9122516900. The Municipal Health Office number in the LGU directory is 0927-772-8320.
+
+The [RHU OCAMPO](https://www.facebook.com/1278129182308012) page exists. Its listed mobile matches the header number.

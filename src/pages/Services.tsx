@@ -65,14 +65,14 @@ const Services: React.FC = () => {
       <>
         <SEO
           title="Services"
-          description={`All services provided by the ${import.meta.env.VITE_GOVERNMENT_NAME} government. Find what you need for citizenship, business, education, and more.`}
+          description={`Guides for ${import.meta.env.VITE_GOVERNMENT_NAME || 'Ocampo'}. Local fees, schedules, and hotlines stay off these pages until they are verified.`}
           keywords="government services, public services, local government, civic services"
         />
         <ServicesSection
           asPage
           eyebrow="Service guides"
           title="Services"
-          description={`Guides published for ${import.meta.env.VITE_GOVERNMENT_NAME}. Local fees, schedules, and hotlines stay off these pages until they are verified.`}
+          description={`Guides published for ${import.meta.env.VITE_GOVERNMENT_NAME || 'Ocampo'}. Local fees, schedules, and hotlines stay off these pages until they are verified.`}
         />
       </>
     );

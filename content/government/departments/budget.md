@@ -23,6 +23,23 @@ Source file: [Ocampo Annual Audit Report 2024 (ZIP)](https://www.coa.gov.ph/down
 
 Older years are on [Wikidata Q208878](https://www.wikidata.org/wiki/Q208878), each claim citing the COA report for that year.
 
+## FY 2022 Local Development Fund
+
+These figures are the 20% National Tax Allotment development fund for 2022, as published by the Bureau of Local Government Finance. They are not a line in the Commission on Audit tables above.
+
+| Item                                    | Amount (PHP) |
+| --------------------------------------- | ------------ |
+| 20% NTA allocation                      | 43,257,563   |
+| Actual utilization                      | 26,967,299   |
+| Utilization rate                        | 62.34%       |
+| Implied FY 2022 NTA (allocation ÷ 0.20) | 216,287,815  |
+
+The full NTA is implied from the 20% share. BLGF is cited here for the allocation, the amount used, and the utilization rate. This page does not present the implied total as a separate published cell.
+
+Source: Bureau of Local Government Finance, FY 2022 Local Development Fund.
+
+Citizen's Charter fees and Municipal Revenue Code rates are not on this page.
+
 ## What this is not
 
 The Department of Budget and Management open data used by [budget.bettergov.ph](https://budget.bettergov.ph) covers the national budget. It does not publish Ocampo's municipal appropriation ordinance. National projects that name the town are on the [Projects](/projects) page.

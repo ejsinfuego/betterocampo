@@ -29,12 +29,12 @@ export default function Hero() {
         className="pointer-events-none absolute top-1/2 -right-40 -z-10 w-[34rem] max-w-none -translate-y-1/2 opacity-[0.04] select-none sm:opacity-[0.055] [mask-image:linear-gradient(to_bottom,black_45%,transparent_85%)] sm:-right-32 lg:w-[44rem]"
       />
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(18rem,26rem)] lg:items-start lg:gap-x-8 xl:grid-cols-[minmax(0,1fr)_minmax(20rem,28rem)] xl:gap-x-10">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(22rem,30rem)] lg:items-stretch lg:gap-x-8 xl:grid-cols-[minmax(0,1fr)_minmax(26rem,34rem)] xl:gap-x-10">
           <div className="animate-civic-fade-up max-w-2xl xl:max-w-3xl">
-            <h1 className="max-w-xl text-[2.125rem] leading-[1.05] tracking-tight text-gray-950 sm:text-6xl lg:text-7xl">
-              <span className="block max-w-[14ch] text-balance sm:leading-[1.02]">
-                Community-driven guide to{' '}
-                <span className="text-primary-800">Ocampo</span>
+            <h1 className="text-[2.125rem] leading-[1.05] tracking-tight text-gray-950 sm:text-6xl lg:text-5xl xl:text-7xl">
+              <span className="block sm:leading-[1.02]">
+                <span className="whitespace-nowrap">Community-driven</span>{' '}
+                guide to <span className="text-primary-800">Ocampo</span>
               </span>
               <span className="mt-2 block text-lg font-semibold tracking-tight text-gray-800 sm:mt-3 sm:text-2xl">
                 Camarines Sur
@@ -112,7 +112,7 @@ export default function Hero() {
               </nav>
             </form>
           </div>
-          <HairlineMap className="mx-auto mt-8 hidden w-full max-w-md translate-y-6 sm:block lg:mx-0 lg:mt-1 lg:max-w-none lg:translate-y-10" />
+          <HairlineMap className="mx-auto mt-8 hidden w-full max-w-md sm:block lg:mx-0 lg:mt-0 lg:flex lg:h-full lg:max-w-none lg:flex-col lg:justify-center" />
         </div>
       </div>
     </section>

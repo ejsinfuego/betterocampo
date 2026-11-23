@@ -63,6 +63,7 @@ export default function Document({
   const [nestedIndex, setNestedIndex] = useState<CategoryIndex | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [pageTitle, setPageTitle] = useState<string | null>(null);
 
   const markdownComponents = createMarkdownComponents(
     getTypographyTheme(initialTheme)
@@ -73,6 +74,8 @@ export default function Document({
   ]);
 
   useEffect(() => {
+    setPageTitle(null);
+
     if (!documentSlug || !category || !categoryType) {
       setError('No document specified');
       setLoading(false);
@@ -83,6 +86,8 @@ export default function Document({
       try {
         setLoading(true);
         setError(null);
+        setMarkdownContent(null);
+        setNestedIndex(null);
 
         const isGovernment = categoryType === 'government';
         const categories = isGovernment
@@ -91,34 +96,11 @@ export default function Document({
         const sectionLabel = isGovernment ? 'Government' : 'Services';
         const sectionHref = isGovernment ? '/government' : '/services';
         const categoryData = categories.find(c => c.slug === category);
+        const index = await getCategorySubcategories(category);
+        const listedPage = index.pages.find(page => page.slug === documentSlug);
+        setPageTitle(listedPage?.name ?? null);
 
-        // If the slug maps to its own index, render it as a nested listing
-        if (isNestedCategory(documentSlug)) {
-          const index = await getCategorySubcategories(documentSlug);
-          setNestedIndex(index);
-          setBreadcrumbs([
-            { label: 'Home', href: '/' },
-            { label: sectionLabel, href: sectionHref },
-            {
-              label: categoryData?.category ?? category,
-              href: `${sectionHref}/${category}`,
-            },
-            {
-              label: documentSlug,
-              href: `${sectionHref}/${category}/${documentSlug}`,
-            },
-          ]);
-          return;
-        }
-
-        const content = await loadMarkdownContent(
-          documentSlug,
-          category,
-          categoryType
-        );
-        setMarkdownContent(content);
-
-        setBreadcrumbs(
+        const nextBreadcrumbs =
           documentSlug === 'projects'
             ? [
                 { label: 'Home', href: '/' },
@@ -132,11 +114,34 @@ export default function Document({
                   href: `${sectionHref}/${category}`,
                 },
                 {
-                  label: content.title ?? documentSlug,
+                  label: listedPage?.name ?? documentSlug,
                   href: `${sectionHref}/${category}/${documentSlug}`,
                 },
-              ]
+              ];
+        setBreadcrumbs(nextBreadcrumbs);
+
+        // If the slug maps to its own index, render it as a nested listing
+        if (isNestedCategory(documentSlug)) {
+          const nested = await getCategorySubcategories(documentSlug);
+          setNestedIndex(nested);
+          return;
+        }
+
+        const content = await loadMarkdownContent(
+          documentSlug,
+          category,
+          categoryType
         );
+        setMarkdownContent(content);
+        if (content.title) {
+          setBreadcrumbs(current =>
+            current.map((item, i) =>
+              i === current.length - 1
+                ? { ...item, label: content.title ?? item.label }
+                : item
+            )
+          );
+        }
       } catch (err) {
         setError(
           err instanceof Error ? err.message : 'Failed to load document'
@@ -160,13 +165,22 @@ export default function Document({
   }
 
   if (error) {
+    const uncheckedTitle = pageTitle || 'This page';
     return (
-      <CivicPage>
-        <Breadcrumbs items={breadcrumbs} />
-        <Notice tone="error" title="Document not found">
-          {error}
-        </Notice>
-      </CivicPage>
+      <>
+        <SEO
+          title={uncheckedTitle}
+          description="The information for this page has not been checked yet."
+        />
+        <CivicPage>
+          <Breadcrumbs items={breadcrumbs} />
+          <PageHeader
+            eyebrow="Not checked yet"
+            title={uncheckedTitle}
+            description="The information for this page has not been checked yet. Local fees, schedules, and hotlines stay off until a public source is added."
+          />
+        </CivicPage>
+      </>
     );
   }
 

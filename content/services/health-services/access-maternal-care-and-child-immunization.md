@@ -23,7 +23,9 @@ Routine childhood vaccines are part of the Department of Health Expanded Program
 3. Receive the service that is scheduled that day.
 4. Keep the return date the midwife or nurse gives you.
 
-Facility-based delivery and mother's classes, if the municipality is running them, are announced by the health station or the [LGU Facebook page](https://www.facebook.com/101706771551898).
+The lying-in facility is part of the Ocampo Rural Health Unit in Brgy. Poblacion West, Ocampo, Camarines Sur 4419 (DOH facility code DOH000000000001517, short code 1517). Facility-based delivery and mother's classes, if the municipality is running them, are announced by the health station or the [LGU Facebook page](https://www.facebook.com/101706771551898). Clinic days and a phone number are not listed here.
+
+Source: Department of Health National Health Facility Registry, and PhilGEPS notice GDS112024174 (12 November 2024). See the [check-ups guide](/services/health-services/get-free-check-ups-basic-medicines-and-vaccines) for the registry codes.
 
 ## References
 

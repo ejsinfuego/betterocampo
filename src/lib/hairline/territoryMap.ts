@@ -157,16 +157,9 @@ export function mountTerritoryMap(
     const maxWavePx = (4 + INTENSITY * 18) * scale;
     const activeBoostPx = (10 + INTENSITY * 24) * scale;
 
-    let highestWave = -1;
-    let tourLeader: LiveRegion | null = null;
-
     for (const region of regions) {
       const rawWave = (Math.sin(time - region.phase * 1.1) + 1) * 0.5;
       const smoothWave = rawWave * rawWave * (3 - 2 * rawWave);
-      if (smoothWave > highestWave) {
-        highestWave = smoothWave;
-        tourLeader = region;
-      }
 
       let target = reduced ? 0 : smoothWave * maxWavePx;
       if (active && active.id === region.id) {
@@ -184,7 +177,7 @@ export function mountTerritoryMap(
       }));
     }
 
-    const highlighted = active ?? (playing && !reduced ? tourLeader : null);
+    const highlighted = active;
 
     ctx.clearRect(0, 0, width, height);
     drawGrid(width, height);

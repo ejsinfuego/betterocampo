@@ -193,6 +193,43 @@ export default function ContactView({
         </ul>
       </SurfaceCard>
 
+      {directory.publicPages.length > 0 ? (
+        <SurfaceCard
+          as="section"
+          className="animate-civic-fade-up p-5 [animation-delay:200ms] sm:p-6"
+        >
+          <DirectorySectionHeading
+            icon={<ExternalLink className="size-4" aria-hidden="true" />}
+            title="Public pages"
+            description={directory.publicPagesIntro}
+            count={directory.publicPages.length}
+          />
+          <ul className="m-0 list-none space-y-3 p-0">
+            {directory.publicPages.map(page => (
+              <li key={page.label} className="text-sm leading-relaxed">
+                {page.url ? (
+                  <a
+                    href={page.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium text-primary-700 underline decoration-primary-200 underline-offset-2 hover:text-primary-800"
+                  >
+                    {page.label}
+                  </a>
+                ) : (
+                  <span className="font-medium text-gray-800">
+                    {page.label}
+                  </span>
+                )}
+                {page.note ? (
+                  <span className="text-gray-600"> — {page.note}</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </SurfaceCard>
+      ) : null}
+
       <SurfaceCard
         as="section"
         className="animate-civic-fade-up p-5 [animation-delay:220ms] sm:p-6"

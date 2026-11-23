@@ -93,9 +93,11 @@ const promises = [
     title: 'Missing details stay off the page',
     body: (
       <>
-        Local fees, schedules, and hotlines stay off those pages until they are
-        verified. No municipal hotline or office email is listed until one is
-        verified.
+        Service guides leave local fees, collection days, and office hotlines
+        blank until a public source is checked. The contact page lists office
+        numbers and emails from the LGU directory, confirmed with the LGU. The
+        header lists PNP, BFP, RHU, and MDRRMO numbers confirmed with the LGU,
+        plus national 911. Office mobiles on the contact page can differ.
       </>
     ),
   },
@@ -223,6 +225,27 @@ const About: React.FC = () => {
           </div>
         </section>
 
+        <section id="privacy" className="scroll-mt-28">
+          <SurfaceCard className="space-y-2 p-6 sm:p-8">
+            <p className="text-xs font-semibold tracking-wide text-primary-700 uppercase">
+              <span className="inline-flex items-center gap-1.5">
+                <ShieldCheck className="size-4" />
+                Privacy
+              </span>
+            </p>
+            <h2 className="text-xl font-semibold tracking-tight text-gray-950">
+              What this site sends to Google
+            </h2>
+            <p className="text-sm leading-relaxed text-gray-600">
+              Better Ocampo uses Google Analytics. Each page view sends the page
+              address and title. A completed search sends the words that were
+              searched. The site also tells Google that the interface language
+              is English. It does not ask you to create an account, and it does
+              not collect PhilSys records.
+            </p>
+          </SurfaceCard>
+        </section>
+
         <section
           id="contact"
           className="scroll-mt-28 grid gap-4 lg:grid-cols-2"
@@ -261,8 +284,10 @@ const About: React.FC = () => {
               <li>No municipal website was found when this was checked.</li>
             </ul>
             <p className="text-sm text-gray-500">
-              No municipal hotline or office email is listed until one is
-              verified.
+              Office numbers and emails on the contact page come from the LGU
+              directory and were confirmed with the LGU. Directory emails are
+              shown as printed, including when that directory uses a personal
+              mailbox.
             </p>
           </SurfaceCard>
 

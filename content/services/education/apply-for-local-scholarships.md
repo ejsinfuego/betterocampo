@@ -2,6 +2,8 @@
 
 The Municipality of Ocampo has not published a scholarship call, a list of partner schools, or a coverage amount on this portal. When the municipality or the district representative opens slots, the notice should come from the [LGU Facebook page](https://www.facebook.com/101706771551898) or the Municipal Hall.
 
+**Unverified:** A Scribd copy of Barangay Hanawan Ordinance No. 001, s. 2026, is titled as the Sangguniang Kabataan Project ACCESS educational assistance measure. Scribd is not an official posting. This page does not treat the program as open, and it does not list a benefit amount or a deadline.
+
 Residents can still apply to national programs on their own.
 
 ## National programs to check

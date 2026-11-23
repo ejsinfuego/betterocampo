@@ -4,7 +4,20 @@ import { SurfaceCard } from '../ui/PageFrame';
 import { cn } from '../../lib/utils';
 import ContactLinks from './ContactLinks';
 import DirectorySectionHeading from './DirectorySectionHeading';
-import type { ContactFields, LegislativeRoster } from './legislativeRoster';
+import type {
+  ContactFields,
+  LegislativeMember,
+  LegislativeRoster,
+} from './legislativeRoster';
+
+function electionMeta(member: LegislativeMember): string | undefined {
+  const parts = [
+    member.party,
+    member.votes ? `${member.votes} votes` : undefined,
+    member.voteShare,
+  ].filter(Boolean);
+  return parts.length ? parts.join(' · ') : undefined;
+}
 
 function SeatNumber({ n, compact = false }: { n: number; compact?: boolean }) {
   return (
@@ -89,7 +102,7 @@ export default function LegislativeView({
           <dl className="mt-5 grid grid-cols-2 gap-3 border-t border-gray-100 pt-4">
             <div>
               <dt className="text-[11px] font-semibold tracking-wide text-gray-500 uppercase">
-                2025 votes
+                {roster.returnsStatus ? 'Unofficial 2025 votes' : '2025 votes'}
               </dt>
               <dd className="mt-1 font-mono text-lg font-semibold tabular-nums text-gray-950">
                 {roster.mayor.votes}
@@ -102,6 +115,11 @@ export default function LegislativeView({
               <dd className="mt-1 font-mono text-lg font-semibold tabular-nums text-gray-950">
                 {roster.registeredVoters}
               </dd>
+              {roster.turnout ? (
+                <p className="mt-1 text-xs text-gray-500">
+                  {roster.turnout} turnout
+                </p>
+              ) : null}
             </div>
           </dl>
         </SurfaceCard>
@@ -137,7 +155,7 @@ export default function LegislativeView({
             </div>
             <div className="shrink-0 rounded-xl bg-white/12 px-4 py-3 ring-1 ring-white/15">
               <p className="text-[11px] font-semibold tracking-wide text-primary-100 uppercase">
-                2025 votes
+                {roster.returnsStatus ? 'Unofficial 2025 votes' : '2025 votes'}
               </p>
               <p className="mt-0.5 font-mono text-2xl font-semibold tabular-nums text-white">
                 {roster.presiding.votes}
@@ -155,7 +173,10 @@ export default function LegislativeView({
         <DirectorySectionHeading
           icon={<Users className="size-4" aria-hidden="true" />}
           title="Municipal council"
-          description="Elected Sangguniang Bayan members for the current term."
+          description={
+            roster.returnsStatus ||
+            'Elected Sangguniang Bayan members for the current term.'
+          }
           count={roster.council.length}
         />
         <ol className="m-0 mt-1 grid list-none grid-cols-1 gap-3 p-0 sm:grid-cols-2 lg:grid-cols-4">
@@ -163,6 +184,7 @@ export default function LegislativeView({
             <MemberCard
               key={member.name}
               name={member.name}
+              meta={electionMeta(member)}
               seat={i + 1}
               email={member.email}
               phone={member.phone}

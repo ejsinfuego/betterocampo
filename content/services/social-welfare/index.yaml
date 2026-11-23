@@ -4,16 +4,16 @@
 pages:
   - name: 'Apply for senior citizen, solo parent, or PWD assistance'
     slug: 'apply-for-senior-citizen-solo-parent-or-pwd-assistance'
-    description: 'Information about applying for assistance programs for senior citizens, solo parents, and persons with disabilities.'
-    
+    description: 'Where to ask for a senior citizen, solo parent, or PWD ID. Local cash amounts and fees are not listed.'
+
   - name: 'Receive relief goods or cash aid during disasters'
     slug: 'receive-relief-goods-or-cash-aid-during-disasters'
-    description: 'How to access relief goods and cash assistance during natural disasters and emergencies.'
-    
+    description: 'Ask the barangay, MSWDO, or MDRRMO during a disaster. Pack contents, cash amounts, and payout dates are not listed.'
+
   - name: 'Join livelihood or skills training programs'
     slug: 'join-livelihood-or-skills-training-programs'
     description: 'Participate in livelihood and skills training programs offered by your local government.'
-    
+
   - name: 'Get family and community welfare support'
     slug: 'get-family-and-community-welfare-support'
-    description: 'Access family and community welfare support services from your local government.'
+    description: 'Kalahi CIDSS barangay committees and Indigenous Peoples CADT communities, with no cash amounts filled in.'

@@ -55,4 +55,4 @@ Report a new address, name, owner, activity, floor area, or closure. File a reti
 
 ## Where to confirm
 
-Municipal Hall, Ocampo, Camarines Sur 4419. Updates are also posted on the [LGU Facebook page](https://www.facebook.com/101706771551898). No hotline is listed here.
+Municipal Hall, Ocampo, Camarines Sur 4419. Updates are also posted on the [LGU Facebook page](https://www.facebook.com/101706771551898). No hotline is listed here. Municipal revenue-code rates and Citizen's Charter fees stay blank until the ordinance or charter is read from a public source.

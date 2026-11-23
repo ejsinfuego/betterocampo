@@ -1,6 +1,8 @@
 # Go to the Local Hospital for Treatment or Confinement — Ocampo, Camarines Sur
 
-This portal does not yet name a municipal hospital, its bed count, or a phone number for Ocampo. For emergencies, go to the nearest emergency room. For a planned admission, ask the Municipal Health Office where residents are referred.
+This portal does not yet name a municipal hospital, its bed count, or a phone number for Ocampo. The Ocampo Rural Health Unit in Brgy. Poblacion West includes a lying-in facility (DOH facility code DOH000000000001517). That record is not a hospital bed count. For emergencies, go to the nearest emergency room. For a planned admission, ask the Municipal Health Office where residents are referred.
+
+Source: Department of Health National Health Facility Registry, and PhilGEPS notice GDS112024174 (12 November 2024).
 
 ## Emergency
 
@@ -30,3 +32,5 @@ PhilHealth benefits and No Balance Billing depend on membership category and on 
 - [LGU Facebook page](https://www.facebook.com/101706771551898)
 
 No hospital trunk line is published here.
+
+A post on the [BFP R5 Ocampo](https://www.facebook.com/109157901666792) page says a drill was held at Ocampo District Hospital. That name is the post's. This page still does not treat it as a confirmed hospital record.

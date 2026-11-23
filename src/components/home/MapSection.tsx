@@ -167,7 +167,7 @@ export default function MapSection() {
                 Tourist spots
               </span>
               <span className="text-gray-400">
-                “Approx” means barangay-level only, with no exact pin yet.
+                “Approx” means the pin is not a verified GPS point.
               </span>
             </span>
             <span className="inline-flex flex-wrap gap-x-3 gap-y-1">
