@@ -4,6 +4,8 @@ Businesses in the Municipality of Ocampo, Camarines Sur need a barangay clearanc
 
 The municipality has not published its permit checklist, fees, or an online portal on this page. Confirm the current list at the Business Permits and Licensing Office in the Municipal Hall, Ocampo, Camarines Sur 4419, or on the [LGU Facebook page](https://www.facebook.com/101706771551898).
 
+Public scrape, stated by the LGU. That page announced the launching of the DTI Negosyo Center on 27 October 2026 at the New Public Market Building, Poblacion West. The post does not list the center's services or fees.
+
 ## 1. Register the business name
 
 Use the registry that matches the business:
