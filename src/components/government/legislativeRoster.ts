@@ -8,12 +8,18 @@ export interface ContactFields {
 export interface LegislativeMember extends ContactFields {
   name: string;
   role?: string;
+  party?: string;
+  votes?: string;
+  voteShare?: string;
 }
 
 export interface LegislativeRoster {
   term: string;
   summary?: string;
   registeredVoters: string;
+  /** Present only when the markdown labels the count as unofficial. */
+  returnsStatus?: string;
+  turnout?: string;
   mayor: {
     office: string;
     name: string;
@@ -66,12 +72,14 @@ function isPhone(value: string): boolean {
   return /^0\d/.test(value.replace(/[()\s-]/g, ''));
 }
 
-function parsePhone(value: string): { phone: string; phoneNote?: string } {
+function parsePhone(value: string): { phone?: string; phoneNote?: string } {
   const noteMatch = value.match(/^(.+?)\s*\((.+)\)\s*$/);
   if (noteMatch) {
+    const phoneNote = noteMatch[2].trim();
+    if (/uncertain/i.test(phoneNote)) return {};
     return {
       phone: noteMatch[1].trim(),
-      phoneNote: noteMatch[2].trim(),
+      phoneNote,
     };
   }
   return { phone: value.trim() };
@@ -86,6 +94,15 @@ function parseMemberLine(line: string): LegislativeMember {
   const member: LegislativeMember = { name: parts[0] ?? line };
 
   for (const part of parts.slice(1)) {
+    const labeled = part.match(/^(party|votes|share):\s*(.+)$/i);
+    if (labeled) {
+      const key = labeled[1].toLowerCase();
+      const value = labeled[2].trim();
+      if (key === 'party') member.party = value;
+      else if (key === 'votes') member.votes = value;
+      else member.voteShare = value;
+      continue;
+    }
     if (isEmail(part)) {
       member.email = part;
       continue;
@@ -138,8 +155,12 @@ function parseOfficerTable(body: string): {
     if (/^office$/i.test(office)) continue;
 
     const contactFields: ContactFields = {};
-    if (email && isEmail(email)) contactFields.email = email;
-    if (contact) Object.assign(contactFields, parsePhone(contact));
+    if (email && isEmail(email) && !/\(uncertain\)/i.test(email)) {
+      contactFields.email = email;
+    }
+    if (contact && isPhone(contact)) {
+      Object.assign(contactFields, parsePhone(contact));
+    }
 
     if (/mayor/i.test(office) && !/vice/i.test(office)) {
       result.mayor = { name, votes };
@@ -194,10 +215,26 @@ export function parseLegislativeMarkdown(
     /Registered voters[^:]*:\s*(\d{1,3}(?:,\d{3})*)/i
   );
   const registeredVoters = votersMatch?.[1] ?? '';
+  const turnoutMatch = officerBody.match(/Turnout[^:]*:\s*([\d.]+%)/i);
+  const residenceMatch = officerBody.match(/^Residence:\s*(.+)$/m);
+  const residence = residenceMatch?.[1]?.trim().replace(/\.$/, '');
 
-  const council = bulletLines(sectionBody(markdown, 'Municipal council')).map(
-    parseMemberLine
-  );
+  const councilBody = sectionBody(markdown, 'Municipal council');
+  const returnsStatus = councilBody.match(/^Status:\s*(.+)$/m)?.[1]?.trim();
+  const council = bulletLines(councilBody)
+    .map(parseMemberLine)
+    .map(member =>
+      returnsStatus
+        ? member
+        : {
+            name: member.name,
+            role: member.role,
+            email: member.email,
+            emailNote: member.emailNote,
+            phone: member.phone,
+            phoneNote: member.phoneNote,
+          }
+    );
   if (council.length === 0) return null;
 
   const exOfficio = bulletLines(sectionBody(markdown, 'Ex-officio members'))
@@ -224,6 +261,8 @@ export function parseLegislativeMarkdown(
     term,
     summary,
     registeredVoters,
+    returnsStatus,
+    turnout: turnoutMatch?.[1],
     mayor: {
       office: 'Mayor',
       name: mayor.name,
@@ -233,7 +272,9 @@ export function parseLegislativeMarkdown(
       office: 'Vice Mayor',
       name: viceMayor.name,
       votes: viceMayor.votes,
-      note: 'Presides over the Sangguniang Bayan',
+      note: residence
+        ? `Presides over the Sangguniang Bayan. ${residence}.`
+        : 'Presides over the Sangguniang Bayan',
       email: viceMayor.email,
       phone: viceMayor.phone,
       phoneNote: viceMayor.phoneNote,
