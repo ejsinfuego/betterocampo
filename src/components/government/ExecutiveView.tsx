@@ -1,12 +1,14 @@
 import { Link } from 'react-router';
 import type { ReactNode } from 'react';
 import {
+  Building2,
   CalendarDays,
   ExternalLink,
   Gavel,
   Landmark,
   ListChecks,
   Mail,
+  MapPin,
 } from 'lucide-react';
 import { SurfaceCard } from '../ui/PageFrame';
 import { cn } from '../../lib/utils';
@@ -134,6 +136,109 @@ export default function ExecutiveView({
           <p className="max-w-3xl text-sm leading-relaxed text-gray-700 sm:text-base">
             {profile.mayor.bio}
           </p>
+        </SurfaceCard>
+      ) : null}
+
+      {profile.viceMayor.bio ? (
+        <SurfaceCard
+          as="section"
+          className="animate-civic-fade-up p-5 [animation-delay:120ms] sm:p-6"
+        >
+          <DirectorySectionHeading
+            icon={<Gavel className="size-4" aria-hidden="true" />}
+            title="About the Vice Mayor"
+            description="Presiding officer of the Sangguniang Bayan."
+          />
+          <p className="max-w-3xl text-sm leading-relaxed text-gray-700 sm:text-base">
+            {profile.viceMayor.bio}
+          </p>
+        </SurfaceCard>
+      ) : null}
+
+      {profile.bac ? (
+        <SurfaceCard
+          as="section"
+          className="animate-civic-fade-up p-5 [animation-delay:140ms] sm:p-6"
+        >
+          <DirectorySectionHeading
+            icon={<ListChecks className="size-4" aria-hidden="true" />}
+            title="Bids and Awards Committee"
+            description={profile.bac.source}
+          />
+          <dl className="grid gap-3 sm:grid-cols-2">
+            {profile.bac.fields.map(field => (
+              <div
+                key={field.label}
+                className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3"
+              >
+                <dt className="text-[11px] font-semibold tracking-wide text-gray-500 uppercase">
+                  {field.label}
+                </dt>
+                <dd className="mt-1 text-sm font-medium text-gray-950">
+                  {field.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          {profile.bac.note ? (
+            <p className="mt-4 text-sm leading-relaxed text-gray-700">
+              {profile.bac.note}
+            </p>
+          ) : null}
+        </SurfaceCard>
+      ) : null}
+
+      {profile.postingSites ? (
+        <SurfaceCard
+          as="section"
+          className="animate-civic-fade-up p-5 [animation-delay:160ms] sm:p-6"
+        >
+          <DirectorySectionHeading
+            icon={<MapPin className="size-4" aria-hidden="true" />}
+            title="Official posting sites"
+            description={profile.postingSites.source}
+            count={profile.postingSites.sites.length}
+          />
+          <ul className="m-0 list-disc space-y-1 pl-5 text-sm text-gray-800">
+            {profile.postingSites.sites.map(site => (
+              <li key={site}>{site}</li>
+            ))}
+          </ul>
+        </SurfaceCard>
+      ) : null}
+
+      {profile.complex ? (
+        <SurfaceCard
+          as="section"
+          className="animate-civic-fade-up p-5 [animation-delay:180ms] sm:p-6"
+        >
+          <DirectorySectionHeading
+            icon={<Building2 className="size-4" aria-hidden="true" />}
+            title="Municipal complex"
+            description={profile.complex.source}
+          />
+          <div className="grid gap-4 lg:grid-cols-2">
+            {profile.complex.groups.map(group => (
+              <div
+                key={group.title}
+                className="rounded-xl border border-gray-100 bg-gray-50 px-4 py-3"
+              >
+                <h3 className="text-sm font-semibold text-gray-950">
+                  {group.title}
+                </h3>
+                <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-gray-800">
+                  {group.items.map(item => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          {profile.complex.note ? (
+            <p className="mt-4 text-sm leading-relaxed text-gray-700">
+              {profile.complex.note}
+            </p>
+          ) : null}
         </SurfaceCard>
       ) : null}
 
