@@ -2,6 +2,15 @@
 
 Clubs, contests, and scouting in Ocampo start at the school. Division-wide events are announced by the Schools Division of Camarines Sur through the school, not by a city hall in another province. This page does not list a municipal library schedule.
 
+## Schools and training sites named in public registries
+
+These entries are registry listings. This page does not add tuition, a course list, or a local phone.
+
+| Listing                                           | What is published                                                                                                                      | Source                                                                      |
+| ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| Ocampo Academy Technological Institute            | Named in the Camarines Sur Polytechnic Colleges school-extension linkage registry                                                      | [cspc.edu.ph](https://cspc.edu.ph/)                                         |
+| TESDA-registered technical-vocational institution | Address only: Zone 3B, Pawili Site, Barangay Cagmanaba, Ocampo. The institution's name is not in the note used here, so it stays blank | TESDA TVI Registry. National TESDA lines: (02) 7709-0075 and (02) 7709-0076 |
+
 ## Where to look
 
 1. The school's bulletin or official social media page.
