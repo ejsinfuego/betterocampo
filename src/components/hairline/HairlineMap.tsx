@@ -18,18 +18,20 @@ export default function HairlineMap({ className = '' }: Props) {
 
   return (
     <div className={className}>
-      <div
-        ref={stageRef}
-        role="img"
-        aria-label="Animated map of Ocampo"
-        tabIndex={0}
-        className="aspect-[1024/537] w-full touch-pan-y rounded-2xl outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
-      >
-        <canvas
-          ref={canvasRef}
-          aria-hidden="true"
-          className="block h-full w-full"
-        />
+      <div className="w-full mx-auto">
+        <div
+          ref={stageRef}
+          role="img"
+          aria-label="Animated map of Ocampo"
+          tabIndex={0}
+          className="aspect-[1024/537] min-w-[500px] touch-pan-y overflow-hidden rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+        >
+          <canvas
+            ref={canvasRef}
+            aria-hidden="true"
+            className="block h-full w-full"
+          />
+        </div>
       </div>
     </div>
   );
