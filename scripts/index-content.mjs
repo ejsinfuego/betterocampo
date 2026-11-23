@@ -9,7 +9,7 @@
  * Re-run after adding or editing content under content/.
  */
 
-import { mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import * as yaml from 'js-yaml';
@@ -27,6 +27,34 @@ function extractDescription(markdown) {
   const match = markdown.match(/^#\s+.+$\n\n(.+?)(?:\n\n|$)/ms);
   if (!match) return '';
   return match[1].replace(/^>\s*/, '').trim();
+}
+
+function loadCompanion(mdPath) {
+  const jsonPath = mdPath.replace(/\.md$/, '.json');
+  if (!existsSync(jsonPath)) return {};
+  try {
+    const data = JSON.parse(readFileSync(jsonPath, 'utf8'));
+    return data && typeof data === 'object' ? data : {};
+  } catch {
+    return {};
+  }
+}
+
+function interpolate(content, data) {
+  return content.replace(/\{([A-Z0-9_]+)\}/g, (match, key) => {
+    if (
+      data &&
+      Object.prototype.hasOwnProperty.call(data, key) &&
+      data[key] != null
+    ) {
+      return String(data[key]);
+    }
+    return match;
+  });
+}
+
+function prepareMarkdown(mdPath, raw) {
+  return interpolate(raw, loadCompanion(mdPath)).replace(/^TODO:.*$/gm, '');
 }
 
 function stripMarkdown(content) {
@@ -59,7 +87,7 @@ function loadMarkdownPages(dir, categorySlug, categoryName, type) {
   for (const page of pages) {
     const mdPath = join(ROOT, `content/${dir}/${categorySlug}/${page.slug}.md`);
     try {
-      const raw = readFileSync(mdPath, 'utf8');
+      const raw = prepareMarkdown(mdPath, readFileSync(mdPath, 'utf8'));
       const title = extractTitle(raw) || page.name;
       const description = extractDescription(raw) || page.description || '';
       documents.push({
@@ -117,7 +145,10 @@ function collectDocuments() {
 
   const projectsPath = join(ROOT, 'content/government/departments/projects.md');
   try {
-    const raw = readFileSync(projectsPath, 'utf8');
+    const raw = prepareMarkdown(
+      projectsPath,
+      readFileSync(projectsPath, 'utf8')
+    );
     documents.push({
       id: 'projects',
       title: extractTitle(raw) || 'Projects',
