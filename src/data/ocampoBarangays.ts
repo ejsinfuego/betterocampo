@@ -1,4 +1,6 @@
-/** PSA census counts per barangay, as tabulated by PhilAtlas. Keyed by PSGC. */
+/** PSA 2015 and 2020 census counts per barangay, as tabulated by PhilAtlas.
+ *  All 25 barangays match that table. 2024 counts are municipal only.
+ */
 
 export type BarangayPopulation = {
   pop2020: number;
