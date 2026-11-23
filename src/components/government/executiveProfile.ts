@@ -8,6 +8,16 @@ export interface ExecutiveOfficial {
   bio?: string;
 }
 
+export interface ExecutiveField {
+  label: string;
+  value: string;
+}
+
+export interface ExecutiveGroup {
+  title: string;
+  items: string[];
+}
+
 export interface ExecutiveProfile {
   summary?: string;
   governmentName: string;
@@ -21,6 +31,20 @@ export interface ExecutiveProfile {
     address?: string;
     website?: string;
     facebook?: string;
+  };
+  bac?: {
+    source?: string;
+    fields: ExecutiveField[];
+    note?: string;
+  };
+  postingSites?: {
+    source?: string;
+    sites: string[];
+  };
+  complex?: {
+    source?: string;
+    groups: ExecutiveGroup[];
+    note?: string;
   };
   sources: Array<{
     label: string;
@@ -74,6 +98,58 @@ function proseAfterBullets(body: string): string {
   return prose.join(' ').replace(/\*\*/g, '').trim();
 }
 
+function labeledFields(body: string): ExecutiveField[] {
+  return bulletLines(body).flatMap(line => {
+    const idx = line.indexOf(':');
+    if (idx === -1) return [];
+    const label = line.slice(0, idx).trim();
+    const value = line.slice(idx + 1).trim();
+    return label && value ? [{ label, value }] : [];
+  });
+}
+
+function sourceLine(body: string): string | undefined {
+  return body
+    .split('\n')
+    .map(line => line.trim())
+    .find(line => /^source:/i.test(line))
+    ?.replace(/^source:\s*/i, '')
+    .trim();
+}
+
+function proseLines(body: string): string | undefined {
+  const text = body
+    .split('\n')
+    .map(line => line.trim())
+    .filter(
+      line =>
+        line &&
+        !line.startsWith('- ') &&
+        !line.startsWith('#') &&
+        !/^source:/i.test(line)
+    )
+    .join(' ')
+    .trim();
+  return text || undefined;
+}
+
+function parseGroups(body: string): ExecutiveGroup[] {
+  const groups: ExecutiveGroup[] = [];
+  let current: ExecutiveGroup | null = null;
+  for (const raw of body.split('\n')) {
+    const line = raw.trim();
+    if (line.startsWith('### ')) {
+      current = { title: line.slice(4).trim(), items: [] };
+      groups.push(current);
+      continue;
+    }
+    if (line.startsWith('- ') && current) {
+      current.items.push(line.slice(2).trim());
+    }
+  }
+  return groups.filter(group => group.items.length > 0);
+}
+
 function parseSources(body: string): ExecutiveProfile['sources'] {
   return bulletLines(body).map(line => {
     const linkMatch = line.match(/^\[([^\]]+)\]\(([^)]+)\)\s*[.,—–-]?\s*(.*)$/);
@@ -120,6 +196,13 @@ export function parseExecutiveMarkdown(
   );
   const inviteRequirements = bulletLines(inviteBody);
 
+  const bacBody = sectionBody(markdown, 'Bids and Awards Committee');
+  const bacFields = labeledFields(bacBody);
+  const postingBody = sectionBody(markdown, 'Official posting sites');
+  const postingSites = bulletLines(postingBody);
+  const complexBody = sectionBody(markdown, 'Municipal complex');
+  const complexGroups = parseGroups(complexBody);
+
   const sourcesBody = sectionBody(markdown, 'Sources');
   const missingMatch = markdown.match(
     /The municipal hall street address[\s\S]*$/m
@@ -162,6 +245,23 @@ export function parseExecutiveMarkdown(
       website: contactFields.website,
       facebook: contactFields.facebook,
     },
+    bac: bacFields.length
+      ? {
+          source: sourceLine(bacBody),
+          fields: bacFields,
+          note: proseLines(bacBody),
+        }
+      : undefined,
+    postingSites: postingSites.length
+      ? { source: sourceLine(postingBody), sites: postingSites }
+      : undefined,
+    complex: complexGroups.length
+      ? {
+          source: sourceLine(complexBody),
+          groups: complexGroups,
+          note: proseLines(complexBody),
+        }
+      : undefined,
     sources: parseSources(sourcesBody),
     missingNote: missingMatch?.[0]?.trim(),
   };
