@@ -33,7 +33,7 @@ export const footerNavigation = {
       title: 'About',
       links: [
         { label: 'About the Portal', href: '/about' },
-        // { label: 'Privacy Policy', href: '/privacy' },
+        { label: 'Privacy', href: '/about#privacy' },
         // { label: 'Terms of Use', href: '/terms' },
         { label: 'Accessibility', href: '/accessibility' },
         { label: 'Contact Us', href: '/about#contact' },
