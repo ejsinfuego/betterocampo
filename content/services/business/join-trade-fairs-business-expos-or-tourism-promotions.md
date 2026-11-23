@@ -2,6 +2,8 @@
 
 Ocampo businesses can join fairs and promotions run by the municipality, the barangay, the provincial government, or national agencies. This page does not list a current Ocampo event calendar. Watch the [LGU Facebook page](https://www.facebook.com/101706771551898) and ask the mayor's office or the business permits office when a call opens.
 
+The [Ocampo Tourism, Culture and the Arts Office](https://www.facebook.com/270889189434747) page lists its place as Market Site, Poblacion West, Governor Jose T. Fuentebella National Highway, Ocampo 4419. The same listing shows Monday–Thursday, 7:00 a.m.–6:00 p.m. It does not show Friday hours or a phone number. Public scrape. The office directory does not confirm this address or these hours.
+
 ## Who usually joins
 
 - Micro, small, and medium enterprises
