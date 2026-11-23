@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://betterocampo.org/projects</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -23,7 +23,7 @@
   </url>
   <url>
     <loc>https://betterocampo.org/government/departments</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -48,157 +48,187 @@
   </url>
   <url>
     <loc>https://betterocampo.org/services/agriculture-fisheries</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/business</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/disaster-preparedness</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/education</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/environment</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/garbage-waste-disposal</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/health-services</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/housing-land-use</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/infrastructure-public-works</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/social-welfare</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/government/departments/budget</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/government/departments/contact</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/government/departments/executive</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/government/departments/legislative</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/government/departments/ordinances</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://betterocampo.org/government/departments/reports</loc>
+    <lastmod>2026-11-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://betterocampo.org/services/agriculture-fisheries/attend-farming-or-fishing-training</loc>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/business/apply-for-barangay-clearance-and-mayors-business-permits</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/business/join-trade-fairs-business-expos-or-tourism-promotions</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/business/renew-permits-and-pay-local-business-taxes</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/business/rent-stalls-in-public-markets</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/education/access-educational-support-programs-from-the-lgu</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/education/apply-for-local-scholarships</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/education/enroll-children-in-lgu-daycare-or-preschool-programs</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/education/learn-about-supplementary-activities-for-schools-in-your-area</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/garbage-waste-disposal/check-garbage-collection-schedules-and-request-pickup</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/garbage-waste-disposal/learn-proper-waste-segregation-and-disposal-methods</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/garbage-waste-disposal/report-illegal-dumping-or-waste-management-violations</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/garbage-waste-disposal/request-special-waste-collection-hazardous-materials-electronics</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-06</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/health-services/access-maternal-care-and-child-immunization</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/health-services/get-free-check-ups-basic-medicines-and-vaccines</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/health-services/go-to-the-local-hospital-for-treatment-or-confinement</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://betterocampo.org/services/health-services/join-health-programs-nutrition-dengue-control-tb-treatment</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://betterocampo.org/services/infrastructure-public-works/request-access-to-barangay-water-supply-systems</loc>
+    <lastmod>2026-11-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://betterocampo.org/services/social-welfare/apply-for-senior-citizen-solo-parent-or-pwd-assistance</loc>
+    <lastmod>2026-11-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://betterocampo.org/services/social-welfare/get-family-and-community-welfare-support</loc>
+    <lastmod>2026-11-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://betterocampo.org/services/social-welfare/receive-relief-goods-or-cash-aid-during-disasters</loc>
+    <lastmod>2026-11-21</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
