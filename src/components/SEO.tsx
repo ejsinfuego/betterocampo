@@ -41,13 +41,18 @@ export default function SEO({
   const fullDescription = description || defaultDescription;
   const fullKeywords = keywords || defaultKeywords;
   const siteUrl = (
-    import.meta.env.VITE_WEBSITE_URL || 'https://betterocampo.org'
-  ).replace(/\/$/, '');
+    import.meta.env.VITE_WEBSITE_URL || 'https://www.betterocampo.org'
+  )
+    .replace(/\/$/, '')
+    .replace(/^https?:\/\/betterocampo\.org$/, 'https://www.betterocampo.org');
   const currentPath =
     typeof window === 'undefined' ? '/' : window.location.pathname || '/';
   const fullUrl = url || `${siteUrl}${currentPath}`;
-  const fullImage =
-    image || import.meta.env.VITE_OG_IMAGE_URL || `${siteUrl}/og-image.jpg`;
+  const fullImage = (
+    image ||
+    import.meta.env.VITE_OG_IMAGE_URL ||
+    `${siteUrl}/og-image.jpg`
+  ).replace(/^https?:\/\/betterocampo\.org\//, 'https://www.betterocampo.org/');
   const twitterHandle = import.meta.env.VITE_TWITTER_HANDLE || '';
 
   useEffect(() => {
