@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
+import { ChevronDown, ClipboardList, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { mainNavigation } from '../../data/navigation';
@@ -54,6 +54,13 @@ const Navbar: React.FC = () => {
     { label: 'Projects', href: '/projects' },
     { label: 'About', href: '/about' },
   ];
+
+  const reportCtaActive =
+    location.pathname === '/report' || location.pathname.startsWith('/report/');
+  const reportCtaClass = cn(
+    'inline-flex h-9 max-w-[9.5rem] items-center gap-1.5 rounded-full bg-primary-600 px-3 text-sm font-semibold text-white shadow-[0_4px_14px_-2px_rgba(0,93,245,0.5),0_2px_6px_rgba(15,23,42,0.12)] transition duration-200 hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:max-w-none sm:px-3.5',
+    reportCtaActive && 'ring-2 ring-primary-200'
+  );
 
   const linkClass = (active: boolean) =>
     cn(
@@ -186,6 +193,14 @@ const Navbar: React.FC = () => {
           </nav>
 
           <div className="ml-auto flex items-center gap-2 sm:gap-3">
+            <Link
+              to="/report"
+              className={reportCtaClass}
+              aria-current={reportCtaActive ? 'page' : undefined}
+            >
+              <ClipboardList className="size-3.5 shrink-0" aria-hidden />
+              <span className="truncate">{t('navbar.fileReport')}</span>
+            </Link>
             <button
               type="button"
               className="inline-flex h-9 items-center rounded-lg border border-gray-200 px-2.5 text-sm text-gray-950 lg:hidden"
