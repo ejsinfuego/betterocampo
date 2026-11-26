@@ -86,8 +86,10 @@ export default function Hero() {
                 className="mt-1 flex flex-wrap gap-x-2 sm:gap-x-4"
               >
                 {RESIDENT_QUICK_LINKS.map(link => {
-                  const className =
-                    'inline-flex min-h-5 sm:min-h-11 items-center text-[10px] sm:text-[13px] font-semibold text-primary-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:text-sm';
+                  const isReportCta = link.href === '/report';
+                  const className = isReportCta
+                    ? 'inline-flex h-8 items-center rounded-full bg-primary-600 px-3 text-[11px] font-semibold text-white shadow-[0_4px_14px_-2px_rgba(0,93,245,0.45)] hover:bg-primary-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:h-9 sm:text-sm'
+                    : 'inline-flex min-h-5 sm:min-h-11 items-center text-[10px] sm:text-[13px] font-semibold text-primary-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2 sm:text-sm';
 
                   if ('external' in link && link.external) {
                     return (

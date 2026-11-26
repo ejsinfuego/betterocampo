@@ -2,8 +2,11 @@ import type { LucideIcon } from 'lucide-react';
 import {
   BriefcaseBusiness,
   Building2,
+  CircleDot,
+  ClipboardList,
   Facebook,
   HeartPulse,
+  MapPin,
   Phone,
   Siren,
   Trash2,
@@ -11,9 +14,8 @@ import {
 
 /**
  * Resident intents for Ocampo, grounded in local patterns:
- * barangay clearance / permits, health (RHU), garbage, emergencies,
- * LGU Facebook (primary public channel), and municipal contact.
- * Community reporting links stay out until that feature ships.
+ * barangay clearance / permits, health (RHU), garbage, infrastructure reports,
+ * emergencies, LGU Facebook (primary public channel), and municipal contact.
  */
 export type ResidentNeed = {
   id: string;
@@ -22,7 +24,7 @@ export type ResidentNeed = {
   href: string;
   external?: boolean;
   icon: LucideIcon;
-  group: 'urgent' | 'everyday';
+  group: 'urgent' | 'everyday' | 'reports';
 };
 
 export const RESIDENT_NEED_GROUPS = [
@@ -35,6 +37,11 @@ export const RESIDENT_NEED_GROUPS = [
     id: 'everyday' as const,
     title: 'Everyday needs',
     hint: 'Guides residents look for most often — permits, health, waste, and how to reach the LGU.',
+  },
+  {
+    id: 'reports' as const,
+    title: 'Community reports',
+    hint: 'Report problems so we can help raise them with the municipality. Not an official LGU ticket.',
   },
 ];
 
@@ -101,6 +108,32 @@ export const RESIDENT_NEEDS: ResidentNeed[] = [
     icon: Phone,
     group: 'everyday',
   },
+  {
+    id: 'file-report',
+    title: 'Report a problem',
+    description:
+      'Roads, bridges, drainage, lights, waste — we’ll help raise it with the municipality.',
+    href: '/report',
+    icon: ClipboardList,
+    group: 'reports',
+  },
+  {
+    id: 'track-report',
+    title: 'Check a Report status',
+    description: 'Look up your Reference ID — no account needed.',
+    href: '/report/track',
+    icon: CircleDot,
+    group: 'reports',
+  },
+  {
+    id: 'public-reports',
+    title: 'See published Reports',
+    description:
+      'Operator-approved, redacted Reports the community can browse.',
+    href: '/reports',
+    icon: MapPin,
+    group: 'reports',
+  },
 ];
 
 /** Compact links for Hero / chrome — highest-frequency resident intents. */
@@ -108,6 +141,7 @@ export const RESIDENT_QUICK_LINKS = [
   { label: 'What I need', href: '/needs' },
   { label: 'Education', href: '/services/education' },
   { label: 'Health', href: '/services/health-services' },
+  { label: 'Report a problem', href: '/report' },
   { label: 'Projects', href: '/projects' },
   { label: 'Contact', href: '/government/departments/contact' },
   {

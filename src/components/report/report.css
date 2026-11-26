@@ -1,0 +1,69 @@
+/* Reporting surface — municipal notice-desk accents within civic chrome */
+
+@keyframes report-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes report-stamp {
+  0% {
+    opacity: 0;
+    transform: scale(1.12) rotate(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.report-rise {
+  animation: report-rise 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.report-rise-delay-1 {
+  animation-delay: 0.06s;
+}
+
+.report-rise-delay-2 {
+  animation-delay: 0.12s;
+}
+
+.report-rise-delay-3 {
+  animation-delay: 0.18s;
+}
+
+.report-stamp {
+  animation: report-stamp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.report-receipt {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(235, 246, 255, 0.9),
+      rgba(255, 255, 255, 0.96)
+    ),
+    repeating-linear-gradient(
+      -12deg,
+      transparent,
+      transparent 11px,
+      rgba(0, 93, 245, 0.03) 11px,
+      rgba(0, 93, 245, 0.03) 12px
+    );
+}
+
+.report-desk {
+  background:
+    radial-gradient(
+      120% 80% at 100% 0%,
+      rgba(0, 93, 245, 0.06),
+      transparent 55%
+    ),
+    #fff;
+}
