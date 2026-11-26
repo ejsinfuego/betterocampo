@@ -38,10 +38,13 @@ export default function Needs() {
               <ul className="grid gap-3 sm:grid-cols-2">
                 {items.map(need => {
                   const Icon = need.icon;
+                  const isReportCta = need.id === 'file-report';
                   const className = cn(
-                    'flex h-full gap-3 rounded-2xl border border-gray-200/90 bg-white/80 p-4 transition',
-                    'hover:border-primary-300 hover:bg-primary-50/40',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2'
+                    'flex h-full gap-3 rounded-2xl border p-4 transition',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2',
+                    isReportCta
+                      ? 'border-primary-500 bg-primary-50 shadow-[0_0_0_1px_rgba(0,93,245,0.18)] hover:bg-primary-100/70'
+                      : 'border-gray-200/90 bg-white/80 hover:border-primary-300 hover:bg-primary-50/40'
                   );
                   const body = (
                     <>
