@@ -15,6 +15,11 @@ const Government = lazy(() => import('./pages/Government'));
 const Search = lazy(() => import('./pages/Search'));
 const About = lazy(() => import('./pages/About'));
 const Needs = lazy(() => import('./pages/Needs'));
+const FileReport = lazy(() => import('./pages/report/FileReport'));
+const TrackReport = lazy(() => import('./pages/report/TrackReport'));
+const PublishedReports = lazy(() => import('./pages/report/PublishedReports'));
+const ReportsAdmin = lazy(() => import('./pages/admin/ReportsAdmin'));
+const ReportDetailAdmin = lazy(() => import('./pages/admin/ReportDetailAdmin'));
 
 function App() {
   return (
@@ -70,6 +75,14 @@ function App() {
                   />
                   <Route path="/search" element={<Search />} />
                   <Route path="/needs" element={<Needs />} />
+                  <Route path="/report" element={<FileReport />} />
+                  <Route path="/report/track" element={<TrackReport />} />
+                  <Route path="/reports" element={<PublishedReports />} />
+                  <Route
+                    path="/admin/reports/:referenceId"
+                    element={<ReportDetailAdmin />}
+                  />
+                  <Route path="/admin/reports" element={<ReportsAdmin />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/:lang/:documentSlug" element={<Document />} />
                   <Route path="/:documentSlug" element={<Document />} />
