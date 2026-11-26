@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { isAdminSdkConfigured } from '../../_lib/firebaseAdmin';
+import { isAdminSdkConfigured } from '../../_lib/firebaseAdmin.js';
 import {
   badRequest,
   forbidden,
@@ -8,14 +8,14 @@ import {
   readJsonBody,
   serverError,
   unauthorized,
-} from '../../_lib/http';
+} from '../../_lib/http.js';
 import {
   getLiveReport,
   isStatus,
   updateStatus,
   type ReportStatus,
-} from '../../_lib/reportsStore';
-import { requireAdmin } from '../../_lib/session';
+} from '../../_lib/reportsStore.js';
+import { requireAdmin } from '../../_lib/session.js';
 
 async function withAdmin(
   req: VercelRequest,
