@@ -1,19 +1,19 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { isAdminSdkConfigured } from '../_lib/firebaseAdmin';
+import { isAdminSdkConfigured } from '../_lib/firebaseAdmin.js';
 import {
   badRequest,
   methodNotAllowed,
   readJsonBody,
   serverError,
   unauthorized,
-} from '../_lib/http';
+} from '../_lib/http.js';
 import {
   clearSessionCookie,
   createSessionCookie,
   isAllowlistedAdmin,
   readAdminSession,
   verifyGoogleIdToken,
-} from '../_lib/session';
+} from '../_lib/session.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!isAdminSdkConfigured()) {

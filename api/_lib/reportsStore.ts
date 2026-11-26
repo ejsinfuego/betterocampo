@@ -1,5 +1,5 @@
 import { FieldValue, type Timestamp } from 'firebase-admin/firestore';
-import { adminBucket, adminDb, isStorageEnabled } from './firebaseAdmin';
+import { adminBucket, adminDb, isStorageEnabled } from './firebaseAdmin.js';
 
 export const REPORT_CATEGORIES = [
   'road',

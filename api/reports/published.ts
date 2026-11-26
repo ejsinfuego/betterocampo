@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { isAdminSdkConfigured } from '../_lib/firebaseAdmin';
-import { methodNotAllowed, serverError } from '../_lib/http';
-import { listPublished } from '../_lib/reportsStore';
+import { isAdminSdkConfigured } from '../_lib/firebaseAdmin.js';
+import { methodNotAllowed, serverError } from '../_lib/http.js';
+import { listPublished } from '../_lib/reportsStore.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'GET') {

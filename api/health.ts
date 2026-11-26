@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { methodNotAllowed } from './_lib/http';
+import { methodNotAllowed } from './_lib/http.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'GET') {
@@ -8,7 +8,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
   try {
     const { isAdminSdkConfigured, isStorageEnabled } =
-      await import('./_lib/firebaseAdmin');
+      await import('./_lib/firebaseAdmin.js');
     res.status(200).json({
       ok: true,
       reporting: isAdminSdkConfigured(),

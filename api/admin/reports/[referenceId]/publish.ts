@@ -1,13 +1,13 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { isAdminSdkConfigured } from '../../../_lib/firebaseAdmin';
+import { isAdminSdkConfigured } from '../../../_lib/firebaseAdmin.js';
 import {
   forbidden,
   methodNotAllowed,
   serverError,
   unauthorized,
-} from '../../../_lib/http';
-import { publishReport } from '../../../_lib/reportsStore';
-import { requireAdmin } from '../../../_lib/session';
+} from '../../../_lib/http.js';
+import { publishReport } from '../../../_lib/reportsStore.js';
+import { requireAdmin } from '../../../_lib/session.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {

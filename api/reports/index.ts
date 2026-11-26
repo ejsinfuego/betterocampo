@@ -1,19 +1,19 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { isAdminSdkConfigured } from '../_lib/firebaseAdmin';
+import { isAdminSdkConfigured } from '../_lib/firebaseAdmin.js';
 import {
   badRequest,
   clientIp,
   methodNotAllowed,
   readJsonBody,
   serverError,
-} from '../_lib/http';
-import { takeToken } from '../_lib/rateLimit';
+} from '../_lib/http.js';
+import { takeToken } from '../_lib/rateLimit.js';
 import {
   createReportRecord,
   isCategory,
   type ReportCategory,
   type ReportGeo,
-} from '../_lib/reportsStore';
+} from '../_lib/reportsStore.js';
 
 type CreateBody = {
   category?: string;
