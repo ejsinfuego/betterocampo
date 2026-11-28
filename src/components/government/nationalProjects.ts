@@ -44,11 +44,26 @@ export type NationalProject = {
   status: 'enacted' | 'proposal';
   agency: string;
   amount: number | null;
+  /** National Expenditure Program amount. Proposals only. */
+  nep?: number | null;
   detail?: string;
   line: string;
   href?: string;
   barangays: string[];
 };
+
+/** Selection id for lines that name Ocampo and no barangay. */
+export const TOWN_WIDE = '__town_wide__';
+
+const pesos = new Intl.NumberFormat('en-PH', {
+  style: 'currency',
+  currency: 'PHP',
+  maximumFractionDigits: 0,
+});
+
+export function formatPesos(amount: number | null): string {
+  return amount == null ? '—' : pesos.format(amount);
+}
 
 function cellsOf(line: string): string[] | null {
   const trimmed = line.trim();
@@ -117,13 +132,6 @@ export function barangaysNamedIn(line: string): string[] {
     });
 }
 
-/** Drop the title and opening paragraph. The page header shows those. */
-export function projectsBody(markdown: string): string {
-  const withoutTitle = markdown.replace(/^#\s+[^\n]+\n+/, '');
-  const [, ...rest] = withoutTitle.split(/\n\n/);
-  return rest.join('\n\n').trim();
-}
-
 export function parseNationalProjects(markdown: string): NationalProject[] {
   const projects: NationalProject[] = [];
   let mode: 'enacted' | 'proposal' | null = null;
@@ -167,6 +175,7 @@ export function parseNationalProjects(markdown: string): NationalProject[] {
         status: 'proposal',
         agency: cells[0],
         amount: parseAmount(cells[3]),
+        nep: parseAmount(cells[2]),
         detail: cells[1],
         line: linked.text,
         href: linked.href,
@@ -194,15 +203,9 @@ export function projectsByBarangay(
   );
 }
 
-/** One hover bar stands for this many pesos. */
+/** Amounts at or above this are written as millions. */
 export const PESOS_PER_BAR = 1_000_000;
 
 export function budgetTotal(lines: NationalProject[]): number {
   return lines.reduce((sum, line) => sum + (line.amount ?? 0), 0);
-}
-
-/** Bars for the projects-map lift. A named barangay with no pesos still gets one. */
-export function budgetBarCount(lines: NationalProject[]): number {
-  if (lines.length === 0) return 0;
-  return Math.max(1, Math.round(budgetTotal(lines) / PESOS_PER_BAR));
 }
