@@ -21,7 +21,11 @@ import {
   touristSpots,
   type OcampoPlace,
 } from '../../data/ocampoPlaces';
-import { barangayPopulation, DENSITY_STOPS } from '../../data/ocampoBarangays';
+import {
+  barangayPopulation,
+  DENSITY_STOPS,
+  PROJECT_COUNT_STOPS,
+} from '../../data/ocampoBarangays';
 import { loadBarangayBoundaries } from '../../lib/barangayBoundaries';
 import { labelPoint, type Area } from '../../lib/polygon';
 import BarangayLift, { type LiftTarget } from './BarangayLift';
@@ -75,6 +79,13 @@ const densityFill = [
   ...DENSITY_STOPS.flat(),
 ];
 
+const projectCountFill = [
+  'interpolate',
+  ['linear'],
+  ['get', 'projectCount'],
+  ...PROJECT_COUNT_STOPS.flat(),
+];
+
 export type BarangayPin = {
   id: string;
   /** GeoJSON barangay name. */
@@ -94,10 +105,10 @@ type OcampoMapProps = {
   /** Replaces the population card while a barangay is hovered. */
   hoverCard?: (stats: BarangayStats) => ReactNode;
   /**
-   * Bars to draw on hover, keyed by barangay name. Missing names draw none.
-   * Omit this and each bar stands for 20 residents.
+   * Draw the population columns on the lifted barangay.
+   * The projects map turns this off.
    */
-  liftBars?: Record<string, number>;
+  bars?: boolean;
 };
 
 const NO_PINS: BarangayPin[] = [];
@@ -238,7 +249,7 @@ function liftFromFeature(
     geometry: Polygon | MultiPolygon | Geometry;
   } | null,
   origin: [number, number] | null,
-  liftBars?: Record<string, number>
+  bars: boolean
 ): LiftTarget | null {
   if (!feature) return null;
   const { geometry } = feature;
@@ -252,8 +263,7 @@ function liftFromFeature(
     areaSqKm: feature.properties.areaSqKm,
     geometry: area,
     origin: origin ?? labelPoint(area),
-    barCount:
-      liftBars == null ? undefined : (liftBars[feature.properties.name] ?? 0),
+    barCount: bars ? undefined : 0,
   };
 }
 
@@ -299,7 +309,7 @@ export default function OcampoMap({
   padForFacts = true,
   onBarangayClick,
   hoverCard,
-  liftBars,
+  bars = true,
 }: OcampoMapProps) {
   const [barangays, setBarangays] = useState<BarangayCollection | null>(null);
   const [hovered, setHovered] = useState<{
@@ -409,12 +419,12 @@ export default function OcampoMap({
   const liftFeature = activeFeature ?? hoveredFeature;
 
   const pinnedLift = useMemo(
-    () => liftFromFeature(activeFeature, null, liftBars),
-    [activeFeature, liftBars]
+    () => liftFromFeature(activeFeature, null, bars),
+    [activeFeature, bars]
   );
   const hoverLift = useMemo(
-    () => liftFromFeature(hoveredFeature, hovered?.origin ?? null, liftBars),
-    [hovered, hoveredFeature, liftBars]
+    () => liftFromFeature(hoveredFeature, hovered?.origin ?? null, bars),
+    [hovered, hoveredFeature, bars]
   );
   const liftTarget = pinnedLift ?? hoverLift;
 
@@ -463,7 +473,9 @@ export default function OcampoMap({
               promoteId="psgc"
               interactive
               fillPaint={{
-                'fill-color': densityFill as never,
+                'fill-color': (pins.length > 0
+                  ? projectCountFill
+                  : densityFill) as never,
                 'fill-opacity': 0.55,
               }}
               fillHoverPaint={{
