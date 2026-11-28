@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { ChevronDown, ClipboardList, Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
@@ -21,6 +21,7 @@ const serviceLinks =
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const { t } = useTranslation();
   const location = useLocation();
   const siteName = import.meta.env.VITE_GOVERNMENT_NAME || 'Better Ocampo';
@@ -29,6 +30,21 @@ const Navbar: React.FC = () => {
     setIsOpen(false);
     setServicesOpen(false);
   }, [location.pathname]);
+
+  useLayoutEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+    const apply = () => {
+      document.documentElement.style.setProperty(
+        '--site-header',
+        `${header.offsetHeight}px`
+      );
+    };
+    apply();
+    const observer = new ResizeObserver(apply);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!servicesOpen && !isOpen) return;
@@ -72,7 +88,10 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
+      <header
+        ref={headerRef}
+        className="sticky top-0 z-50 border-b border-gray-200 bg-white"
+      >
         <div id="hotlines" className="bg-primary-800 text-white">
           <div className="mx-auto flex max-w-7xl items-center gap-3 overflow-x-auto whitespace-nowrap px-4 py-1.5 sm:px-6">
             <HeaderWeather />

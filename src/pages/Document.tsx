@@ -6,7 +6,7 @@ import {
   SurfaceCard,
 } from '../components/ui/PageFrame';
 import DirectoryCard from '../components/ui/DirectoryCard';
-import { useLocation, useParams } from 'react-router';
+import { useLocation, useParams, useSearchParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -28,8 +28,8 @@ import SEO from '../components/SEO';
 import ContactView from '../components/government/ContactView';
 import ExecutiveView from '../components/government/ExecutiveView';
 import LegislativeView from '../components/government/LegislativeView';
-import ProjectsMap from '../components/government/ProjectsMap';
-import { projectsBody } from '../components/government/nationalProjects';
+import ProjectsView from '../components/government/ProjectsView';
+import ProjectsIntro from '../components/government/ProjectsIntro';
 import { parseContactMarkdown } from '../components/government/contactDirectory';
 import { parseExecutiveMarkdown } from '../components/government/executiveProfile';
 import {
@@ -53,6 +53,7 @@ export default function Document({
 }: DocumentProps) {
   const params = useParams();
   const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
   const documentSlug = slug ?? params.documentSlug;
   const category = categoryProp ?? params.category;
   const siteUrl = (
@@ -133,7 +134,7 @@ export default function Document({
           categoryType
         );
         setMarkdownContent(content);
-        if (content.title) {
+        if (content.title && documentSlug !== 'projects') {
           setBreadcrumbs(current =>
             current.map((item, i) =>
               i === current.length - 1
@@ -243,6 +244,21 @@ export default function Document({
   const legislativeMeta = legislativeRoster
     ? legislativePageMeta(legislativeRoster, `${siteUrl}${pathname}`, siteUrl)
     : null;
+  const projectsMapStage =
+    documentSlug === 'projects' && searchParams.get('view') !== 'table';
+
+  if (projectsMapStage) {
+    return (
+      <>
+        <SEO
+          title={markdownContent.title || 'Projects'}
+          description="Ocampo Cam Sur projects named in the national budget for Ocampo, Camarines Sur."
+          keywords="ocampo cam sur projects, Ocampo Cam Sur projects, Ocampo, Camarines Sur"
+        />
+        <ProjectsView markdown={markdownContent.content} layout="stage" />
+      </>
+    );
+  }
 
   return (
     <>
@@ -305,21 +321,10 @@ export default function Document({
           </>
         ) : documentSlug === 'projects' ? (
           <>
-            <PageHeader
-              title={markdownContent.title || 'Projects'}
-              description={markdownContent.description}
-            />
-            <ProjectsMap markdown={markdownContent.content} />
-            <SurfaceCard as="article" className="p-5 sm:p-8">
-              <div className="markdown-content">
-                <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
-                  components={markdownComponents}
-                >
-                  {projectsBody(markdownContent.content)}
-                </ReactMarkdown>
-              </div>
-            </SurfaceCard>
+            <PageHeader title="Projects">
+              <ProjectsIntro className="mt-2 sm:text-base" />
+            </PageHeader>
+            <ProjectsView markdown={markdownContent.content} />
           </>
         ) : (
           <SurfaceCard as="article" className="p-5 sm:p-8">

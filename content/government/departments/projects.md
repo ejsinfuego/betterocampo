@@ -55,7 +55,7 @@ The 2027 lines are from the House bill compared with the National Expenditure Pr
 
 ## FY2027 proposals
 
-House Bill amounts below are the third-reading figures from the BetterGov House-bill dataset. "House bill only" means the line is not in the National Expenditure Program.
+House bill amounts are the third-reading figures from the BetterGov House-bill dataset. "House bill only" means the line is not in the National Expenditure Program.
 
 | Program              | Status              | NEP        | House bill | Line                                                                                                                           |
 | -------------------- | ------------------- | ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------ |

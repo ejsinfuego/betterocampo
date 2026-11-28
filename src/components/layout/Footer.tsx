@@ -8,6 +8,7 @@ import {
 import { Link } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { footerNavigation } from '../../data/navigation';
+import { cn } from '../../lib/utils';
 
 const LGU_FACEBOOK = 'https://www.facebook.com/101706771551898';
 const GITHUB = 'https://github.com/ejsinfuego/betterocampo';
@@ -28,13 +29,18 @@ const sources = [
   { label: 'BetterGov.ph', href: 'https://bettergov.ph' },
 ];
 
-const Footer: React.FC = () => {
+const Footer: React.FC<{ className?: string }> = ({ className }) => {
   const { t } = useTranslation();
   const siteName = import.meta.env.VITE_GOVERNMENT_NAME || 'Better Ocampo';
   const facebook = footerNavigation.socialLinks[0];
 
   return (
-    <footer className="mt-16 border-t border-white/15 bg-primary-900 text-primary-100">
+    <footer
+      className={cn(
+        'mt-16 border-t border-white/15 bg-primary-900 text-primary-100',
+        className
+      )}
+    >
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-3">
