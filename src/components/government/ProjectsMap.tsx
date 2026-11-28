@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import OcampoMap from '../home/OcampoMap';
-import { PROJECT_COUNT_STOPS } from '../home/OcampoMap';
+import { PROJECT_COUNT_STOPS } from '../../data/ocampoBarangays';
 import ProjectBudgetCard from './ProjectBudgetCard';
 import ProjectSidebar from './ProjectSidebar';
 import type { NationalProject } from './nationalProjects';
