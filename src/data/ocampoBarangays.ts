@@ -26,6 +26,15 @@ export const DENSITY_STOPS: [number, string][] = [
   [3000, '#1e3a8a'],
 ];
 
+/** Budget lines in a barangay, and the projects-map fill at that count. */
+export const PROJECT_COUNT_STOPS: [number, string][] = [
+  [0, '#eef2f7'],
+  [1, '#bfdbfe'],
+  [3, '#60a5fa'],
+  [5, '#2563eb'],
+  [8, '#1e3a8a'],
+];
+
 export const barangayPopulation: Record<string, BarangayPopulation> = {
   '0501725001': { pop2020: 2614, pop2015: 2939 }, // Ayugan
   '0501725002': { pop2020: 1558, pop2015: 1403 }, // Cabariwan
