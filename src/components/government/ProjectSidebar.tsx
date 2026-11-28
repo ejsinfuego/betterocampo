@@ -1,23 +1,19 @@
 import { useEffect, useId, useRef } from 'react';
 import { X } from 'lucide-react';
-import { budgetTotal, type NationalProject } from './nationalProjects';
-
-const pesos = new Intl.NumberFormat('en-PH', {
-  style: 'currency',
-  currency: 'PHP',
-  maximumFractionDigits: 0,
-});
-
-function money(amount: number | null): string {
-  return amount == null ? '—' : pesos.format(amount);
-}
+import {
+  budgetTotal,
+  formatPesos,
+  type NationalProject,
+} from './nationalProjects';
 
 function byRecent(a: NationalProject, b: NationalProject) {
   return b.year - a.year || (b.amount ?? 0) - (a.amount ?? 0);
 }
 
-function ProjectDetail({ project }: { project: NationalProject }) {
+export function ProjectDetail({ project }: { project: NationalProject }) {
   const enacted = project.status === 'enacted';
+  const nepDiffers =
+    !enacted && project.nep != null && project.nep !== project.amount;
 
   return (
     <article className="rounded-xl border border-gray-200 bg-gray-50/80 p-3">
@@ -27,11 +23,22 @@ function ProjectDetail({ project }: { project: NationalProject }) {
         {project.agency}
       </p>
       <p className="mt-1 text-2xl font-bold tracking-tight text-gray-950 tabular-nums">
-        {money(project.amount)}
+        {formatPesos(project.amount)}
       </p>
-      {project.detail ? (
+      {!enacted && project.detail ? (
         <p className="mt-1 text-xs font-semibold text-gray-700">
           {project.detail}
+        </p>
+      ) : null}
+      {!enacted && project.nep == null ? (
+        <p className="mt-1 text-xs leading-relaxed text-gray-600">
+          Not in the National Expenditure Program.
+        </p>
+      ) : null}
+      {nepDiffers ? (
+        <p className="mt-1 text-xs leading-relaxed text-gray-600">
+          {formatPesos(project.nep ?? null)} in the National Expenditure
+          Program.
         </p>
       ) : null}
       <p className="mt-2 text-sm leading-relaxed text-gray-800">
@@ -133,9 +140,9 @@ export default function ProjectSidebar({
           {lines.length > 0 ? (
             <p className="mt-0.5 text-xs text-gray-500">
               {lines.length} {lines.length === 1 ? 'line' : 'lines'} ·{' '}
-              {money(total)}
+              {formatPesos(total)}
               {proposalTotal > 0 && enactedTotal > 0
-                ? ` · enacted ${money(enactedTotal)}`
+                ? ` · enacted ${formatPesos(enactedTotal)}`
                 : ''}
             </p>
           ) : null}
@@ -154,7 +161,9 @@ export default function ProjectSidebar({
       <div className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
         {lines.length === 0 ? (
           <p className="text-sm leading-relaxed text-gray-600">
-            No national budget line names {name}.
+            {name
+              ? `No national budget line names ${name}.`
+              : 'Choose a pin or a place.'}
           </p>
         ) : (
           <>
@@ -177,7 +186,7 @@ export default function ProjectSidebar({
                       >
                         <span className="block text-[11px] font-semibold text-primary-700">
                           {project.year} · {project.agency} ·{' '}
-                          {money(project.amount)}
+                          {formatPesos(project.amount)}
                           {project.status === 'proposal' ? ' · Proposal' : ''}
                         </span>
                         <span className="mt-0.5 line-clamp-2 block text-xs leading-snug text-gray-700">
